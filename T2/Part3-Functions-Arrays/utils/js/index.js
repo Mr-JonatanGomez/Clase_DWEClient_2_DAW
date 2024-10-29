@@ -58,5 +58,15 @@ function sumarParamDefecto1(param1=0, param2) {
   //1 primero creamos una variable y la enlazamos a la funcion -- let suma =
   //2 le damos los parametros y =>{cuerpo de funcion}
 
-  let sumaFlecha= (param1, param2)=>{console.log(param1+param2)}
+  let sumaFlecha= (param1, param2)=>{console.log(param1+param2)}//esto retorna void porque es log
   sumaFlecha(8,3)
+
+  //arrow one line, la operacion sin llaves {}
+  let restaFlecha= (param1, param2)=>param1-param2//retorna numero
+  //comprobamos
+  let comprobacion=restaFlecha(8,3)
+
+  console.log(typeof comprobacion);
+   
+
+  
