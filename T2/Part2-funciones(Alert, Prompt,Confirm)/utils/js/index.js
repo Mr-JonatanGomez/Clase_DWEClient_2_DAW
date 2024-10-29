@@ -6,15 +6,13 @@ Swal.fire({
   showDenyButton: true,
   showCancelButton: true,
   confirmButtonText: "Yes",
-  denyButtonText: `No`
+  denyButtonText: `No` 
 }).then((result) => {
   /* Read more about isConfirmed, isDenied below */
   if (result.isConfirmed) {
     welcome()
   } else if (result.isDenied) {
-    Swal.fire(
-      "You should come back for the same way that you come, QUICK!....Fucking idiots"
-    )
+    Swal.fire("You should come back for the same way that you come, QUICK!...")
   }
 })
 
