@@ -1,23 +1,66 @@
-//definimos nombre en vacio, para que no salte error por no estar definido antes
-let edad = 0
-let estatura = 0.0
+//dLibreria sweetalert2
 
 Swal.fire({
   title: "Welcome to JonGo.DevIT!",
-  text: "You clicked the button!",
-  icon: "success"
+  text: "Are you here voluntarily?",
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: "Yes",
+  denyButtonText: `No`
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    welcome()
+  } else if (result.isDenied) {
+    Swal.fire(
+      "You should come back for the same way that you come, QUICK!....Fucking idiots"
+    )
+  }
 })
 
-const { value: nombre } = await Swal.fire({
-  title: "Input your name",
-  input: "nombre",
-  inputLabel: "Your name",
-  inputPlaceholder: "Enter your name"
-});
-if (nombre) {
-  Swal.fire(`Entered name: ${nombre}`);
-}
+function propmptEdad() {
+  Swal.fire({
+    title: "How old are you?",
+    icon: "question",
+    input: "range",
+    inputLabel: "Your age",
+    inputAttributes: {
+      min: "0",
+      max: "99",
+      step: "0.5"
+    },
+    inputValue: 25
+  }).then((result) => {
+    //para guardar el valor del user
+    const edad = result.value
 
+    if (edad >= 18) {
+      Swal.fire({
+        title: "Access Granted to JonGo.DevIT",
+        text: "Welcome! You are allowed to stay on the page.",
+        icon: "success"
+      })
+    } else {
+      Swal.fire({
+        title: "Access denied to JonGo.Dev_CASINO",
+        text: "Sorry! This page is for adults only.",
+        icon: "error"
+      })
+    }
+  })
+}
+function welcome() {
+  Swal.fire({
+    title: "Welcome to JonGo.DevIT!",
+    text: "You clicked the button!",
+    icon: "success"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      propmptEdad()
+    }
+  })
+}
+/* 
 //todo funcion flecha para verificar que no lleva numeros, (ESTAS FUNC, SIEMPRE ANTES DE USARLAS)
 const tieneNumero = (string) => {
   for (let char of string) {
@@ -72,3 +115,4 @@ function saludar(nombre) {
   console.log("Hola ${nomnbre}")
 }
 //comment
+ */
