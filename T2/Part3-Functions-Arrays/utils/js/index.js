@@ -8,7 +8,7 @@ function sumar(param1, param2) {
 console.log(sumar(7, 13)) // resultado 20
 console.log(sumar(7)) //resultado NaN, porque suma 7 y Undefined
 
-// Vamos a darle valor por defecto param de la funcion
+// DEFAULT PARAM 
 
 function resta(param1, param2 = 2) {
   return param1 - param2
@@ -31,3 +31,32 @@ function sumarParamDefecto1(param1=0, param2) {
     return param1 + param2
   }
   console.log(sumarParamDefectoTodos(7)) //dara 10, ya que el primero se lo damos y el segundo coge el 3 del defecto
+
+
+  //PARAM INVISIBLE
+
+  function multiplicar(param1, param2){
+    console.log(param1*param2)
+
+    console.log("metemos impresion de los argumentos en posiciones fuera de param1,2 (0,1)")
+    console.log("umprimiendo poscion 2 que es un 5: y sale ="+ arguments[2])
+    console.log("umprimiendo poscion 3 que es un 2: y sale ="+ arguments[3])
+
+    console.log(arguments.length)//saca la cantidad de argumentos que tiene
+
+
+
+
+    return param1*param2
+  }
+
+  multiplicar(7,3,5,2,3,4,6)
+
+
+  //FUNCIONES FLECHA  -- ARROW FUNCTIONS or LAMBDA --funciones rapidas
+
+  //1 primero creamos una variable y la enlazamos a la funcion -- let suma =
+  //2 le damos los parametros y =>{cuerpo de funcion}
+
+  let sumaFlecha= (param1, param2)=>{console.log(param1+param2)}
+  sumaFlecha(8,3)
