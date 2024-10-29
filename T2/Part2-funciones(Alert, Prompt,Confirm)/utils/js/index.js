@@ -8,15 +8,14 @@ Swal.fire({
   icon: "success"
 })
 
-
 const { value: nombre } = await Swal.fire({
   title: "Input your name",
-  input: "email",
-  inputLabel: "Your email address",
-  inputPlaceholder: "Enter your email address"
-})
-if (email) {
-  Swal.fire(`Entered email: ${email}`)
+  input: "nombre",
+  inputLabel: "Your name",
+  inputPlaceholder: "Enter your name"
+});
+if (nombre) {
+  Swal.fire(`Entered name: ${nombre}`);
 }
 
 //todo funcion flecha para verificar que no lleva numeros, (ESTAS FUNC, SIEMPRE ANTES DE USARLAS)
@@ -29,7 +28,7 @@ const tieneNumero = (string) => {
   }
   return false // no encuentra numero
 }
-//todo FIN de la funcion
+
 
 do {
   nombre = prompt("Por favor introduce tu nombre") // String
