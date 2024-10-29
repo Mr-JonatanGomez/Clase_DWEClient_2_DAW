@@ -1,7 +1,28 @@
 //Array
 // las constantes no se puede alterar su valor
-const equipos = ["Atleti", "Madrid", "Barcelona", "Rayo", "LasPalmas", "Getafe"]
+const equipos = ["Atleti", "Madrid", "Barcelona", "Rayo"]
 // si declaramos un equipo en [10], los 5,6...seran undefined
+
+
+equipos[1]= "R.Madrid" //ojo, si se puede cambiar nombre
+equipos[4]= "Las Palmas" // añade a posicion 4
+equipos[10]= "Villareal" // añade a posicion 10 y del 5-9 son Undefined
+
+console.log(equipos)
+
+//FOR IN
+//es for key valor...la key es el INDEX
+for (const key in equipos) {
+  console.log(key)//saca los index
+}
+
+
+//FOR OF es como foreache de JAVA
+for (const item of equipos) {
+  console.log(item +" del forof");
+  
+}
+
 
 // FOREACH es una funcion ( no es como java) que nos permite iterar y modificar
 //con 3 parametros, elemento, indice y lo que recorres
@@ -32,10 +53,10 @@ console.log(busqueda)
 
 //Filtrar FILTER --> Todos los elementos que coinciden
 
-equipos
+/* equipos
   .filter((item) => {
     return itemitem.length >= 7
   })
-  .forEach((item) => {})
+  .forEach((item) => {}) */
 
 //si no encuentra nada return array vacio, no undefined
