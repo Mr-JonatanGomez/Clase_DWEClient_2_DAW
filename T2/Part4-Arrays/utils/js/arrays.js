@@ -88,7 +88,8 @@ console.log("MODO DE BORJA, filter+foreach");
 equipos.filter((element, equipos)=>{
   return element.length >=8
 }).forEach((element)=>{
-  console.log(element);//esto imprime equipo a equipo
+  console.log(element);
+  //esto imprime equipo a equipo si no quieres una variable de esto 
   
 })
 
