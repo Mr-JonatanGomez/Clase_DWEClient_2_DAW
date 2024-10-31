@@ -10,5 +10,6 @@
 let carta ="5C"
 console.log(carta.substring(0,carta.length-1));
 
+//todo preguntar BORJA, si veremos JSON.stringify y JSON.parse
 
 //6.

@@ -68,20 +68,11 @@ function sumarParamDefecto1(param1=0, param2) {
 
   console.log(typeof comprobacion);
    
-let dni = "123456789"
-let ultimo = dni.charAt(dni.length-1)
-console.log(ultimo)
 
-if (ultimo == Number) {
-  console.log("DNI invalido");
-  
-}else if (ultimo != Number && dni.length == 9) {
-  console.log("DNI correcto");
-  
-}else{
-  console.log("invalido por tamaño incorrecto");
-  
-}
+
+
+
+
 
 
   
