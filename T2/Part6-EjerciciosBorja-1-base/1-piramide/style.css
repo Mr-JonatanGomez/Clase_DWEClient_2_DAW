@@ -1,0 +1,10 @@
+body{
+    width: 98%;
+    height: 100%;
+}
+
+h1{
+    max-width: 90%;
+    text-align: center;
+    margin: 30% auto;
+}

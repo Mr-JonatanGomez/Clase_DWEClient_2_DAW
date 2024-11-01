@@ -9,6 +9,7 @@
 //5.  SACAR UNA CARTA Y OBTENER SU VALOR
 let carta ="5C"
 console.log(carta.substring(0,carta.length-1));
+//separa desde la posicion cero hasta longitud -1
 
 //todo preguntar BORJA, si veremos JSON.stringify y JSON.parse
 
