@@ -67,6 +67,12 @@ function sumarParamDefecto1(param1=0, param2) {
   let comprobacion=restaFlecha(8,3)
 
   console.log(typeof comprobacion);
+
+  //ARROW larga con return
+
+  let restarLarga = (paramA, paramB) =>{
+    return paramA-paramB
+  }
    
 
 
