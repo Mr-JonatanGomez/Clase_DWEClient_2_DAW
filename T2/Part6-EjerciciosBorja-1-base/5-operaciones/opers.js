@@ -15,27 +15,87 @@ siguiente:
 - si se detecta que alguna de las operaciones es negativa el 
 programa parará tras realizar todas las operaciones de los números
 */
+let continuar = false
+do {
+  let numA = prompt("Introduce un numero")
+  let numB = prompt("Introduce un numero")
+  //parseo y var para char
+  charA = numA
+  charB = numB
 
-let numA = Number(prompt("Introduce un numero"))
-let numB = Number(prompt("Introduce un numero"))
+  numA = Number(numA)
+  numB = Number(numB)
 
-let suma = (a, b) =>{
-    return a+b
-  }
-  let resta = (a, b) =>{
-    return a-b
-  }
-  let mult = (a, b) =>{
-    return a*b
-  }
-  let div = (a, b) =>{
-    return a/b
-  }
-  alert(`Las operaciones posibles con tus numeros ${numA} y ${numB} son:\n'+
-    'SUMA con un resultado de ${suma(numA, numB)}\n`+
-    `RESTA con un resultado de ${resta(numA, numB)}\n`+
-    `MULTIPLICACION con un resultado de ${mult(numA,numB)}\n`+
-    `DIVISION con un resultado de ${div(numA,numB)}`
-)
+  let resultadoSum
+  let resultadoRes
+  let resultadoMul
+  let resultadoDiv
 
-//todo hacer con sweetAlert para dar funcionalidad de botnones para seguir o no seguir. con los propmpt normales no se puede
+  let suma = (a, b) => {
+    resultadoSum = a + b
+    return a + b
+  }
+  let resta = (a, b) => {
+    resultadoRes = a - b
+    return a - b
+  }
+  let mult = (a, b) => {
+    resultadoMul = a * b
+    return a * b
+  }
+  let div = (a, b) => {
+    resultadoDiv = a / b
+    return a / b
+  }
+
+  if (!isNaN(numA) && !isNaN(numB) && numA != 0 && numB != 0) {
+    alert(
+      `SUMA con un resultado de ${suma(numA, numB)}\n` +
+        `RESTA con un resultado de ${resta(numA, numB)}\n` +
+        `MULTIPLICACION con un resultado de ${mult(numA, numB)}\n` +
+        `DIVISION con un resultado de ${div(numA, numB)}`
+    )
+  } else {
+    if (
+      (isNaN(numA) && isNaN(numB)) ||
+      (numA == 0 && numB == 0) ||
+      (isNaN(numA) && numB == 0) ||
+      (isNaN(numB) && numA == 0)
+    ) {
+      alert(
+        `Lo sentimos, no es posible operar con 0, ni con letras, \ny tu estas intentando operar:\n    como primer operando: ${charA}\n    como segundo operando: ${charB}`
+      )
+    } else if (isNaN(numA) || numA == 0) {
+      alert(
+        `Lo sentimos, no es posible operar con 0, ni con letras, \ny tu estas intentando operar:\n    como primer operando: ${charA}\n    como segundo operando: ${charB}`
+      )
+    } else {
+      alert(
+        `Lo sentimos, no es posible operar con 0, ni con letras, \ny tu estas intentando operar:\n    como primer operando: ${charA}\n    como segundo operando: ${charB}`
+      )
+    }
+  }
+
+  //condicion menor que 0 para salir
+  let salida = false
+  if (
+    resultadoSum < 0 ||
+    resultadoRes < 0 ||
+    resultadoMul < 0 ||
+    resultadoDiv < 0
+  ) {
+    salida = true
+    alert(
+      "Has alcanzado la condicion de salida del programa, Obtener un resultado menor que 0"
+    )
+    break
+  }
+
+  continuar = confirm("Quieres continuar con operaciones??")
+
+  if (continuar) {
+    alert("Cargando...")
+  } else {
+    alert("FIN DEL PROGRAMA")
+  }
+} while (continuar)

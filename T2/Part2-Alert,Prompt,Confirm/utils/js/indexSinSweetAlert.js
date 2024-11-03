@@ -50,7 +50,7 @@ do {
   }
 } while (isNaN(estatura))
 
-//3. CONFIRM - ES una respuesta bollean
+//3. CONFIRM - ES una respuesta boolean
 
 let continuar = confirm("Estas seguro de continuar?")
 if (continuar) {
