@@ -13,7 +13,7 @@ Pedir al usuario que introduzca una frase por teclado. Tras meter la frase se ej
   
   */
  
-  // Hola tio, que tal vas. Yo muy bien (25 letras,8 palabras, 2 frases, 34 char)
+  // Hola tio, que tal vas. Yo muy bien. (25 letras,8 palabras, 2 frases, 34 char)
 let frase=""
 let numLetras= 0
 
