@@ -81,7 +81,7 @@ function sacarCartasRetardo(retardoEnMs){
     
         console.log(`Carta: ${item}\nValor: ${valor} de ${suit}\n`) //esto es lo que necesita el retardo
         
-        }, i * retardoEnMs)
+        }, i*retardoEnMs)
         
     }
 }

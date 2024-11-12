@@ -15,6 +15,7 @@ siguiente:
 - si se detecta que alguna de las operaciones es negativa el 
 programa parará tras realizar todas las operaciones de los números
 */
+
 let continuar = false
 do {
   let numA = prompt("Introduce un numero")
