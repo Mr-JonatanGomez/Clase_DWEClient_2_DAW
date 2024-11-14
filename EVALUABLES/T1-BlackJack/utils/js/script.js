@@ -50,7 +50,7 @@ function croupierPlay(disorderDeck) {
 
       // Crear la imagen
       let image = document.createElement("img")
-      image.src = `./utils/img/cards/${actualCard}.png`
+      image.src = `./img/cards/${actualCard}.png`
       image.style.width = "90px"
 
       // Agregar la imagen directamente al contenedor
