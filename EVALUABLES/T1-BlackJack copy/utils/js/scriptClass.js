@@ -26,58 +26,6 @@ class Banca {
     this.partidasPerdidas = partidasPerdidas
   }
 
-  /* crearBaraja() {
-    let numeraciones = [
-      "A",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "J",
-      "Q",
-      "K"
-    ]
-    let palos = ["Corazones", "Diamantes", "Tréboles", "Picas"]
-    let numeracion
-    for (let palo of palos) {
-      for (let valoracion of numeraciones) {
-        numeracion = valoracion
-        if (isNaN(valoracion)) {
-          if (valoracion == "A") {
-            valoracion = 1
-          } else if (
-            valoracion == "J" ||
-            valoracion == "Q" ||
-            valoracion == "K"
-          ) {
-            valoracion = 11
-          } else {
-            valoracion = Number(valoracion)
-          }
-        }
-        const imagen = `./utils/img/cards/${numeracion}${palo.charAt(0)}.png` //sustituir actual
-        this.baraja.push(new Carta(numeracion, valoracion, palo, imagen))
-      }
-    }
-  }
-  mostrarBaraja() {
-    this.baraja.forEach((item) => {
-      console.log(item.toString())
-    })
-  }
-
-  barajearMazo() {
-    this.baraja = _.shuffle(this.baraja)
-    this.baraja.unshift(
-      new Carta("Baraja", 0, "Cartas", `./utils/img/cards/0B.png`)
-    )
-  } */
-
   sacarCartasBanca() {
     if (turnoBanca) {
       const tapeteBanca = document.querySelector("#tapeteBanca")
@@ -98,16 +46,23 @@ class Banca {
           // Actualizar puntos
           puntosBancaContainer.textContent = this.puntos
           console.log(`Puntos acumulados de BANCA: ${this.puntos}`)
-        } else {
+        } else if(this.puntos>=17 && this.puntos<=21) {
           clearInterval(tiempo)
           console.log(`La BANCA ha finalizado con ${this.puntos} puntos.`)
           turnoPlayer = true
           turnoBanca = false //finalizamos turnoBanca
-          if (this.puntos < 21) {
-          }
+          
+        } else{
+          clearInterval(tiempo)
+          alert("LA BANCA PIERDE")
+          turnoPlayer= false
+          turnoBanca=false
+          finPartida=true
+          
         }
       }, 500)
     }
+
   }
 }
 
@@ -142,7 +97,10 @@ class Player {
     let oneMoreButton = document.querySelector("#oneMore")
 
     oneMoreButton.addEventListener("click", () => {
-      if (!turnoPlayer) {
+      if (finPartida) {
+        alert("La partida ha finalizado")
+        return
+      }else if(!turnoPlayer){
         alert("Espera a que la banca finalice su jugada")
         return
       }
@@ -150,7 +108,7 @@ class Player {
       const carta = this.baraja.shift() //sacamos eigualamos la carta eliminada
 
       if (carta && this.puntos < 22) {
-        //
+        //si hay carta y puntos <22
         this.agregarImagen(carta)
 
         this.puntos += Number(carta.valor)
@@ -159,6 +117,11 @@ class Player {
         puntosPlayerContainer.textContent = this.puntos
         console.log(`Puntos de ${this.nombre}: ${this.puntos}`)
       } else {
+       
+          alert("TE PASASTE DE 21, HAS PERDIDO")
+          turnoPlayer= false
+          turnoBanca=false
+          finPartida=true
         console.log("NO HAY MAS CARTAS")
       }
     })
@@ -236,7 +199,7 @@ class BlackJack {
       new Carta("Baraja", 0, "Cartas", `./utils/img/cards/0B.png`)
     )
 
-    //activarTurnoMaquina
+    //activarTurnoBanca para que pueda jugar
     turnoBanca = true
   }
 //todo implementar ganadores y stats

@@ -9,11 +9,13 @@ blackJack.crearBaraja()
 blackJack.mostrarBaraja()
 blackJack.barajearMazo()
 console.log("MAZO TRAS BARAJAR");
-
 blackJack.mostrarBaraja()
+
 let banca = new Banca(blackJack.baraja)
 let player = new Player(blackJack.baraja)
+
 banca.sacarCartasBanca()
+
 player.sacarCartasManual()
 
 if (finPartida) {
