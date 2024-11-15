@@ -34,7 +34,6 @@ class Banca {
 
       puntosBancaContainer.textContent = this.puntos
 
-
       let tiempo = setInterval(() => {
         if (this.puntos < 17 && this.baraja.length > 0) {
           const carta = this.baraja.shift()
@@ -49,23 +48,22 @@ class Banca {
           // Actualizar puntos
           puntosBancaContainer.textContent = this.puntos
           console.log(`Puntos acumulados de BANCA: ${this.puntos}`)
-        } else if(this.puntos>=17 && this.puntos<=21) {
+        } else if (this.puntos >= 17 && this.puntos <= 21) {
           clearInterval(tiempo)
           console.log(`La BANCA ha finalizado con ${this.puntos} puntos.`)
           turnoPlayer = true
           turnoBanca = false //finalizamos turnoBanca
-          
-        } else{
+        } else {
           clearInterval(tiempo)
-          alert("LA BANCA PIERDE")
-          turnoPlayer= false
-          turnoBanca=false
-          finPartida=true
-          
+          //alert("LA BANCA PIERDE")
+          turnoPlayer = false
+          turnoBanca = false
+          finPartida = true
+
+          blackJack.resultados()
         }
       }, 500)
     }
-
   }
 }
 
@@ -90,22 +88,22 @@ class Player {
   }
 
   sacarCartasManual() {
-  
+    let cartasSacadas = 0 // para la hora de plantarse
 
     this.puntos = 0
 
-    const tapetePlayer = document.querySelector("#tapetePlayer")//se usa con la function de abajo
+    const tapetePlayer = document.querySelector("#tapetePlayer") //se usa con la function de abajo
     const puntosPlayerContainer = document.querySelector("#puntosPlayer")
-   //establezco el 0 puntos al empezar
+    //establece el marcador en 0 antes del comienzo
     puntosPlayerContainer.textContent = this.puntos
 
     let oneMoreButton = document.querySelector("#oneMore")
 
     oneMoreButton.addEventListener("click", () => {
       if (finPartida) {
-        alert("La partida ha finalizado")
+        alert("La partida ha finalizado, Te pasaste de 21")
         return
-      }else if(!turnoPlayer){
+      } else if (!turnoPlayer) {
         alert("Espera a que la banca finalice su jugada")
         return
       }
@@ -121,12 +119,20 @@ class Player {
 
         puntosPlayerContainer.textContent = this.puntos
         console.log(`Puntos de ${this.nombre}: ${this.puntos}`)
-      } else {
-       
-          alert("TE PASASTE DE 21, HAS PERDIDO")
+
+        //todo esto me trae loco, aun no funciona bien si te pasas sale antes el mensaje que la carta
+        /* if (this.puntos>21) {
+          alert("TE PASASTE DE 21, HAS PERDIDOOOOOO")
           turnoPlayer= false
           turnoBanca=false
           finPartida=true
+        } */
+      } else {
+        alert("TE PASASTE DE 21, HAS PERDIDO")
+        turnoPlayer = false
+        turnoBanca = false
+        finPartida = true
+        blackJack.resultados
         console.log("NO HAY MAS CARTAS")
       }
     })
@@ -207,7 +213,7 @@ class BlackJack {
     //activarTurnoBanca para que pueda jugar
     turnoBanca = true
   }
-//todo implementar ganadores y stats
+  //todo implementar ganadores y stats
   resultados() {
     if (banca.puntos > 21) {
       alert("El ganador fue JUGADOR")

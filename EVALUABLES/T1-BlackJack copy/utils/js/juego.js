@@ -18,10 +18,10 @@ banca.sacarCartasBanca()
 
 player.sacarCartasManual()
 
-if (finPartida) {
+
     
-    blackJack.resultados()
-}
+blackJack.resultados()//llamarlo directamente desde las clases, en el else de banca o al final de jugador
+
 
 //todo ya funciona esto ^^
 

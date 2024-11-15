@@ -62,15 +62,16 @@ header {
   text-align: center;
   padding: 6px;
   font-weight: bolder;
-  min-height: 35px;
+  height: 40px;
 }
-.puntajeBanca {
+.puntajeBanca, .puntajePlayer {
+  height: fit-content;
   border: solid 3px yellow;
 }
 .stats{
   padding: 3px;
   font-weight: bolder;
-  height: 100%;
+  height: 33%;
   background-color: burlywood;
 
 }
