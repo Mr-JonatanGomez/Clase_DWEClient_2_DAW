@@ -13,7 +13,7 @@ body {
 
 header {
   width: 100%;
-  height: 10vh;
+  height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,22 +46,25 @@ header {
   gap: 10px;
 }
 
-#datosBanca {
+#datosBanca,#datosPlayer {
   align-items: center;
   text-align: center;
   width: 20%;
   min-width: 130px;
   
   height: 30vh; /* Ajuste para igualar a la altura de #tapeteBANCA */
+  min-height: fit-content;
   border: 2px ridge #14cf33;
 
 }
-.bancaName {
+.bancaName, #playerName {
   border: solid 3px;
   text-align: center;
   padding: 6px;
+  font-weight: bolder;
+  min-height: 35px;
 }
-#puntosBanca {
+#puntosBanca, #puntosPlayer {
   font-size: 50px;
   border: dashed orange;
 }
@@ -71,6 +74,12 @@ header {
 }
 .puntajeBanca {
   border: solid 3px yellow;
+}
+
+.stats{
+  padding: 3px;
+  font-weight: bolder;
+  min-height: fit-content;
 }
 /* TAPETE DE JUEGO CROUPIER */
 #tapeteBanca {
@@ -106,15 +115,7 @@ header {
   gap: 10px;
 }
 
-#datosPlayer {
-  align-items: center;
-  text-align: center;
-  width: 20%;
-  min-width: 130px;
-  
-  height: 30vh; /* Ajuste para igualar a la altura de #tapeteBANCA */
-  border: 2px ridge #14cf33;
-}
+
 
 #tapetePlayer {
   width: 75%;
@@ -172,7 +173,4 @@ header {
   border-bottom: solid 5px #ff0000;
 }
 
-#playerName{
-  padding: 3px;
-  font-weight: bolder;
-}
+
