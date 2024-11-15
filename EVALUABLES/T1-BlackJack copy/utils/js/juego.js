@@ -16,6 +16,11 @@ let player = new Player(blackJack.baraja)
 banca.sacarCartasBanca()
 player.sacarCartasManual()
 
+if (finPartida) {
+    
+    blackJack.resultados()
+}
+
 //todo ya funciona esto ^^
 
 // todo       PROBAR SIN FUNCIONES

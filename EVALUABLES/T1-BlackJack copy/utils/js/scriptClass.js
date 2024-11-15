@@ -12,10 +12,18 @@ class Carta {
 }
 
 class Banca {
-  constructor(baraja, puntos, partidasGanadas) {
+  constructor(
+    baraja,
+    puntos,
+    partidasGanadas,
+    partidasEmpate,
+    partidasPerdidas
+  ) {
     this.baraja = baraja
     this.puntos = puntos
     this.partidasGanadas = partidasGanadas
+    this.partidasEmpate = partidasEmpate
+    this.partidasPerdidas = partidasPerdidas
   }
 
   /* crearBaraja() {
@@ -89,12 +97,14 @@ class Banca {
 
           // Actualizar puntos
           puntosBancaContainer.textContent = this.puntos
-          console.log(`Puntos de ${this.nombre}: ${this.puntos}`)
+          console.log(`Puntos acumulados de BANCA: ${this.puntos}`)
         } else {
           clearInterval(tiempo)
-          console.log(`${this.nombre} ha finalizado con ${this.puntos} puntos.`)
+          console.log(`La BANCA ha finalizado con ${this.puntos} puntos.`)
           turnoPlayer = true
           turnoBanca = false //finalizamos turnoBanca
+          if (this.puntos < 21) {
+          }
         }
       }, 500)
     }
@@ -102,22 +112,29 @@ class Banca {
 }
 
 class Player {
-  constructor(baraja, puntos, partidasGanadas) {
+  constructor(
+    baraja,
+    puntos,
+    partidasGanadas,
+    partidasEmpate,
+    partidasPerdidas
+  ) {
     this.baraja = baraja // Se le pasa la misma baraja de la banca
     this.nombre = prompt("Introduce tu nombre")
-    if (this.nombre==""||this.nombre===null) {
-      this.nombre="JUGADOR"
+    if (this.nombre == "" || this.nombre === null) {
+      this.nombre = "JUGADOR"
     }
     document.querySelector("#playerName").textContent = this.nombre
     this.puntos = puntos
     this.partidasGanadas = partidasGanadas
+    this.partidasEmpate = partidasEmpate
+    this.partidasPerdidas = partidasPerdidas
   }
 
   sacarCartasManual() {
-    //COPIAMOS EL ARRAY DE BANCA
+    let cartasSacadas = 0 // para la hora de plantarse
 
     this.puntos = 0
-    let cartasSacadas= 0 // para la hora de plantarse
 
     const tapetePlayer = document.querySelector("#tapetePlayer")
     const puntosPlayerContainer = document.querySelector("#puntosPlayer")
@@ -132,7 +149,7 @@ class Player {
 
       const carta = this.baraja.shift() //sacamos eigualamos la carta eliminada
 
-      if (carta && puntajePlayer < 22) {
+      if (carta && this.puntos < 22) {
         //
         this.agregarImagen(carta)
 
@@ -144,6 +161,14 @@ class Player {
       } else {
         console.log("NO HAY MAS CARTAS")
       }
+    })
+
+    let stopButton = document.querySelector("#stop")
+    stopButton.addEventListener("click", () => {
+      finPartida = true
+      console.log("FINAL DE PARTIDA")
+      alert("FIN")
+      turnoPlayer = false
     })
   }
 
@@ -213,5 +238,12 @@ class BlackJack {
 
     //activarTurnoMaquina
     turnoBanca = true
+  }
+//todo implementar ganadores y stats
+  resultados() {
+    if (banca.puntos > 21) {
+      alert("El ganador fue JUGADOR")
+      console.log("GANA JUGADOR")
+    }
   }
 }
