@@ -30,8 +30,11 @@ class Banca {
     if (turnoBanca) {
       const tapeteBanca = document.querySelector("#tapeteBanca")
       const puntosBancaContainer = document.querySelector("#puntosBanca")
-
       this.puntos = 0
+
+      puntosBancaContainer.textContent = this.puntos
+
+
       let tiempo = setInterval(() => {
         if (this.puntos < 17 && this.baraja.length > 0) {
           const carta = this.baraja.shift()
@@ -87,12 +90,14 @@ class Player {
   }
 
   sacarCartasManual() {
-    let cartasSacadas = 0 // para la hora de plantarse
+  
 
     this.puntos = 0
 
-    const tapetePlayer = document.querySelector("#tapetePlayer")
+    const tapetePlayer = document.querySelector("#tapetePlayer")//se usa con la function de abajo
     const puntosPlayerContainer = document.querySelector("#puntosPlayer")
+   //establezco el 0 puntos al empezar
+    puntosPlayerContainer.textContent = this.puntos
 
     let oneMoreButton = document.querySelector("#oneMore")
 

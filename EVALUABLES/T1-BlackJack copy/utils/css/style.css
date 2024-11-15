@@ -64,6 +64,16 @@ header {
   font-weight: bolder;
   min-height: 35px;
 }
+.puntajeBanca {
+  border: solid 3px yellow;
+}
+.stats{
+  padding: 3px;
+  font-weight: bolder;
+  height: 100%;
+  background-color: burlywood;
+
+}
 #puntosBanca, #puntosPlayer {
   font-size: 50px;
   border: dashed orange;
@@ -72,15 +82,7 @@ header {
   font-size: 30px;
   border: dashed rgb(255, 0, 179);
 }
-.puntajeBanca {
-  border: solid 3px yellow;
-}
 
-.stats{
-  padding: 3px;
-  font-weight: bolder;
-  min-height: fit-content;
-}
 /* TAPETE DE JUEGO CROUPIER */
 #tapeteBanca {
   width: 75%;
@@ -172,5 +174,6 @@ header {
   outline: 3px solid #ff0000;
   border-bottom: solid 5px #ff0000;
 }
+
 
 
