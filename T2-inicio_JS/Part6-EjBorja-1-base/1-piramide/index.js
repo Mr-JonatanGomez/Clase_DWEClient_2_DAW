@@ -38,6 +38,7 @@ function rowPyramid (){
     icon: "question",
     input: "number",
     inputLabel: "Your rows"
+    
   }).then((result) => {
     const totalRowsPyramid = result.value
     let actualRows = "+"

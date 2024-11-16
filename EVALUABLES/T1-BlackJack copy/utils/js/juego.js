@@ -1,37 +1,13 @@
 let blackJack = new BlackJack()
-//le paso la misma baraja
-
-let turnoPlayer=false//cambia a true al acabar de jugar la banca
-let turnoBanca= false//cambia a true al acabar de actuar el blacJack
-let finPartida= false// cambia true cuando boton plantarse
-
-blackJack.crearBaraja()
-blackJack.mostrarBaraja()
-blackJack.barajearMazo()
-console.log("MAZO TRAS BARAJAR");
-blackJack.mostrarBaraja()
-
-let banca = new Banca(blackJack.baraja)
-let player = new Player(blackJack.baraja)
-
-banca.sacarCartasBanca()
-
-player.sacarCartasManual()
 
 
-    
-blackJack.resultados()//llamarlo directamente desde las clases, en el else de banca o al final de jugador
-
-
-//todo ya funciona esto ^^
-
-// todo       PROBAR SIN FUNCIONES
-/* banca.sacarCartasBanca()// este borra del array, el mismo metodo acabado en 2 no
-
-banca.mostrarBaraja()
-player.sacarCartasPlayer() */
-/* 
 function iniciarJuego(){
+    let turnoPlayer=false//cambia a true al acabar de jugar la banca
+    let turnoBanca= false//cambia a true al acabar de actuar el blacJack
+    let finPartida= false// cambia true cuando boton plantarse
+    let nombreIntroducido = false
+
+
     banca.crearBaraja()
     banca.barajearMazo()
     
@@ -51,5 +27,35 @@ function jugarJugador(){
     
     player.sacarCartasManual()
 }
-iniciarJuego()
+//iniciarJuego()
+
+
+
+//todo JUEGO SIN FUNCIONES ^^
+
+/*  JUEGO SIN FUNCIONES
+
+let turnoPlayer=false//cambia a true al acabar de jugar la banca
+let turnoBanca= false//cambia a true al acabar de actuar el blacJack
+let finPartida= false// cambia true cuando boton plantarse
+let nombreIntroducido = false
+
+//let nombreJugador=introName()
+
+blackJack.crearBaraja()
+blackJack.mostrarBaraja()
+blackJack.barajearMazo()
+console.log("MAZO TRAS BARAJAR");
+blackJack.mostrarBaraja()
+
+let banca = new Banca(blackJack.baraja)
+let player = new Player(blackJack.baraja,)
+
+banca.sacarCartasBanca()
+
+player.sacarCartasManual()
+
+
+    
+blackJack.resultados()//llamarlo directamente desde las clases, en el else de banca o al final de jugador
  */

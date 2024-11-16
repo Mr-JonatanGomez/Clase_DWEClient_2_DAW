@@ -1,5 +1,3 @@
-//const _ = require('underscore');//para barajar con _.shuffle(baraja)
-
 class Carta {
   constructor(numeracion, valor, palo, imagen) {
     this.numeracion = numeracion
@@ -13,9 +11,156 @@ class Carta {
   }
 }
 
-//const baraja = []
-
 class Banca {
+  constructor(
+    baraja,
+    puntos,
+    partidasGanadas,
+    partidasEmpate,
+    partidasPerdidas
+  ) {
+    this.baraja = baraja
+    this.puntos = puntos
+    this.partidasGanadas = partidasGanadas
+    this.partidasEmpate = partidasEmpate
+    this.partidasPerdidas = partidasPerdidas
+  }
+
+  sacarCartasBanca() {
+    if (turnoBanca) {
+      const tapeteBanca = document.querySelector("#tapeteBanca")
+      const puntosBancaContainer = document.querySelector("#puntosBanca")
+      this.puntos = 0
+
+      puntosBancaContainer.textContent = this.puntos
+
+      let tiempo = setInterval(() => {
+        if (this.puntos < 17 && this.baraja.length > 0) {
+          const carta = this.baraja.shift()
+          this.puntos += Number(carta.valor) //si falla parsear Numero
+
+          // Agregar carta visualmente
+          let imagenCarta = document.createElement("img")
+          imagenCarta.src = carta.imagen //damos al src su URL con el valor imagen del objeto
+          imagenCarta.style.width = "90px"
+          tapeteBanca.appendChild(imagenCarta)
+
+          // Actualizar puntos
+          puntosBancaContainer.textContent = this.puntos
+          console.log(`Puntos acumulados de BANCA: ${this.puntos}`)
+        } else if (this.puntos >= 17 && this.puntos <= 21) {
+          clearInterval(tiempo)
+          console.log(`La BANCA ha finalizado con ${this.puntos} puntos.`)
+          turnoPlayer = true
+          turnoBanca = false //finalizamos turnoBanca
+        } else {
+          clearInterval(tiempo)
+          //alert("LA BANCA PIERDE")
+          turnoPlayer = false
+          turnoBanca = false
+          finPartida = true
+
+          blackJack.resultados()
+        }
+      }, 500)
+    }
+  }
+}
+
+class Player {
+  constructor(
+    baraja,
+    puntos,
+    partidasGanadas,
+    partidasEmpate,
+    partidasPerdidas
+  ) {
+    //todo this.nombre= SWEET
+    this.baraja = baraja // Se le pasa la misma baraja de la banca
+    this.nombre = prompt("Introduce tu nombre") //introName()//meter el prompt si SWEET no va
+    if (this.nombre == "" || this.nombre === null) {
+      this.nombre = "JUGADOR"
+    }
+    document.querySelector("#playerName").textContent = this.nombre
+    this.puntos = puntos
+    this.partidasGanadas = partidasGanadas
+    this.partidasEmpate = partidasEmpate
+    this.partidasPerdidas = partidasPerdidas
+  }
+
+  sacarCartasManual() {
+    this.puntos = 0
+
+    const tapetePlayer = document.querySelector("#tapetePlayer") //se usa con la function de abajo
+    const puntosPlayerContainer = document.querySelector("#puntosPlayer")
+    //establece el marcador en 0 antes del comienzo
+    puntosPlayerContainer.textContent = this.puntos
+
+    let oneMoreButton = document.querySelector("#oneMore")
+
+    oneMoreButton.addEventListener("click", () => {
+      if (finPartida) {
+        alert(
+          "La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT"
+        )
+        return
+      } else if (!turnoPlayer) {
+        alert("Espera a que la banca finalice su jugada")
+        return
+      }
+
+      const carta = this.baraja.shift() //sacamos eigualamos la carta eliminada
+
+      if (carta && this.puntos < 22) {
+        //si hay carta y puntos <22
+        this.agregarImagen(carta)
+
+        this.puntos += Number(carta.valor)
+
+        puntosPlayerContainer.textContent = this.puntos
+        console.log(`Puntos de ${this.nombre}: ${this.puntos}`)
+      }
+      if (this.puntos > 21) {
+        setTimeout(() => {
+          /*este SetTime, hace que una vez pasado de 21, muestre la carta, 
+          sume puntos y finalice, si metia sin Set Time, o me dejaba sacar 
+          otra mas una vez pasado, o me salia el fin de partida por haberme pasado
+          antes de mostrar la carta*/
+          //alert("TE PASASTE DE 21, HAS PERDIDO")
+          //todo probar si te lleva a resultados
+          turnoPlayer = false
+          turnoBanca = false
+          finPartida = true
+          blackJack.resultados()
+          console.log("NO HAY MAS CARTAS")
+        }, 600)
+      }
+    })
+
+    let stopButton = document.querySelector("#stop")
+    stopButton.addEventListener("click", () => {
+      if (finPartida) {
+        alert(
+          "La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT"
+        )
+        //todo esto quizas no se necesite cuando te lleve a resultados directamente
+      }
+      finPartida = true
+      console.log("FINAL DE PARTIDA")
+      turnoPlayer = false
+      resultados()
+    })
+  }
+
+  //funcion agregar carta
+  agregarImagen(carta) {
+    let imagenCarta = document.createElement("img")
+    imagenCarta.src = carta.imagen
+    imagenCarta.style.width = "90px"
+    tapetePlayer.appendChild(imagenCarta)
+  }
+}
+class BlackJack {
   constructor() {
     this.baraja = []
   }
@@ -70,182 +215,33 @@ class Banca {
     this.baraja.unshift(
       new Carta("Baraja", 0, "Cartas", `./utils/img/cards/0B.png`)
     )
+
+    //activarTurnoBanca para que pueda jugar
+    turnoBanca = true
   }
+  //todo implementar ganadores y stats
+  resultados() {
+    if (finPartida) {
+      if (banca.puntos > 21) {
+        alert("El ganador fue JUGADOR.RESULTADOS")
 
-  sacarCartasBanca() {
-    
-    //zona donde van los puntos ubicados //puntajeBanca va a ir al div #puntosBanca
-    const datosBancaContainer = document.querySelector("#puntosBanca") //id
-    let puntajeBanca = document.createElement("div") //tippo
-    datosBancaContainer.appendChild(puntajeBanca)
-
-    
-    let croupierPoints = 0
-
-    let temporizador = setInterval(() => {
-      if (croupierPoints < 17) {
-        // seleccionamos contenedor donde colocar los div / cartas creados
-        const tapeteBanca = document.querySelector("#tapeteBanca")
-
-        // Crear la imagen
-        let image = document.createElement("img")
-        image.src = this.baraja[0].imagen
-        image.style.width = "90px"
-        // Agregar la imagen directamente al contenedor
-        tapeteBanca.appendChild(image)
-
-        //PUNTOS
-        croupierPoints += Number(this.baraja[0].valor)
-        console.log(`Los puntos del croupier: ${croupierPoints}`)
-        //puntajeBanca.textContent = croupierPoints
-
-        puntajeBanca.textContent = Number(croupierPoints)
-
-        //sumamos 1 al index
-        
-        this.baraja.shift()
+        console.log("GANA JUGADOR")
+        /* const victoriasJ = document.querySelector("#winPlayer")
+        Player.partidasGanadas+=1
+        victoriasJ.textContent = Player.partidasGanadas */
+        // todo soluccionar stat y nombres aqui
+      } else if (player.puntos > 21) {
+        alert("El ganador fue BANCA.RESULTADOS")
+        console.log("GANA BANCA")
+      } else if (banca.puntos > player.puntos) {
+        alert("El ganador fue BANCA")
+        console.log("GANA BANCA")
+      } else if (player.puntos > banca.puntos && player.puntos <= 21) {
+        alert("El ganador fue JUGADOR.RESULTADOS")
+        console.log("GANA JUGADOR")
       } else {
-        console.log("Banca con 17 o mas puntos")
-        clearInterval(temporizador)
-        //todo, Ver luego que no se repita la ultima del croup para ajustar logica del else
+        alert("Empate a puntos.RESULTADOS")
       }
-    }, 500)
-
-    this.mostrarBaraja
-  }
-  sacarCartasBanca2() {
-    //todo 
-    //zona donde van los puntos ubicados //puntajeBanca va a ir al div #puntosBanca
-    const datosBancaContainer = document.querySelector("#puntosBanca") //id
-    let puntajeBanca = document.createElement("div") //tippo
-    datosBancaContainer.appendChild(puntajeBanca)
-
-    let indexBaraja = 0
-    let croupierPoints = 0
-
-    let temporizador = setInterval(() => {
-      if (croupierPoints < 17) {
-        // seleccionamos contenedor donde colocar los div / cartas creados
-        const tapeteBanca = document.querySelector("#tapeteBanca")
-
-        // Crear la imagen
-        let image = document.createElement("img")
-        image.src = this.baraja[indexBaraja].imagen
-        image.style.width = "90px"
-        // Agregar la imagen directamente al contenedor
-        tapeteBanca.appendChild(image)
-
-        //PUNTOS
-        croupierPoints += Number(this.baraja[indexBaraja].valor)
-        console.log(`Los puntos del croupier: ${croupierPoints}`)
-        //puntajeBanca.textContent = croupierPoints
-
-        puntajeBanca.textContent = Number(croupierPoints)
-
-        //sumamos 1 al index
-        indexBaraja++
-      } else {
-        console.log("Banca con 17 o mas puntos")
-        clearInterval(temporizador)
-        //todo, Ver luego que no se repita la ultima del croup para ajustar logica del else
-      }
-    }, 3000)
-
-    //logica antigua
-    /*  */
+    }
   }
 }
-
-class Player{
-  //para poder pasarle la baraja
-  constructor(baraja){
-    this.baraja = baraja
-    this.nombre = prompt("introduce tu nombre")
-    document.querySelector("#playerName").textContent = this.nombre
-    
-  }
-
-  sacarCartasPlayer(){
-    
-    console.log(this.baraja[0]);
-    
-  }
-  }
-/* 
-  sacarCartasPlayer() {
-    
-    //zona donde van los puntos ubicados //puntajeBanca va a ir al div #puntosBanca
-    const datosPlayerContainer = document.querySelector("#puntosPlayer") //id
-    let puntajePlayer = document.createElement("div") //tippo
-    datosPlayerContainer.appendChild(puntajePlayer)
-
-    
-    let jugadorPoints = 0
-
-    let temporizador = setInterval(() => {
-      if (jugadorPoints < 17) {
-        // seleccionamos contenedor donde colocar los div / cartas creados
-        const tapetePlayer = document.querySelector("#tapetePlayer")
-
-        // Crear la imagen
-        let image = document.createElement("img")
-        //image.src = this.baraja[0].imagen
-        image.style.width = "90px"
-        // Agregar la imagen directamente al contenedor
-        tapetePlayer.appendChild(image)
-
-        //PUNTOS
-        jugadorPoints += Number(this.baraja[0].valor)
-        console.log(`Los puntos del croupier: ${jugadorPoints}`)
-        //puntajeBanca.textContent = croupierPoints
-
-        puntajePlayer.textContent = Number(jugadorPoints)
-
-        //borramos de la baraja la carta
-        
-        this.baraja.shift()
-      } else {
-        console.log("Banca con 17 o mas puntos")
-        clearInterval(temporizador)
-        //todo, Ver luego que no se repita la ultima del croup para ajustar logica del else
-      }
-    }, 3000)
-
-  
-  }
-    */
-  /* CHAT
-  class Player {
-  constructor(baraja) {
-    this.baraja = baraja; // Se le pasa la misma baraja de la banca
-    this.nombre = prompt("Introduce tu nombre");
-    document.querySelector("#playerName").textContent = this.nombre;
-  }
-
-  sacarCartasPlayer() {
-    const tapetePlayer = document.querySelector("#tapetePlayer");
-    const puntosPlayerContainer = document.querySelector("#puntosPlayer");
-
-    let puntajePlayer = 0;
-    let cartaIntervalo = setInterval(() => {
-      if (puntajePlayer < 17 && this.baraja.length > 0) {
-        const carta = this.baraja.shift();
-        puntajePlayer += carta.valor;
-
-        // Agregar carta visualmente
-        let imagenCarta = document.createElement("img");
-        imagenCarta.src = carta.imagen;
-        imagenCarta.style.width = "90px";
-        tapetePlayer.appendChild(imagenCarta);
-
-        // Actualizar puntos
-        puntosPlayerContainer.textContent = `Puntos: ${puntajePlayer}`;
-        console.log(`Puntos de ${this.nombre}: ${puntajePlayer}`);
-      } else {
-        clearInterval(cartaIntervalo);
-        console.log(`${this.nombre} ha finalizado con ${puntajePlayer} puntos.`);
-      }
-    }, 3000);
-  }
-}
-   */

@@ -69,16 +69,14 @@ class Banca {
 
 class Player {
   constructor(
-    
     baraja,
     puntos,
     partidasGanadas,
     partidasEmpate,
     partidasPerdidas
   ) {
-    //todo this.nombre= SWEET
     this.baraja = baraja // Se le pasa la misma baraja de la banca
-    this.nombre = prompt("Whats your name?")//introName()//meter el prompt si SWEET no va
+    this.nombre = prompt("Introduce tu nombre")
     if (this.nombre == "" || this.nombre === null) {
       this.nombre = "JUGADOR"
     }
