@@ -88,7 +88,7 @@ class Player {
   }
 
   sacarCartasManual() {
-    let cartasSacadas = 0 // para la hora de plantarse
+  
 
     this.puntos = 0
 
@@ -101,7 +101,7 @@ class Player {
 
     oneMoreButton.addEventListener("click", () => {
       if (finPartida) {
-        alert("La partida ha finalizado, Te pasaste de 21")
+        alert("La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT")
         return
       } else if (!turnoPlayer) {
         alert("Espera a que la banca finalice su jugada")
@@ -115,30 +115,36 @@ class Player {
         this.agregarImagen(carta)
 
         this.puntos += Number(carta.valor)
-        cartasSacadas++
+      
 
         puntosPlayerContainer.textContent = this.puntos
         console.log(`Puntos de ${this.nombre}: ${this.puntos}`)
 
-        //todo esto me trae loco, aun no funciona bien si te pasas sale antes el mensaje que la carta
-        /* if (this.puntos>21) {
-          alert("TE PASASTE DE 21, HAS PERDIDOOOOOO")
-          turnoPlayer= false
-          turnoBanca=false
-          finPartida=true
-        } */
-      } else {
-        alert("TE PASASTE DE 21, HAS PERDIDO")
-        turnoPlayer = false
-        turnoBanca = false
-        finPartida = true
-        blackJack.resultados
-        console.log("NO HAY MAS CARTAS")
+        
+      } if(this.puntos>21) {
+        setTimeout(() => {
+          /*este SetTime, hace que una vez pasado de 21, muestre la carta, 
+          sume puntos y finalice, si metia sin Set Time, o me dejaba sacar 
+          otra mas una vez pasado, o me salia el fin de partida por haberme pasado
+          antes de mostrar la carta*/
+          //alert("TE PASASTE DE 21, HAS PERDIDO")
+          //todo probar si te lleva a resultados
+          turnoPlayer = false
+          turnoBanca = false
+          finPartida = true
+          blackJack.resultados()
+          console.log("NO HAY MAS CARTAS")
+        }, 600);
       }
     })
 
     let stopButton = document.querySelector("#stop")
     stopButton.addEventListener("click", () => {
+
+      if (finPartida) {
+        alert("La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT")
+        //todo esto quizas no se necesite cuando te lleve a resultados directamente
+      }
       finPartida = true
       console.log("FINAL DE PARTIDA")
       alert("FIN")
@@ -215,9 +221,23 @@ class BlackJack {
   }
   //todo implementar ganadores y stats
   resultados() {
-    if (banca.puntos > 21) {
-      alert("El ganador fue JUGADOR")
-      console.log("GANA JUGADOR")
+    if (finPartida) {
+      
+      if (banca.puntos > 21) {
+        alert("El ganador fue JUGADOR.RESULTADOS")
+        console.log("GANA JUGADOR")
+      }else if(player.puntos > 21){
+        alert("El ganador fue BANCA.RESULTADOS")
+        console.log("GANA BANCA")
+      }else if(banca.puntos > player.puntos){
+        alert("El ganador fue BANCA")
+        console.log("GANA BANCA")
+      }else if(player.puntos >  banca.puntos && player.puntos<= 21){
+        alert("El ganador fue JUGADOR.RESULTADOS")
+        console.log("GANA JUGADOR")
+      }else{
+        alert("Empate a puntos.RESULTADOS")
+      }
     }
   }
 }
