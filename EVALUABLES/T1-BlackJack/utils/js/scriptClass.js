@@ -148,7 +148,7 @@ class Player {
       finPartida = true
       console.log("FINAL DE PARTIDA")
       turnoPlayer = false
-      resultados()
+      blackJack.resultados()
     })
   }
 
