@@ -37,12 +37,11 @@
             <div id="puntosBanca"></div>
             <div class="puntos">puntos</div>
           </div>
-          
+
           <div class="stats">
             <div class="ganadas" id="winBanca">W</div>
             <div class="empatadas" id="drawBanca">D</div>
             <div class="perdidas" id="loseBanca"></div>
-
           </div>
         </div>
 
@@ -54,10 +53,21 @@
         </div>
       </div>
 
-      <div id="tapeteBotonera">
+      <div id="containerBotonera">
         <!-- AQUI SE AÑADIRAN LOS BOTONES LAS CARTAS POR JS -->
-        <button class="game-button" id="oneMore">Pedir Carta</button>
-        <button class="game-button" id="stop">Plantarse</button>
+        <!--  <button class="game-button" id="oneMore">Pedir Carta</button>
+        <button class="game-button" id="stop">Plantarse</button> -->
+
+        <!-- <button class="game-button" id="jugarMas">Otra Partida</button> -->
+        <button id="oneMore" type="button" class="btn btn-outline-success">
+          Pedir Carta
+        </button>
+        <button id="stop" type="button" class="btn btn-outline-danger">
+          Me planto
+        </button>
+        <button id="jugarMas" type="button" class="btn btn-outline-primary">
+          Otra Partida
+        </button>
       </div>
 
       <div id="containerPlayer">
@@ -67,13 +77,11 @@
             <div id="puntosPlayer"></div>
             <div class="puntos">puntos</div>
           </div>
-         
-          <div class="stats">
 
+          <div class="stats">
             <div id="winPlayer">W</div>
             <div id="drawPlayer">D</div>
             <div id="losePlayer">L</div>
-
           </div>
         </div>
 
@@ -84,7 +92,7 @@
     </div>
 
     <!-- <script src="./utils/js/objetos.js"></script> -->
-     <script src="./utils/js/sweetAlerts.js"></script>
+    <script src="./utils/js/sweetAlerts.js"></script>
     <script src="./utils/js/scriptClass.js"></script>
     <script src="./utils/js/juego.js"></script>
     <!-- <script src="./utils/js/script.js"></script>  -->
