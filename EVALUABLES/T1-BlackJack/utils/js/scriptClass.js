@@ -152,6 +152,8 @@ class Player {
     })
   }
 
+  //todo sacar aqui el boton plantarse, y el de partida nueva crearlo
+
   //funcion agregar carta
   agregarImagen(carta) {
     let imagenCarta = document.createElement("img")
