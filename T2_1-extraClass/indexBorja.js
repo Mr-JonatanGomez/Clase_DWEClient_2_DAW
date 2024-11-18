@@ -14,6 +14,6 @@ function operSuma(param1,param2){
 let imagen = document.createElement("img")
 imagen.src = "RUTA/$carta tipo al engaño de php"
 
-document.querySelector(#tapete).append(imagen)
+//document.querySelector(#tapete).append(imagen)
 
 // busca el id tapete y el nodo creado con create
