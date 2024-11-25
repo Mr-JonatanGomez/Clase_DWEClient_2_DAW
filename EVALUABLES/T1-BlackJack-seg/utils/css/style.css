@@ -36,46 +36,62 @@ header {
   align-items: center;
 }
 
-/* Container GENERAL para la BANCA */
-#containerBanca {
+/* Container GENERAL para la BANCA y JUGADOR */
+#containerBanca,
+#containerPlayer {
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
-  gap: 10px;
+  gap: 25px;
+
+  border: dashed;
 }
 
-#datosBanca,#datosPlayer {
+/* Botonera en el centro, ocupando todo el ancho de #container */
+#containerBotonera {
+  height: 10vh;
+  width: 80%;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+#datosBanca,
+#datosPlayer {
   align-items: center;
   text-align: center;
   width: 20%;
   min-width: 130px;
-  
+
   height: 30vh; /* Ajuste para igualar a la altura de #tapeteBANCA */
   min-height: fit-content;
   border: 2px ridge #14cf33;
-
 }
-.bancaName, #playerName {
+.bancaName,
+#playerName {
   border: solid 3px;
   text-align: center;
   padding: 6px;
   font-weight: bolder;
   height: 40px;
 }
-.puntajeBanca, .puntajePlayer {
+.puntajeBanca,
+.puntajePlayer {
   height: fit-content;
   border: solid 3px yellow;
 }
-.stats{
+.stats {
   padding: 3px;
   font-weight: bolder;
   height: 33%;
   background-color: burlywood;
-
 }
-#puntosBanca, #puntosPlayer {
+#puntosBanca,
+#puntosPlayer {
   font-size: 50px;
   border: dashed orange;
 }
@@ -85,47 +101,12 @@ header {
 }
 
 /* TAPETE DE JUEGO CROUPIER */
-#tapeteBanca {
-  width: 75%;
-  height: 30vh;
-  min-height: fit-content;
-  padding: 15px;
-  border: 8px solid #000;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-/* Botonera en el centro, ocupando todo el ancho de #container */
-#tapeteBotonera {
-  height: 20vh;
-  width: 100%;
-  border: 1px solid #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25%;
-}
-
-/* Container GENERAL para el JUGADOR */
-#containerPlayer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-
-
+#tapeteBanca,
 #tapetePlayer {
   width: 75%;
   height: 30vh;
   min-height: fit-content;
   padding: 15px;
-
   border: 8px solid #000;
   display: flex;
   flex-direction: row;
@@ -133,9 +114,6 @@ header {
   gap: 10px;
   align-items: center;
 }
-
-
-
 
 #tapeteBanca img,
 #tapetePlayer img {
@@ -151,7 +129,7 @@ header {
   font-weight: bold;
   font-size: larger;
   border: none;
-  padding: 25px;
+  padding: 10px;
   border-radius: 10px;
   transition: background-color 1s ease, outline 0.5s ease;
 }
@@ -175,6 +153,3 @@ header {
   outline: 3px solid #ff0000;
   border-bottom: solid 5px #ff0000;
 }
-
-
-

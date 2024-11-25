@@ -69,7 +69,6 @@ class Banca {
 
 class Player {
   constructor(
-    
     baraja,
     puntos,
     partidasGanadas,
@@ -78,7 +77,7 @@ class Player {
   ) {
     //todo this.nombre= SWEET
     this.baraja = baraja // Se le pasa la misma baraja de la banca
-    this.nombre = prompt("Whats your name?")//introName()//meter el prompt si SWEET no va
+    this.nombre = prompt("Introduce tu nombre") //introName()//meter el prompt si SWEET no va
     if (this.nombre == "" || this.nombre === null) {
       this.nombre = "JUGADOR"
     }
@@ -90,8 +89,6 @@ class Player {
   }
 
   sacarCartasManual() {
-  
-
     this.puntos = 0
 
     const tapetePlayer = document.querySelector("#tapetePlayer") //se usa con la function de abajo
@@ -103,7 +100,9 @@ class Player {
 
     oneMoreButton.addEventListener("click", () => {
       if (finPartida) {
-        alert("La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT")
+        alert(
+          "La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT"
+        )
         return
       } else if (!turnoPlayer) {
         alert("Espera a que la banca finalice su jugada")
@@ -117,13 +116,11 @@ class Player {
         this.agregarImagen(carta)
 
         this.puntos += Number(carta.valor)
-      
 
         puntosPlayerContainer.textContent = this.puntos
         console.log(`Puntos de ${this.nombre}: ${this.puntos}`)
-
-        
-      } if(this.puntos>21) {
+      }
+      if (this.puntos > 21) {
         setTimeout(() => {
           /*este SetTime, hace que una vez pasado de 21, muestre la carta, 
           sume puntos y finalice, si metia sin Set Time, o me dejaba sacar 
@@ -136,23 +133,26 @@ class Player {
           finPartida = true
           blackJack.resultados()
           console.log("NO HAY MAS CARTAS")
-        }, 600);
+        }, 600)
       }
     })
 
     let stopButton = document.querySelector("#stop")
     stopButton.addEventListener("click", () => {
-
       if (finPartida) {
-        alert("La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT")
+        alert(
+          "La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT"
+        )
         //todo esto quizas no se necesite cuando te lleve a resultados directamente
       }
       finPartida = true
       console.log("FINAL DE PARTIDA")
-      alert("FIN")
       turnoPlayer = false
+      blackJack.resultados()
     })
   }
+
+  //todo sacar aqui el boton plantarse, y el de partida nueva crearlo
 
   //funcion agregar carta
   agregarImagen(carta) {
@@ -224,20 +224,24 @@ class BlackJack {
   //todo implementar ganadores y stats
   resultados() {
     if (finPartida) {
-      
       if (banca.puntos > 21) {
         alert("El ganador fue JUGADOR.RESULTADOS")
+
         console.log("GANA JUGADOR")
-      }else if(player.puntos > 21){
+        /* const victoriasJ = document.querySelector("#winPlayer")
+        Player.partidasGanadas+=1
+        victoriasJ.textContent = Player.partidasGanadas */
+        // todo soluccionar stat y nombres aqui
+      } else if (player.puntos > 21) {
         alert("El ganador fue BANCA.RESULTADOS")
         console.log("GANA BANCA")
-      }else if(banca.puntos > player.puntos){
+      } else if (banca.puntos > player.puntos) {
         alert("El ganador fue BANCA")
         console.log("GANA BANCA")
-      }else if(player.puntos >  banca.puntos && player.puntos<= 21){
+      } else if (player.puntos > banca.puntos && player.puntos <= 21) {
         alert("El ganador fue JUGADOR.RESULTADOS")
         console.log("GANA JUGADOR")
-      }else{
+      } else {
         alert("Empate a puntos.RESULTADOS")
       }
     }

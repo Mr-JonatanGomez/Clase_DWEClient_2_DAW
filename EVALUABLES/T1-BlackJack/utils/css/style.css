@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("../img/other-imgs/header2.png");
 }
 
 header {
@@ -17,19 +18,19 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../img/other-imgs/header2.png");
-  background-size: cover; /* Escala la imagen para cubrir todo el header */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  background-position: center; /* Centra la imagen */
+
 }
 
 #container {
+  background-color: rgba(0, 104, 31, 0.904);
+  margin-top: 10px;
   width: 90%;
   height: 90vh;
   min-width: fit-content;
   min-height: fit-content;
   padding: 15px;
-  border: 2px dashed #333;
+  border: 10px solid rgba(255, 255, 255, 0.466);
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,40 +41,56 @@ header {
 #containerBanca,
 #containerPlayer {
   width: 100%;
-
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 25px;
 
-  border: dashed;
+  border: 8px solid rgb(255,255,255);
+  border-radius: 16px;
+}
+
+#containerBanca {
+  border-bottom: none;
+  border-radius: none;
+}
+
+#containerPlayer {
+  border-top: none;
 }
 
 /* Botonera en el centro, ocupando todo el ancho de #container */
 #containerBotonera {
   height: 10vh;
-  width: 80%;
-  border: 1px solid #000;
+  width: 60%;
+  border: 5px solid rgba(255, 255, 255, 0.349);
+  border-radius: 8px;
+padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5%;
+  background-color: rgba(0, 63, 19, 0.904);
+  box-shadow: 0px 0px 25px rgba(255, 255, 255, 1);
 }
 
 #datosBanca,
 #datosPlayer {
   align-items: center;
   text-align: center;
+  
   width: 20%;
   min-width: 130px;
 
   height: 30vh; /* Ajuste para igualar a la altura de #tapeteBANCA */
   min-height: fit-content;
-  border: 2px ridge #14cf33;
+  border: 5px ridge rgba(255, 238, 0, 1);
+  border-radius: 8px;
 }
 .bancaName,
 #playerName {
-  border: solid 3px;
+
   text-align: center;
   padding: 6px;
   font-weight: bolder;
@@ -81,33 +98,38 @@ header {
 }
 .puntajeBanca,
 .puntajePlayer {
+  color: rgb(255,255,255);
   height: fit-content;
-  border: solid 3px yellow;
+  border: solid 3px rgb(255,255,255);
+  border-radius: 4px;
 }
 .stats {
+  color: rgb(255,255,255);
   padding: 3px;
   font-weight: bolder;
-  height: 33%;
-  background-color: burlywood;
+  height: 38%;
 }
 #puntosBanca,
 #puntosPlayer {
   font-size: 50px;
-  border: dashed orange;
+
 }
 .puntos {
   font-size: 30px;
-  border: dashed rgb(255, 0, 179);
+
 }
 
 /* TAPETE DE JUEGO CROUPIER */
 #tapeteBanca,
 #tapetePlayer {
+  
+
   width: 75%;
   height: 30vh;
   min-height: fit-content;
   padding: 15px;
-  border: 8px solid #000;
+  border: 5px solid rgb(255,255,255);
+  border-radius: 8px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -134,22 +156,42 @@ header {
   transition: background-color 1s ease, outline 0.5s ease;
 }
 #oneMore {
-  background-color: #6fc27d;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 104, 31, 0.904);
+  border:ridge 2px rgb(255, 255, 255);
+  /* transition: ease 2s; */
 }
 
 #oneMore:hover {
-  background-color: #6fc27d;
-  color: #000000;
-  outline: 3px solid #14cf33;
-  border-bottom: solid 5px #14cf33;
+  color: rgb(0, 0, 0);
+  background-color: rgba(0, 189, 57, 0.904);
+  border:ridge 4px rgb(255, 255, 255);
+  font-weight: bolder;
+  
 }
 
 #stop {
-  background-color: #f88484;
+  
+  color: rgb(255, 255, 255);
+  background-color: rgba(138, 0, 0, 0.904);
+  border:ridge 2px rgb(255, 255, 255);
+  /* transition: ease 2s; */
 }
 #stop:hover {
-  background-color: #f88484;
-  color: #000000;
-  outline: 3px solid #ff0000;
-  border-bottom: solid 5px #ff0000;
+  color: rgb(0, 0, 0);
+  background-color: rgba(235, 86, 86, 0.904);
+  border:ridge 4px rgb(255, 255, 255);
+  font-weight: bolder;
+  
+}
+
+#jugarMas{
+  color: rgb(255, 255, 255);
+  background-color: rgba(41, 99, 224, 0.904);
+}
+#jugarMas:hover{
+  color: rgb(0, 0, 0);
+  background-color: rgba(86, 138, 235, 0.904);
+  border:ridge 4px rgb(255, 255, 255);
+  font-weight: bolder;
 }
