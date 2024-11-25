@@ -127,9 +127,3 @@ class Jugador {
   
 }
 
-/* let atMadrid= new Equipo("Atletico de Madrid", 500)
-let oblak = new Jugador("Oblak", "portero",1000)
-
-atMadrid.ficharJugador(oblak)
-
-atMadrid.listarPlantilla() */
