@@ -69,18 +69,25 @@ class Banca {
 
 class Player {
   constructor(
+    nombre,
     baraja,
     puntos,
     partidasGanadas,
     partidasEmpate,
     partidasPerdidas
   ) {
-    //todo this.nombre= SWEET
+    //todo this.nombre= probar este metod
     this.baraja = baraja // Se le pasa la misma baraja de la banca
-    this.nombre = prompt("Introduce tu nombre") //introName()//meter el prompt si SWEET no va
+    this.nombre=nombre
+  
+    
+
+   /*  this.nombre = prompt("Introduce tu nombre") //introName()//meter el prompt si SWEET no va
     if (this.nombre == "" || this.nombre === null) {
       this.nombre = "JUGADOR"
-    }
+    } */
+
+
     document.querySelector("#playerName").textContent = this.nombre
     this.puntos = puntos
     this.partidasGanadas = partidasGanadas
@@ -137,6 +144,22 @@ class Player {
       }
     })
 
+    //todo QUITAR AQUI
+    /* let stopButton = document.querySelector("#stop")
+    stopButton.addEventListener("click", () => {
+      if (finPartida) {
+        alert(
+          "La partida esta finalizada. NO PUEDES PEDIR CARTA, NI PLANTARTE, llamar mismo SWEETALERT"
+        )
+        //todo esto quizas no se necesite cuando te lleve a resultados directamente
+      }
+      finPartida = true
+      console.log("FINAL DE PARTIDA")
+      turnoPlayer = false
+      blackJack.resultados()
+    }) */
+  }
+  plantarse(){
     let stopButton = document.querySelector("#stop")
     stopButton.addEventListener("click", () => {
       if (finPartida) {
@@ -150,8 +173,46 @@ class Player {
       turnoPlayer = false
       blackJack.resultados()
     })
+  
   }
+  jugarOtra(){
+    //todo ojo aqui
+   /*  let partidaNueva=document.querySelector("#jugarMas")
+    partidaNueva.addEventListener("click",()=>{
+      if (finPartida) {
+        Banca.puntos=0
+        Player.puntos=0
+        BlackJack.limpiarTablero()
+        iniciarJuego()
+      }else{
+        alert("No puedes iniciar una partida, sin haber finalizado la actual")
+      }
+    }) */
 
+      let partidaNueva = document.querySelector("#jugarMas")
+      partidaNueva.addEventListener("click", () => {
+          if (finPartida) {
+              // Reiniciar variables globales
+              turnoBanca = false
+              turnoPlayer = false
+              finPartida = false
+              
+              // Limpiar puntos y tablero
+              this.puntos = 0
+              Banca.puntos = 0
+              Player.puntos = 0
+  
+             
+  
+              // Crear una nueva baraja y empezar el juego
+              blackJack = new BlackJack() // Reiniciar la instancia
+              iniciarJuego()
+          } else {
+              alert("No puedes iniciar una partida sin haber finalizado la actual")
+          }
+      })
+  }
+ 
   //todo sacar aqui el boton plantarse, y el de partida nueva crearlo
 
   //funcion agregar carta
@@ -246,4 +307,6 @@ class BlackJack {
       }
     }
   }
+
+ 
 }

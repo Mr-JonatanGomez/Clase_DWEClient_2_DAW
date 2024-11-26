@@ -12,29 +12,28 @@ let names = prompt("Introduce tu nombre") //introName()//meter el prompt si SWEE
       names = "JUGADOR"
     }
 
-/* function limpiarTablero(){
-      const cartasJugador = document.querySelector("#tapetePlayer")
-      const cartasBanca = document.querySelector("#tapeteBanca")
-      const puntosJugador = document.querySelector("#puntosPlayer")
-      const puntosBanca = document.querySelector("#puntosBanca")
-  
-      if (cartasJugador) cartasJugador.innerHTML = ""
-      if (cartasBanca) cartasBanca.innerHTML = ""
-      if (puntosJugador) puntosJugador.textContent = "0"
-      if (puntosBanca) puntosBanca.textContent = "0"
-    } */
+function limpiarTablero() {
+      document.querySelector("#tapetePlayer").innerHTML = "";
+      document.querySelector("#tapeteBanca").innerHTML = "";
+      document.querySelector("#puntosPlayer").textContent = "0";
+      document.querySelector("#puntosBanca").textContent = "0";
 
+      // ESTA PARTE ES CHAT...porque me sacaba 2 cada vez que repetia partida
+    const oneMoreButton = document.querySelector("#oneMore");
+    const stopButton = document.querySelector("#stop");
+    const partidaNueva = document.querySelector("#jugarMas");
+    oneMoreButton.replaceWith(oneMoreButton.cloneNode(true));
+    stopButton.replaceWith(stopButton.cloneNode(true));
+    partidaNueva.replaceWith(partidaNueva.cloneNode(true));
+  }
 function iniciarJuego() {
 
-  /* limpiarTablero() */
-
-  
-
+  limpiarTablero()
   blackJack.crearBaraja()
   blackJack.barajearMazo()
 
   banca = new Banca(blackJack.baraja)
-  player = new Player(names,blackJack.baraja,0,0,0,0)
+  player = new Player(names,blackJack.baraja)
 
   jugarBanca()
 }
