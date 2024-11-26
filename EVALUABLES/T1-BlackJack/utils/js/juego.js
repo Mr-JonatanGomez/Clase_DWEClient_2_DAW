@@ -2,12 +2,12 @@
 let turnoBanca = false //cambia a true al acabar de barajear el blacJack
 let turnoPlayer = false //cambia a true al acabar de jugar la banca
 let finPartida = false // cambia true cuando boton plantarse
-//let nombreIntroducido = false
+
 
 let blackJack = new BlackJack()
 
   
-let names = prompt("Introduce tu nombre") //introName()//meter el prompt si SWEET no va
+let names = prompt("Introduce tu nombre")
     if (names == "" || names === null) {
       names = "JUGADOR"
     }
