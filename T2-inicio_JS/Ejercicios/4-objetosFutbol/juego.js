@@ -57,14 +57,6 @@ function rellenarPlantillas() {
    }
 }
 }
-/* atMadrid.ficharJugador(porterosLibres[0])
-atMadrid.ficharJugador(defensasLibres[0])
-atMadrid.ficharJugador(defensasLibres[1])
-atMadrid.ficharJugador(defensasLibres[2])
-atMadrid.ficharJugador(defensasLibres[3])
-
-atMadrid.listarPlantilla()
-atMadrid.ordenarPrecio() */
 
 rellenarPlantillas()
 
@@ -72,7 +64,6 @@ for (const element of equipos) {
   element.mostrarDatosEquipo()
 }
 
-//atMadrid.mostrarDatosEquipo()
 
 
 /* 
