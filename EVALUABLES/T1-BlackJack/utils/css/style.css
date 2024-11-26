@@ -18,7 +18,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 #container {
@@ -47,9 +46,9 @@ header {
   align-items: flex-start;
   gap: 25px;
 
-  border: 8px solid rgb(255,255,255);
+  border: 8px solid rgb(255, 255, 255);
   border-radius: 16px;
-  
+
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
   border-start-end-radius: 8px;
@@ -61,15 +60,15 @@ header {
 
 #containerBanca {
   border-bottom: none;
-  border-right: 8px solid rgb(255,255,255);
-  border-left: 8px solid rgb(255,255,255);
+  border-right: 8px solid rgb(255, 255, 255);
+  border-left: 8px solid rgb(255, 255, 255);
 }
 
 #containerPlayer {
   border-top: none;
-  
-  border-right: 8px solid rgb(255,255,255);
-  border-left: 8px solid rgb(255,255,255);
+
+  border-right: 8px solid rgb(255, 255, 255);
+  border-left: 8px solid rgb(255, 255, 255);
 }
 
 /* Botonera en el centro, ocupando todo el ancho de #container */
@@ -78,7 +77,7 @@ header {
   width: 60%;
   border: 5px ridge rgba(255, 255, 255, 0.349);
   border-radius: 8px;
-padding: 8px;
+  padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +90,7 @@ padding: 8px;
 #datosPlayer {
   align-items: center;
   text-align: center;
-  
+
   width: 20%;
   min-width: 130px;
 
@@ -102,7 +101,7 @@ padding: 8px;
 }
 .bancaName,
 #playerName {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   text-align: center;
   padding: 6px;
   font-weight: bolder;
@@ -110,13 +109,19 @@ padding: 8px;
 }
 .puntajeBanca,
 .puntajePlayer {
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
   height: fit-content;
-  border: solid 3px rgb(255,255,255);
+ 
+  border: solid 3px rgb(255, 255, 255);
   border-radius: 4px;
 }
 .stats {
-  color: rgb(255,255,255);
+  background-image: url("../img/other-imgs/ficha.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  
+  color: rgb(255, 255, 255);
   padding: 3px;
   font-weight: bolder;
   height: 38%;
@@ -124,23 +129,19 @@ padding: 8px;
 #puntosBanca,
 #puntosPlayer {
   font-size: 50px;
-
 }
 .puntos {
   font-size: 30px;
-
 }
 
 /* TAPETE DE JUEGO CROUPIER */
 #tapeteBanca,
 #tapetePlayer {
-  
-
   width: 75%;
   height: 30vh;
   min-height: fit-content;
   padding: 15px;
-  border: 5px solid rgb(255,255,255);
+  border: 5px solid rgb(255, 255, 255);
   border-radius: 8px;
   display: flex;
   flex-direction: row;
@@ -170,40 +171,37 @@ padding: 8px;
 #oneMore {
   color: rgb(255, 255, 255);
   background-color: rgba(0, 104, 31, 0.904);
-  border:ridge 2px rgb(255, 255, 255);
+  border: ridge 2px rgb(255, 255, 255);
   /* transition: ease 2s; */
 }
 
 #oneMore:hover {
   color: rgb(0, 0, 0);
   background-color: rgba(0, 189, 57, 0.904);
-  border:ridge 4px rgb(255, 255, 255);
+  border: ridge 4px rgb(255, 255, 255);
   font-weight: bolder;
-  
 }
 
 #stop {
-  
   color: rgb(255, 255, 255);
   background-color: rgba(138, 0, 0, 0.904);
-  border:ridge 2px rgb(255, 255, 255);
+  border: ridge 2px rgb(255, 255, 255);
   /* transition: ease 2s; */
 }
 #stop:hover {
   color: rgb(0, 0, 0);
   background-color: rgba(235, 86, 86, 0.904);
-  border:ridge 4px rgb(255, 255, 255);
+  border: ridge 4px rgb(255, 255, 255);
   font-weight: bolder;
-  
 }
 
-#jugarMas{
+#jugarMas {
   color: rgb(255, 255, 255);
   background-color: rgba(41, 99, 224, 0.904);
 }
-#jugarMas:hover{
+#jugarMas:hover {
   color: rgb(0, 0, 0);
   background-color: rgba(86, 138, 235, 0.904);
-  border:ridge 4px rgb(255, 255, 255);
+  border: ridge 4px rgb(255, 255, 255);
   font-weight: bolder;
 }
