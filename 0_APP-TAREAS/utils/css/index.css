@@ -1,0 +1,51 @@
+/* *{
+margin: 0 0;
+padding: 0 0;
+width: 100%;
+} */
+
+body{
+    width: 100%;
+}
+
+header{
+text-align: center;
+padding: 20px;
+background-color: bisque;
+width: 100%;
+}
+
+
+.row{
+    margin: 0 auto;
+}
+
+.col-5{
+    margin: 0 2%;
+    padding: 10px;
+    text-align: center;
+    border: solid 1px;
+}
+.col-6{
+    margin: 0 2%;
+    padding: 10px;
+    text-align: center;
+    border: solid 1px;
+}
+.mb-3{
+    text-align: left;
+}
+
+.prioridad{
+    padding: 5px;
+    border: solid 2px rgba(255, 0, 0, 0);
+    border-radius: 6px;
+}
+
+#descripInput{
+    min-height: 120px;
+}
+
+.prioridad{
+    text-align: center;
+}
