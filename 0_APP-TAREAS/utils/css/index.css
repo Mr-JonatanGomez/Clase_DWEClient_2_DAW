@@ -37,15 +37,26 @@ width: 100%;
 }
 
 .prioridad{
+
+    background-color: rgba(172, 172, 172, 0.068);
     padding: 5px;
-    border: solid 2px rgba(255, 0, 0, 0);
+    border: solid 2px rgba(0, 0, 0, 0);
     border-radius: 6px;
+    gap: 5%;
+    
+    text-align: center;
 }
 
 #descripInput{
     min-height: 120px;
 }
 
-.prioridad{
-    text-align: center;
+#option1, #option2, #option3{
+min-width: 300px;
 }
+
+.prioridad2{
+text-align: center;
+}
+
+

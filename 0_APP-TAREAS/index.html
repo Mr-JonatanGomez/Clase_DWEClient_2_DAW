@@ -31,55 +31,95 @@
     <main class="container">
       <div class="row mt-2">
         <div class="col-5 mt-3">
-            <h6>TAREA NUEVA</h6>
+          <h6>TAREA NUEVA</h6>
+          <div class="mb-3">
             <div class="mb-3">
+              <label for="nombreInput" class="form-label"></label>
+              <input
+                type="text"
+                class="form-control"
+                id="tituloInput"
+                placeholder="Nombre"
+              />
+            </div>
+
+            <div class="mb-3">
+              <textarea
+                id="descripInput"
+                class="form-control"
+                aria-label="With textarea"
+                placeholder="Introduce qui la descripcion de la tarea"
+              ></textarea>
+            </div>
+
+            <div class="prioridad mb-3">
+              <h6>Elige la prioridad</h6>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="options"
+                id="option1"
+                value="1"
+                autocomplete="off"
                 
-                    <div class="mb-3">
-                      <label for="nombreInput" class="form-label"></label>
-                      <input type="text" class="form-control" id="nombreInput" placeholder="Nombre">
-                    </div>
+              />
+              <label class="btn btn-outline-danger mb-2 w-100" for="option1"
+                >Urgente!!!</label
+              >
 
-                    <div class=" mb-3">
-                        <textarea id="descripInput" class="form-control" aria-label="With textarea" placeholder="Introduce qui la descripcion de la tarea"></textarea>
-                      </div>
-                    
-                    <div class="prioridad mb-3">
-                        
-                       <h6>Elige la prioridad</h6>
+              <input
+                type="radio"
+                class="btn-check"
+                name="options"
+                id="option2"
+                value="2"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-warning mb-2 w-100" for="option2"
+                >Media</label
+              >
 
-                        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
-                        <label class="btn btn-outline-danger" for="option1">Urgente!!!</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="options"
+                id="option3"
+                value="3"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary mb-2 w-100" for="option3"
+                >Baja</label
+              >
+            </div>
 
-                        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                        <label class="btn btn-outline-warning" for="option2">Media</label>
+            <div class="mb-3">
+              <label for="nombreInput" class="form-label"
+                >Fecha máxima de finalización</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="maxDateInput"
+                placeholder="Nombre"
+              />
+            </div>
 
-                        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="option3">Baja</label>
-
-                        
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="nombreInput" class="form-label">Fecha máxima de finalización</label>
-                        <input type="date" class="form-control" id="maxDateInput" placeholder="Nombre">
-                      </div>
-
-                    <div class="mb-3 form-check">
+            <!-- <div class="mb-3 form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                  
+                    </div> -->
+            <div class="prioridad2">
+                <button id="btnGuardar" type="button" class="btn btn-primary w-50">Guardar</button>
             </div>
-        
-        
-        
+          </div>
         </div>
         <!-- <div class="col-1 mt-3"><h6></h6></div> -->
         <div class="col-6 mt-3"><h6>LISTADO TAREAS</h6></div>
       </div>
     </main>
 
+    <script src="./utils/js/class.js"></script>
     <script src="./utils/js/index.js"></script>
   </body>
 </html>
