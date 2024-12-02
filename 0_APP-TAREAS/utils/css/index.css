@@ -57,7 +57,22 @@ width: 100%;
 .guardar{
 text-align: center;
 }
+.completar{
+    padding: 5px;
+}
+.col-2 {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
 
+.col-10 {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 
+}
 
 

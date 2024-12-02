@@ -1,3 +1,4 @@
+
 //todo Ya funciona guardar, ahora implementar solo guardar si hay datos
 
 let tituloInput = document.querySelector("#tituloInput")
@@ -5,11 +6,19 @@ let descripInput = document.querySelector("#descripInput")
 let maxDateInput = document.querySelector("#maxDateInput")
 let contadorIds = 1
 let btnGuardar = document.querySelector("#btnGuardar")
-
+//Direccion donde se mete el resultado
 let divResultado = document.querySelector(
-  "div.row.mt-3.row-cols-1.row-cols-md-3.g-4"
+    "div.row.mt-3.row-cols-1.row-cols-md-3.g-4"
 )
-//row mt-3 row-cols-1 row-cols-md-3 g-4
+
+//FILTROS BUSQUEDA
+let selectFilter = document.querySelector("#selectFiltrado")
+
+
+
+let btnFiltrar = document.querySelector("#btnFiltrado")
+let tareas = []//meter todas las tareas en array
+
 
 btnGuardar.addEventListener("click", (e) => {
   let id = contadorIds
@@ -18,6 +27,7 @@ btnGuardar.addEventListener("click", (e) => {
   let fechaMax = maxDateInput.value
   let priority = document.querySelector("input[name='options']:checked")
   let prioridad = ""
+
 
   if (
     titulo.length > 0 &&
@@ -29,12 +39,12 @@ btnGuardar.addEventListener("click", (e) => {
 
     let nueva = new Tarea(contadorIds, titulo, descripcion, fechaMax, prioridad)
     contadorIds++
-    console.log(
-      `id: ${nueva.id}\nTarea: ${nueva.titulo}\nDescrip: ${nueva.descripcion}\nFecha: ${nueva.fecha}\nPrioridad: ${nueva.prioridad}`
-    )
+
+    tareas.push(nueva)//añadimos la tarea al array, para luego filtrar
+
     agregarNodoTask(titulo, descripcion, priority, fechaMax)
     alertTaskSaved()
-    clearInputs() //implementar despues solo cuando usuario este guardado
+    clearInputs() 
   } else {
     alertFaltanDatos()
   }
@@ -46,20 +56,7 @@ function agregarNodoTask(
   prioridadTarea,
   fechaMaxTarea
 ) {
-  /* 
-    <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <img src="..." class="card-img-top">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
-              </div>
-    */
+
   let columna = document.createElement("div")
   columna.className = "col g-1" //todo: quitar g1 si no va bien
 
@@ -102,44 +99,39 @@ function agregarNodoTask(
   fcha.innerText = fechaMaxTarea
   fechaUl.append(fcha)
 
-  let divCompletado = document.createElement("div")
-  divCompletado.className="completar" 
+  let divFinalizado = document.createElement("div")
+  divFinalizado.className = "completar"
 
-  /* let col4= document.createElement("col")
-  col4.className="col-4"
-  divCompletado.append(col4)
+  let rowFinaliza = document.createElement("div")
+  rowFinaliza.className = "row"
+  divFinalizado.append(rowFinaliza)
 
-  let col8= document.createElement("col")
-  col8.className="col-8"
-  divCompletado.append(col8) */
+  let col4 = document.createElement("div")
+  col4.className = "col-2"
+  rowFinaliza.append(col4)
+
+  let checkFinaliza = document.createElement("input")
+  checkFinaliza.type = "checkbox"
+  checkFinaliza.value = "finalizar"
+  checkFinaliza.id = "finalizarTarea"
+  col4.append(checkFinaliza)
+
+  let col8 = document.createElement("div")
+  col8.className = "col-10"
+  rowFinaliza.append(col8)
 
 
 
   let btnFinaliza = document.createElement("button")
   btnFinaliza.className="btn btn-success w-100"
-  btnFinaliza.innerText="Finalizar tarea"
-  divCompletado.append(btnFinaliza)
+  btnFinaliza.innerText="Finalizar"
+  divFinalizado.append(btnFinaliza)
   //todo esto para cuando la tarea este finalizada
-  /* let btnComplet = document.createElement("button")
-  btnComplet.className="btn btn-success w-100"
-  btnComplet.innerText="Tarea Completada"
-  divCompletado.append(btnComplet) */
-  /* let checkCompl = createElement("checkbox")
-  divCompletado.append(checkCompl) */
-
-  /*  <button
-                id="btnGuardar"
-                type="button"
-                class="btn btn-primary w-50"
-              >
-                Guardar
-              </button> */
-
 
   carta.append(cardBody)
   carta.append(imagen)
   carta.append(fechaUl)
-  carta.append(divCompletado)
+  carta.append(divFinalizado)
   columna.append(carta)
 
   divResultado.append(columna)
@@ -175,4 +167,31 @@ function alertFaltanDatos() {
     showConfirmButton: false,
     timer: 2200
   })
+}
+
+btnFiltrar.addEventListener("click", (e) => {
+    let valorFiltrado=selectFilter.value
+  switch (valorFiltrado) {
+    case 1:
+        
+        break;
+
+    case 2:
+        
+        break;
+    case 3:
+        
+        break;
+
+    case 4:
+        
+        break;
+    default:
+        alert("No hay na filtrar")
+        break;
+  }
+}) //cierre boton FILTRAR
+
+function filtrarTareas(){
+    let tareasMostrables = 0
 }
