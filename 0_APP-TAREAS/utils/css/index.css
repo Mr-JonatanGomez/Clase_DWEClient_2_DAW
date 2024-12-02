@@ -20,17 +20,18 @@ width: 100%;
     margin: 0 auto;
 }
 
-.col-5{
+.col-3{
     margin: 0 2%;
     padding: 10px;
     text-align: center;
     border: solid 1px;
 }
-.col-6{
+.col-8{
     margin: 0 2%;
     padding: 10px;
     text-align: center;
     border: solid 1px;
+    
 }
 .mb-3{
     text-align: left;
@@ -42,7 +43,7 @@ width: 100%;
     padding: 5px;
     border: solid 2px rgba(0, 0, 0, 0);
     border-radius: 6px;
-    gap: 5%;
+   
     
     text-align: center;
 }
@@ -51,12 +52,12 @@ width: 100%;
     min-height: 120px;
 }
 
-#option1, #option2, #option3{
-min-width: 300px;
-}
 
-.prioridad2{
+
+.guardar{
 text-align: center;
 }
+
+
 
 

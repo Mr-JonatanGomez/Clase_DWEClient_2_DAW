@@ -41,53 +41,7 @@ btnGuardar.addEventListener("click", (e) => {
 
 
     //si lo hacemos por clase, en lugar de pasarle nombre, mail...pasamos user
-    function agregarNodo(nombre, mail, genero) {
-        //creamos div.col (linea 68) con su classNmae
-        let columna = document.createElement("div")
-        columna.className = "col"
-        //div.card animated...(linea 69)y asi sucesivamente
-        let carta = document.createElement("div")
-        carta.className = "card animate__animated animate__fadeInDown"
-        let imagen = document.createElement("img")
-        imagen.className = "card-img-top"
-        if (genero == 1) {
-          imagen.src = "https://cdn-icons-png.flaticon.com/512/7084/7084424.png"
-        } else {
-          imagen.src = "https://cdn-icons-png.flaticon.com/512/6889/6889369.png"
-        }
-        let cardBody = document.createElement("div")
-        cardBody.className="card-body"
-
-        let nombreCard = document.createElement("h5")//no necesita class porque ya va el contenido
-        nombreCard.innerText= nombre 
-        cardBody.append(nombreCard)//agregamos el nombre al cuerpo de la carta
-
-        let mailCard = document.createElement("h6")// correo en lugar de cardtext
-        mailCard.innerText=mail
-        cardBody.append(mail)
-
-
-        let gender = document.createElement("h6")
-        if (genero==1) {
-            gender.innerText="masculino"
-        }else{
-            gender.innerText="femenino"
-        }
-        cardBody.append(gender)
-
-        /*ahora se monta el modo en que va la card, 
-        imagen-cardbody-carta*/
-
-        carta.append(imagen)    //la carta lleva imagen
-        carta.append(cardBody)  //lleva el cardbody
-        columna.append(carta)   //y esto en la columna
-
-
-
-
-
-        divResultado.append(columna) //el resultado lo metemos dentro de la columna
-      }
+   
 
       /* divResultado.innerHTML+=
     `<div class="col ">
@@ -133,7 +87,53 @@ passInput.addEventListener("keyup", (e) => {
    console.log(e.target.value.length) */
   //LO QUE QUEREMOS ES SACAR LOS DATOS REALES en el btn-GUARDAR
 })
+function agregarNodo(nombre, mail, genero) {
+  //creamos div.col (linea 68) con su classNmae
+  let columna = document.createElement("div")
+  columna.className = "col"
+  //div.card animated...(linea 69)y asi sucesivamente
+  let carta = document.createElement("div")
+  carta.className = "card animate__animated animate__fadeInDown"
+  let imagen = document.createElement("img")
+  imagen.className = "card-img-top"
+  if (genero == 1) {
+    imagen.src = "https://cdn-icons-png.flaticon.com/512/7084/7084424.png"
+  } else {
+    imagen.src = "https://cdn-icons-png.flaticon.com/512/6889/6889369.png"
+  }
+  let cardBody = document.createElement("div")
+  cardBody.className="card-body"
 
+  let nombreCard = document.createElement("h5")//no necesita class porque ya va el contenido
+  nombreCard.innerText= nombre 
+  cardBody.append(nombreCard)//agregamos el nombre al cuerpo de la carta
+
+  let mailCard = document.createElement("h6")// correo en lugar de cardtext
+  mailCard.innerText=mail
+  cardBody.append(mail)
+
+
+  let gender = document.createElement("h6")
+  if (genero==1) {
+      gender.innerText="masculino"
+  }else{
+      gender.innerText="femenino"
+  }
+  cardBody.append(gender)
+
+  /*ahora se monta el modo en que va la card, 
+  imagen-cardbody-carta*/
+
+  carta.append(imagen)    //la carta lleva imagen
+  carta.append(cardBody)  //lleva el cardbody
+  columna.append(carta)   //y esto en la columna
+
+
+
+
+
+  divResultado.append(columna) //el resultado lo metemos dentro de la columna
+}
 function clearInputs() {
   nombreInput.value = ""
   emailInput.value = ""

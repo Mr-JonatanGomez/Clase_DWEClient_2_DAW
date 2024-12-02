@@ -30,11 +30,11 @@
     </header>
     <main class="container">
       <div class="row mt-2">
-        <div class="col-5 mt-3">
+        <div class="col-3 mt-3">
           <h6>TAREA NUEVA</h6>
           <div class="mb-3">
             <div class="mb-3">
-              <label for="nombreInput" class="form-label"></label>
+              <label for="tituloInput" class="form-label"></label>
               <input
                 type="text"
                 class="form-control"
@@ -62,7 +62,6 @@
                 id="option1"
                 value="1"
                 autocomplete="off"
-                
               />
               <label class="btn btn-outline-danger mb-2 w-100" for="option1"
                 >Urgente!!!</label
@@ -88,13 +87,13 @@
                 value="3"
                 autocomplete="off"
               />
-              <label class="btn btn-outline-primary mb-2 w-100" for="option3"
+              <label class="btn btn-outline-success mb-2 w-100" for="option3"
                 >Baja</label
               >
             </div>
 
             <div class="mb-3">
-              <label for="nombreInput" class="form-label"
+              <label for="maxDateInput" class="form-label"
                 >Fecha máxima de finalización</label
               >
               <input
@@ -109,13 +108,37 @@
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div> -->
-            <div class="prioridad2">
-                <button id="btnGuardar" type="button" class="btn btn-primary w-50">Guardar</button>
+            <div class="guardar">
+              <button
+                id="btnGuardar"
+                type="button"
+                class="btn btn-primary w-50"
+              >
+                Guardar
+              </button>
             </div>
           </div>
         </div>
-        <!-- <div class="col-1 mt-3"><h6></h6></div> -->
-        <div class="col-6 mt-3"><h6>LISTADO TAREAS</h6></div>
+
+        <div class="col-8 mt-3">
+          <h6>LISTADO TAREAS</h6>
+          <div class="row">
+            <label class="mt-1">Filtrado por</label>
+            <select class="mt-2">
+              <option>Urgente</option>
+              <option>Media</option>
+              <option>Baja</option>
+            </select>
+            <button class="btn btn-primary mt-2">Filtrar</button>
+          </div>
+          <div class="row mt-3 row-cols-1 row-cols-md-3 g-4">
+            <!-- 
+                    row cols-1 : ancho pequeño 1 col 
+                    row cols-md-3 : ancho mediano/grande 3 col 
+                    g-4 es el GAP
+               -->
+          </div>
+        </div>
       </div>
     </main>
 
