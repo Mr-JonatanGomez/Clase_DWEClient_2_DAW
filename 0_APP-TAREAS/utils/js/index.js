@@ -16,7 +16,7 @@ let selectFilter = document.querySelector("#selectFiltrado")
 
 
 
-let btnFiltrar = document.querySelector("#btnFiltrado")
+
 let tareas = []//meter todas las tareas en array
 
 
@@ -26,7 +26,7 @@ btnGuardar.addEventListener("click", (e) => {
   let descripcion = descripInput.value
   let fechaMax = maxDateInput.value
   let priority = document.querySelector("input[name='options']:checked")
-  let prioridad = ""
+  
 
 
   if (
@@ -35,9 +35,11 @@ btnGuardar.addEventListener("click", (e) => {
     fechaMax.length > 0 &&
     priority.value.length > 0
   ) {
-    //todo aqui agregamos nodo
 
-    let nueva = new Tarea(contadorIds, titulo, descripcion, fechaMax, prioridad)
+
+  
+
+    let nueva = new Tarea(contadorIds, titulo, descripcion, fechaMax, priority.value)
     contadorIds++
 
     tareas.push(nueva)//añadimos la tarea al array, para luego filtrar
@@ -169,29 +171,23 @@ function alertFaltanDatos() {
   })
 }
 
-btnFiltrar.addEventListener("click", (e) => {
-    let valorFiltrado=selectFilter.value
-  switch (valorFiltrado) {
-    case 1:
-        
-        break;
+selectFilter.addEventListener("change", (e) => {
+    let urgencia = selectFilter.value
+    let listaFiltrada=[]
 
-    case 2:
-        
-        break;
-    case 3:
-        
-        break;
+    if (urgencia != 4) {
+    
+      listaFiltrada=tareas.filter((item)=> {
+        //retornará true o false, si es true, lo añade a listaFiltrada
+        return item.priority==urgencia
+      })
+    }else{
+      listaFiltrada=tareas // todas las tareas
+    }
+    console.log(urgencia)
+    console.log(listaFiltrada)
+    
+})//cierre boton FILTRAR
 
-    case 4:
-        
-        break;
-    default:
-        alert("No hay na filtrar")
-        break;
-  }
-}) //cierre boton FILTRAR
-
-function filtrarTareas(){
-    let tareasMostrables = 0
-}
+//todo, crear funcion representarFiltro, donde ira el inner que borra
+//todo, seguir clase por minuto 23
