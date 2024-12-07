@@ -1,4 +1,6 @@
-//TODO falta implementar el botn finalizar, y crear un lugar para tareas finalizadas
+//FUNCIONA LOS ARRAYS EN TODOS, PERO NO EN INDIVIDUAL
+//todo Ya funciona guardar, ahora implementar solo guardar si hay datos
+//ultima opcion, los VALUES del select pasarlos a string y probar
 
 let tituloInput = document.querySelector("#tituloInput")
 let descripInput = document.querySelector("#descripInput")
@@ -95,25 +97,40 @@ function agregarNodoTask(
   fcha.innerText = fechaMaxTarea
   fechaUl.append(fcha)
 
-  let divFinalizado = document.createElement("div")
+  //todo btn Finaliza y check implementar cuando funcione el resto
+
+  /* let divFinalizado = document.createElement("div")
   divFinalizado.className = "completar "
 
   let rowFinaliza = document.createElement("div")
   rowFinaliza.className = "row"
   divFinalizado.append(rowFinaliza)
 
-  //todo btn Finaliza y check implementar cuando funcione el resto
+  let col4 = document.createElement("div")
+  col4.className = "col-2"
+  rowFinaliza.append(col4)
+
+  let checkFinaliza = document.createElement("input")
+  checkFinaliza.type = "checkbox"
+  checkFinaliza.value = "finalizar"
+  checkFinaliza.id = "finalizarTarea"
+  col4.append(checkFinaliza)
+
+  let col8 = document.createElement("div")
+  col8.className = "col-10"
+  rowFinaliza.append(col8)
+
+
 
   let btnFinaliza = document.createElement("button")
-  btnFinaliza.id = "btnFin"
-  btnFinaliza.className = "btn btn-success w-100"
-  btnFinaliza.innerText = "Finalizar"
-  divFinalizado.append(btnFinaliza)
+  btnFinaliza.className="btn btn-success w-100"
+  btnFinaliza.innerText="Finalizar"
+  divFinalizado.append(btnFinaliza) */
 
   carta.append(cardBody)
   carta.append(imagen)
   carta.append(fechaUl)
-  carta.append(divFinalizado)
+  //carta.append(divFinalizado)
   columna.append(carta)
 
   divResultado.append(columna)
@@ -150,28 +167,11 @@ function alertFaltanDatos() {
   })
 }
 
-function confirmarTareaFinalizada() {
-  Swal.fire({
-    title: "Has completado esta tarea?",
-    showDenyButton: true,
-    showCancelButton: true,
-    confirmButtonText: "Sí",
-    denyButtonText: `No`
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      //todo aquí la logica de enviar la tarea a TAREAS COMPLETADAS y borrarla del array TODOS
-      Swal.fire("Enhorabuena, tarea finalizada", "", "success")
-    } else if (result.isDenied) {
-      Swal.fire("Tarea sin completar, confirma cuando la completes", "", "info")
-    }
-  })
-}
-
 selectFilter.addEventListener("change", (e) => {
   let urgencia = selectFilter.value
   let listaFiltrada = []
 
+  //todo YO CREO QUE EL PROBLEMA ESTA AQUI, que no agrega al array las opciones diferentes de 4
   if (urgencia != 4) {
     listaFiltrada = tareas.filter((item) => {
       //retornará true o false, si es true, lo añade a listaFiltrada
@@ -200,3 +200,6 @@ function representarTareas(tareas) {
     )
   })
 }
+
+//todo, crear funcion representarFiltro, donde ira el inner que borra
+//todo, solucionar el class animated ( solo al agregar tareas, no al filtrar)
