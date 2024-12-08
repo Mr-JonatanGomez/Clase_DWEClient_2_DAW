@@ -20,28 +20,23 @@ btnGuardar.addEventListener("click", (e) => {
   let titulo = tituloInput.value
   let descripcion = descripInput.value
   let fechaMax = maxDateInput.value
-  let priority = document.querySelector("input[name='options']:checked")
+  let seleccionRadio = document.querySelector("input[name='options']:checked")
   // para no volverme LOCO
-  let seleccion = parseInt(priority.value)
+  let seleccionInt = parseInt(seleccionRadio.value)
 
-  if (
-    titulo.length > 0 &&
-    descripcion.length > 0 &&
-    fechaMax.length > 0 &&
-    seleccion > 0
-  ) {
+  if (titulo && descripcion && fechaMax && seleccionInt > 0) {
     let nueva = new Tarea(
       contadorIds,
       titulo,
       descripcion,
       fechaMax,
-      seleccion
+      seleccionInt
     )
     contadorIds++
 
     tareas.push(nueva) //añadimos la tarea al array, para luego filtrar
 
-    agregarNodoTask(titulo, descripcion, priority, fechaMax)
+    agregarNodoTask(titulo, descripcion, seleccionRadio, fechaMax)//pasamos el radio
     alertTaskSaved()
     clearInputs()
   } else {
@@ -52,7 +47,7 @@ btnGuardar.addEventListener("click", (e) => {
 function agregarNodoTask(
   tituloTarea,
   descripcionTarea,
-  prioridadTarea,
+  prioridadTarea,// el radio aun es un string
   fechaMaxTarea
 ) {
   let columna = document.createElement("div")
@@ -182,6 +177,8 @@ selectFilter.addEventListener("change", (e) => {
   } else {
     listaFiltrada = tareas // todas las tareas
   }
+
+  //todo , para eliminar
   console.log(urgencia)
   console.log(listaFiltrada)
 
@@ -200,7 +197,7 @@ function representarTareas(tareas) {
       item.titulo,
       item.descripcion,
       { value: item.prioridad },
-        //item.seleccion,
+        //item.seleccionInt,
       item.fechaMax
     )
   })
