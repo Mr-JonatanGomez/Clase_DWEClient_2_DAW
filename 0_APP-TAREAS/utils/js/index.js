@@ -21,19 +21,21 @@ btnGuardar.addEventListener("click", (e) => {
   let descripcion = descripInput.value
   let fechaMax = maxDateInput.value
   let priority = document.querySelector("input[name='options']:checked")
+  // para no volverme LOCO
+  let seleccion = parseInt(priority.value)
 
   if (
     titulo.length > 0 &&
     descripcion.length > 0 &&
     fechaMax.length > 0 &&
-    priority.value.length > 0
+    seleccion > 0
   ) {
     let nueva = new Tarea(
       contadorIds,
       titulo,
       descripcion,
       fechaMax,
-      priority.value
+      seleccion
     )
     contadorIds++
 
@@ -192,10 +194,13 @@ function representarTareas(tareas) {
 
   tareas.forEach((item) => {
     //todo chatGPT me dice poner {value: item.prioridad}
+
+     //todo poner aqui tambie nel selector
     agregarNodoTask(
       item.titulo,
       item.descripcion,
       { value: item.prioridad },
+        //item.seleccion,
       item.fechaMax
     )
   })
