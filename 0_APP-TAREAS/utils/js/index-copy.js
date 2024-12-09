@@ -1,6 +1,4 @@
-//FUNCIONA LOS ARRAYS EN TODOS, PERO NO EN INDIVIDUAL
-//todo Ya funciona guardar, ahora implementar solo guardar si hay datos
-//ultima opcion, los VALUES del select pasarlos a string y probar
+//TODO falta implementar el botn finalizar, y crear un lugar para tareas finalizadas
 
 let tituloInput = document.querySelector("#tituloInput")
 let descripInput = document.querySelector("#descripInput")
@@ -22,26 +20,23 @@ btnGuardar.addEventListener("click", (e) => {
   let titulo = tituloInput.value
   let descripcion = descripInput.value
   let fechaMax = maxDateInput.value
-  let priority = document.querySelector("input[name='options']:checked")
+  let seleccionRadio = document.querySelector("input[name='options']:checked")
+  // para no volverme LOCO
+  let seleccionInt = parseInt(seleccionRadio.value)
 
-  if (
-    titulo.length > 0 &&
-    descripcion.length > 0 &&
-    fechaMax.length > 0 &&
-    priority.value.length > 0
-  ) {
+  if (titulo && descripcion && fechaMax && seleccionInt > 0) {
     let nueva = new Tarea(
       contadorIds,
       titulo,
       descripcion,
       fechaMax,
-      priority.value
+      seleccionInt
     )
     contadorIds++
 
     tareas.push(nueva) //añadimos la tarea al array, para luego filtrar
-
-    agregarNodoTask(titulo, descripcion, priority, fechaMax)
+    
+    agregarNodoTask(titulo, descripcion, seleccionInt, fechaMax)//pasamos el radio
     alertTaskSaved()
     clearInputs()
   } else {
@@ -52,7 +47,7 @@ btnGuardar.addEventListener("click", (e) => {
 function agregarNodoTask(
   tituloTarea,
   descripcionTarea,
-  prioridadTarea,
+  prioridadTarea,// el radio aun es un string
   fechaMaxTarea
 ) {
   let columna = document.createElement("div")
@@ -75,13 +70,13 @@ function agregarNodoTask(
 
   let imagen = document.createElement("img")
   imagen.className = "card-img-top"
-  if (prioridadTarea.value == 1) {
+  if (prioridadTarea === 1) {
     imagen.src =
       "https://static-00.iconduck.com/assets.00/high-priority-icon-1024x1024-ryazhwgn.png"
-  } else if (prioridadTarea.value == 2) {
+  } else if (prioridadTarea === 2) {
     imagen.src =
       "https://static-00.iconduck.com/assets.00/medium-priority-icon-512x512-kpm2vacr.png"
-  } else if (prioridadTarea.value == 3) {
+  } else if (prioridadTarea === 3) {
     imagen.src =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4tANuBJoViapolNoVPmOHlaaFityDbdvSyyhUVpIL_MvB2K3IS6DNmUXkAtzhOPbbHRc&usqp=CAU"
   }
@@ -97,43 +92,32 @@ function agregarNodoTask(
   fcha.innerText = fechaMaxTarea
   fechaUl.append(fcha)
 
-  //todo btn Finaliza y check implementar cuando funcione el resto
-
-  /* let divFinalizado = document.createElement("div")
+  let divFinalizado = document.createElement("div")
   divFinalizado.className = "completar "
 
   let rowFinaliza = document.createElement("div")
   rowFinaliza.className = "row"
   divFinalizado.append(rowFinaliza)
 
-  let col4 = document.createElement("div")
-  col4.className = "col-2"
-  rowFinaliza.append(col4)
-
-  let checkFinaliza = document.createElement("input")
-  checkFinaliza.type = "checkbox"
-  checkFinaliza.value = "finalizar"
-  checkFinaliza.id = "finalizarTarea"
-  col4.append(checkFinaliza)
-
-  let col8 = document.createElement("div")
-  col8.className = "col-10"
-  rowFinaliza.append(col8)
-
-
+  //todo btn Finaliza y check implementar cuando funcione el resto
 
   let btnFinaliza = document.createElement("button")
-  btnFinaliza.className="btn btn-success w-100"
-  btnFinaliza.innerText="Finalizar"
-  divFinalizado.append(btnFinaliza) */
+  btnFinaliza.id = "btnFin"
+  btnFinaliza.className = "btn btn-success w-100"
+  btnFinaliza.innerText = "Finalizar"
+  divFinalizado.append(btnFinaliza)
 
+  //todo fin boton finaliza
+  
   carta.append(cardBody)
   carta.append(imagen)
   carta.append(fechaUl)
-  //carta.append(divFinalizado)
+  carta.append(divFinalizado)
   columna.append(carta)
 
   divResultado.append(columna)
+  
+  
 }
 
 function clearInputs() {
@@ -167,11 +151,28 @@ function alertFaltanDatos() {
   })
 }
 
+function confirmarTareaFinalizada() {
+  Swal.fire({
+    title: "Has completado esta tarea?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Sí",
+    denyButtonText: `No`
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      //todo aquí la logica de enviar la tarea a TAREAS COMPLETADAS y borrarla del array TODOS
+      Swal.fire("Enhorabuena, tarea finalizada", "", "success")
+    } else if (result.isDenied) {
+      Swal.fire("Tarea sin completar, confirma cuando la completes", "", "info")
+    }
+  })
+}
+
 selectFilter.addEventListener("change", (e) => {
   let urgencia = selectFilter.value
   let listaFiltrada = []
 
-  //todo YO CREO QUE EL PROBLEMA ESTA AQUI, que no agrega al array las opciones diferentes de 4
   if (urgencia != 4) {
     listaFiltrada = tareas.filter((item) => {
       //retornará true o false, si es true, lo añade a listaFiltrada
@@ -180,6 +181,8 @@ selectFilter.addEventListener("change", (e) => {
   } else {
     listaFiltrada = tareas // todas las tareas
   }
+
+  //todo , para eliminar
   console.log(urgencia)
   console.log(listaFiltrada)
 
@@ -192,14 +195,14 @@ function representarTareas(tareas) {
 
   tareas.forEach((item) => {
     //todo chatGPT me dice poner {value: item.prioridad}
+
+     //todo poner aqui tambie nel selector
     agregarNodoTask(
       item.titulo,
       item.descripcion,
       { value: item.prioridad },
+        //item.seleccionInt,
       item.fechaMax
     )
   })
 }
-
-//todo, crear funcion representarFiltro, donde ira el inner que borra
-//todo, solucionar el class animated ( solo al agregar tareas, no al filtrar)

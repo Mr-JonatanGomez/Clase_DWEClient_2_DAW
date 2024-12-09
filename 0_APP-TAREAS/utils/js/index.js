@@ -1,4 +1,6 @@
-//TODO falta implementar el botn finalizar, y crear un lugar para tareas finalizadas
+// TODO l146 forEach;
+// TODO l172 agregarNOdo del boton si le  meto seleccion tampoco va, hay que meterle priority(query);
+// todo LAS FECHAS NO FUNCIONAN, solo al guardar, al filtrar se borran
 
 let tituloInput = document.querySelector("#tituloInput")
 let descripInput = document.querySelector("#descripInput")
@@ -13,41 +15,12 @@ let divResultado = document.querySelector(
 //FILTROS BUSQUEDA
 let selectFilter = document.querySelector("#selectFiltrado")
 
-let tareas = [] //meter todas las tareas en array
-
-btnGuardar.addEventListener("click", (e) => {
-  let id = contadorIds
-  let titulo = tituloInput.value
-  let descripcion = descripInput.value
-  let fechaMax = maxDateInput.value
-  let seleccionRadio = document.querySelector("input[name='options']:checked")
-  // para no volverme LOCO
-  let seleccionInt = parseInt(seleccionRadio.value)
-
-  if (titulo && descripcion && fechaMax && seleccionInt > 0) {
-    let nueva = new Tarea(
-      contadorIds,
-      titulo,
-      descripcion,
-      fechaMax,
-      seleccionInt
-    )
-    contadorIds++
-
-    tareas.push(nueva) //añadimos la tarea al array, para luego filtrar
-
-    agregarNodoTask(titulo, descripcion, seleccionRadio, fechaMax)//pasamos el radio
-    alertTaskSaved()
-    clearInputs()
-  } else {
-    alertFaltanDatos()
-  }
-}) //cierre boton guardar
+let tareas = [] //Para meter todas las tareas en array
 
 function agregarNodoTask(
   tituloTarea,
   descripcionTarea,
-  prioridadTarea,// el radio aun es un string
+  prioridadTarea,
   fechaMaxTarea
 ) {
   let columna = document.createElement("div")
@@ -112,7 +85,8 @@ function agregarNodoTask(
   carta.append(fechaUl)
   carta.append(divFinalizado)
   columna.append(carta)
-
+  console.log(`El tipo de fecha de la tarea en function agregarNodo ${tituloTarea} es`+typeof(fechaMaxTarea));
+  
   divResultado.append(columna)
 }
 
@@ -165,40 +139,61 @@ function confirmarTareaFinalizada() {
   })
 }
 
+function representarTareas(tareas) {
+  //vaciamos el div resultado
+  divResultado.innerHTML = ""
+
+  tareas.forEach((tarea) => {
+    //todo chatGPT me dice poner {value: item.prioridad} porque si no, no coge el valor
+
+    agregarNodoTask(
+      tarea.titulo,
+      tarea.descripcion,
+      { value: tarea.prioridad },
+      //item.seleccion,
+      tarea.fechaMax
+    )
+  })
+}
+btnGuardar.addEventListener("click", (e) => {
+  let id = contadorIds
+  let titulo = tituloInput.value
+  let descripcion = descripInput.value
+  let fechaMax = maxDateInput.value
+  let priority = document.querySelector("input[name='options']:checked")
+  // para no volverme LOCO
+  let seleccion = parseInt(priority.value)
+
+  if (titulo && descripcion && fechaMax && seleccion > 0) {
+    let nueva = new Tarea(contadorIds, titulo, descripcion, fechaMax, seleccion)
+    contadorIds++
+
+    tareas.push(nueva) //añadimos la tarea al array, para luego filtrar
+    console.log(`El tipo de fecha de la tarea en addEvent btnGuardar ${titulo} es`+typeof(fechaMax));
+    agregarNodoTask(titulo, descripcion, priority, fechaMax)
+    alertTaskSaved()
+    clearInputs()
+  } else {
+    alertFaltanDatos()
+  }
+}) //cierre boton guardar
+
 selectFilter.addEventListener("change", (e) => {
   let urgencia = selectFilter.value
   let listaFiltrada = []
 
   if (urgencia != 4) {
     listaFiltrada = tareas.filter((item) => {
+      console.log(`El tipo de fecha de la tarea ${item.titulo} es`+typeof(item.fechaMax));
       //retornará true o false, si es true, lo añade a listaFiltrada
       return item.prioridad == urgencia
+
     })
   } else {
     listaFiltrada = tareas // todas las tareas
   }
-
-  //todo , para eliminar
   console.log(urgencia)
   console.log(listaFiltrada)
 
   representarTareas(listaFiltrada)
 }) //cierre boton FILTRAR
-
-function representarTareas(tareas) {
-  //vaciamos el div resultado
-  divResultado.innerHTML = ""
-
-  tareas.forEach((item) => {
-    //todo chatGPT me dice poner {value: item.prioridad}
-
-     //todo poner aqui tambie nel selector
-    agregarNodoTask(
-      item.titulo,
-      item.descripcion,
-      { value: item.prioridad },
-        //item.seleccionInt,
-      item.fechaMax
-    )
-  })
-}
