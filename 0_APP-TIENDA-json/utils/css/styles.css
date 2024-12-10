@@ -1,0 +1,48 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    width: 100%;
+}
+
+header{
+    text-align: center;
+    padding: 15px;
+    background-color: rgb(255, 123, 0);
+}
+#filtros{
+    border: solid 2px;
+    justify-content: center;
+    padding: 20px 5px;
+    text-align: center;
+    
+    
+}
+#filtros h4{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.col{
+    border:dashed 1px;
+    
+}
+.col input{
+    text-align: center;
+    
+}
+.row.mt-3{
+    justify-content: center;
+    border: 2px solid;
+}
+
+.row.mt-3 h2{
+    text-align: center;
+    color: rgb(255,255,255);
+    background-color: rgb(13, 110, 253);
+}
+
+.divBtnCarro{
+    text-align: center;
+}
