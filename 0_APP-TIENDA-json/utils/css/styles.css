@@ -4,12 +4,13 @@
 
 body{
     width: 100%;
+    
 }
 
 header{
     text-align: center;
     padding: 15px;
-    background-color: rgb(255, 123, 0);
+    background-color: rgb(13, 110, 253);
 }
 #filtros{
     border: solid 2px;
