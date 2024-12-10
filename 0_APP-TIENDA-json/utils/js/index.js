@@ -97,7 +97,7 @@ function pintarCartas(item) {
   btnAddCarrito.className = "btn btn-primary w-50"
   btnAddCarrito.innerText = "Add basket"
 
-  //divBtnCarro.append(btnAddCarrito)
+  divBtnCarro.append(btnAddCarrito)
 
   //AÑADIR TODO
 
