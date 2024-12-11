@@ -1,6 +1,4 @@
-// TODO l146 forEach;
-// TODO l172 agregarNOdo del boton si le  meto seleccion tampoco va, hay que meterle priority(query);
-// todo LAS FECHAS NO FUNCIONAN, solo al guardar, al filtrar se borran
+
 
 let tituloInput = document.querySelector("#tituloInput")
 let descripInput = document.querySelector("#descripInput")
@@ -43,13 +41,13 @@ function agregarNodoTask(
 
   let imagen = document.createElement("img")
   imagen.className = "card-img-top"
-  if (prioridadTarea.value == 1) {
+  if (prioridadTarea == 1) {
     imagen.src =
       "https://static-00.iconduck.com/assets.00/high-priority-icon-1024x1024-ryazhwgn.png"
-  } else if (prioridadTarea.value == 2) {
+  } else if (prioridadTarea == 2) {
     imagen.src =
       "https://static-00.iconduck.com/assets.00/medium-priority-icon-512x512-kpm2vacr.png"
-  } else if (prioridadTarea.value == 3) {
+  } else if (prioridadTarea == 3) {
     imagen.src =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4tANuBJoViapolNoVPmOHlaaFityDbdvSyyhUVpIL_MvB2K3IS6DNmUXkAtzhOPbbHRc&usqp=CAU"
   }
@@ -62,7 +60,7 @@ function agregarNodoTask(
   fechaUl.append(labelFecha)
 
   let fcha = document.createElement("h6")
-  fcha.innerText = fechaMaxTarea
+  fcha.innerHTML = fechaMaxTarea
   fechaUl.append(fcha)
 
   let divFinalizado = document.createElement("div")
@@ -145,14 +143,17 @@ function representarTareas(tareas) {
 
   tareas.forEach((tarea) => {
     //todo chatGPT me dice poner {value: item.prioridad} porque si no, no coge el valor
-
+    console.log(tarea.fechaMax);
+    
     agregarNodoTask(
       tarea.titulo,
       tarea.descripcion,
-      { value: tarea.prioridad },
+      tarea.prioridad,
       //item.seleccion,
-      tarea.fechaMax
+      tarea.fecha
     )
+   console.log(tarea);
+   
   })
 }
 btnGuardar.addEventListener("click", (e) => {
@@ -170,7 +171,7 @@ btnGuardar.addEventListener("click", (e) => {
 
     tareas.push(nueva) //añadimos la tarea al array, para luego filtrar
     console.log(`El tipo de fecha de la tarea en addEvent btnGuardar ${titulo} es`+typeof(fechaMax));
-    agregarNodoTask(titulo, descripcion, priority, fechaMax)
+    agregarNodoTask(titulo, descripcion, seleccion, fechaMax)
     alertTaskSaved()
     clearInputs()
   } else {
@@ -186,6 +187,8 @@ selectFilter.addEventListener("change", (e) => {
     listaFiltrada = tareas.filter((item) => {
       console.log(`El tipo de fecha de la tarea ${item.titulo} es`+typeof(item.fechaMax));
       //retornará true o false, si es true, lo añade a listaFiltrada
+      console.log(item);
+      
       return item.prioridad == urgencia
 
     })
