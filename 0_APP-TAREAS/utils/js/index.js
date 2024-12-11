@@ -146,10 +146,10 @@ function representarTareas(tareas) {
     console.log(tarea.fechaMax);
     
     agregarNodoTask(
+      //aqui HAY QUE PONER LOS PROP, DEL CONSTRUCTOR
       tarea.titulo,
       tarea.descripcion,
       tarea.prioridad,
-      //item.seleccion,
       tarea.fecha
     )
    console.log(tarea);
