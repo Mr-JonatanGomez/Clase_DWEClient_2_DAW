@@ -4,7 +4,7 @@ function alertProductosNoCargados() {
         icon: "error",
         title: "No se han cargado los productos",
         showConfirmButton: false,
-        timer: 115000
+        timer: 50000
     })
 }
 

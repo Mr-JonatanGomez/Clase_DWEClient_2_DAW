@@ -36,11 +36,13 @@
                             <label for="filtroCat">Categoria</label><br>
                             <select name="filtroCat" id="filtroCat">
                                 <option value=""></option>
-                                <option value="alimentacion">Alimentacion</option>
-                                <option value="belleza">Belleza</option>
-                                <option value="perfumeria">Perfumeria</option>
-                                <option value="muebles">Muebles</option>
-                                <option value="todas">Todas</option>
+                                <option value="groceries">groceries</option>
+                                <option value="beauty">beauty</option>
+                                <option value="fragances">fragances</option>
+                                <option value="furniture">furniture</option>
+                                <option value="0">All</option>
+
+                                
                             </select>
                         </div>
                         <div class="col">
@@ -59,14 +61,10 @@
                             
                         </div>
                         <div class="col">
-                            <label for="FLUX">FLUX</label><br>
-                            <select name="FLUX" id="FLUX">
-                                <option value=""></option>
-                                <option value="alimentacion">Alimentacion</option>
-                                <option value="belleza">Belleza</option>
-                                <option value="perfumeria">Perfumeria</option>
-                                <option value="muebles">Muebles</option>
-                            </select>
+                            
+                            <input class="btn btn-primary" type="reset" name="resetFiltro" id="resetFiltro" value="Resetear filtros">
+                                
+                            
                         </div>
                     </div>
                 </div>
@@ -98,6 +96,7 @@
             </div>
         </main>
         <script src="./utils/js/sweets.js"></script>
+        <script src="./utils/js/functions.js"></script>
         <script src="./utils/js/index.js"></script>
     </body>
 </html>
