@@ -33,14 +33,13 @@
                 <div class="col filtros">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
                         <div class="col">
-                            <label for="filtroCat">Categoria</label><br>
+                            <label for="filtroCat"><h5>Categoria</h5></label><br>
                             <select name="filtroCat" id="filtroCat">
-                                <option value=""></option>
                                 <option value="groceries">groceries</option>
                                 <option value="beauty">beauty</option>
-                                <option value="fragances">fragances</option>
+                                <option value="fragrances">fragrances</option>
                                 <option value="furniture">furniture</option>
-                                <option value="0">All</option>
+                                <option value="0" selected>All</option>
 
                                 
                             </select>
@@ -54,7 +53,7 @@
                                 </div>
                                 <div class="col-12 mt-2">
                                     <label for="rangeMax">máximo</label>
-                                    <input type="number" name="rangeMax" id="rangeMax" placeholder="1000">
+                                    <input type="number" name="rangeMax" id="rangeMax" placeholder="1000" min="5">
 
                                 </div>
                             </div>

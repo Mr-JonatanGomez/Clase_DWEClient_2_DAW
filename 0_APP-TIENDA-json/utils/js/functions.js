@@ -2,13 +2,15 @@ let productos //usaremos este array para los filtrados
 let filtroCat = document.querySelector("#filtroCat")
 let precioMin = document.querySelector("#rangeMin")
 let precioMax = document.querySelector("#rangeMax")
+let btnReset = document.querySelector("#resetFiltro")
 
 let productosFiltrados= []// solo restablece con reset
 
-let rangeMin
-let rangeMax
-
+let carrito= [] 
+//divs
 let divResultado = document.querySelector("#divResultado")
+let divFiltros= document.querySelector("#filtros")
+
 cargarProductos()
 
 {/* 
@@ -22,10 +24,15 @@ cargarProductos()
     </select> 
                             
 */}
+
+
+
 //todo terminado filtroCat, seguir con filtro precioMin
 //FILTROS
 filtroCat.addEventListener("change", (e)=>{
     divResultado.innerHTML=""
+
+
     let valor= filtroCat.value
     
     
@@ -38,7 +45,7 @@ filtroCat.addEventListener("change", (e)=>{
     }else{
         productosFiltrados=productos
     }
-    console.log(productosFiltrados)
+    //console.log(productosFiltrados)
     productosFiltrados.forEach(item => {
         pintarCartas(item)
     })
@@ -46,9 +53,51 @@ filtroCat.addEventListener("change", (e)=>{
 })
 
 precioMin.addEventListener("change", (e)=>{
+  divResultado.innerHTML=""
+  let precioMinimo = precioMin.value
+  
+  productosFiltrados=productosFiltrados.filter(element => {
+    return element.price>=precioMinimo
+  })
+  productosFiltrados.filter(element => {
+    pintarCartas(element)
+  })
 
-    
 })
+
+precioMax.addEventListener("change", (e)=>{
+  divResultado.innerHTML=""
+let precioMaximo = precioMax.value
+
+productosFiltrados=productosFiltrados.filter(element => {
+  return element.price <= precioMaximo  
+});
+    
+productosFiltrados.forEach(element => {
+  pintarCartas(element)
+});
+
+})
+//RESET
+btnReset.addEventListener("click",(e)=>{
+  productosFiltrados= productos
+  
+  divResultado.innerHTML=""
+  filtroCat.value="0"
+  precioMin.value=""
+  precioMax.value=""
+  
+
+  
+  
+  productosFiltrados.forEach(element => {
+  pintarCartas(element)
+  });
+  
+  
+})
+
+
 
 
 
@@ -60,7 +109,7 @@ precioMin.addEventListener("change", (e)=>{
 }) */
 //.then(alertProductosCargados)
 
-//TODO pintar cartas al arrancar dentro de un then, al recorrer el forEach llamamos esta funcion con la carta
+//FUNCTIONS
 
 function pintarCartas(item) {
   let column = document.createElement("div")
@@ -152,10 +201,15 @@ function cargarProductos(){
     //response1 lleva el return de la anterior promesa
     productos = response1.products
 
+    // aqui copiamos el array, para que de inicio tenga todo
+    productosFiltrados=productos
+
     if (productos.length==0) {
       //condicion para lanzar el error en el catch
       throw new Error("No se encontraron los productos")
     }
+
+
     //pintamos las cartas
     productos.forEach((element) => {
       pintarCartas(element)
