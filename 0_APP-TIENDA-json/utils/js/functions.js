@@ -6,7 +6,12 @@ let btnReset = document.querySelector("#resetFiltro")
 
 let productosFiltrados= []// solo restablece con reset
 
+
+
+
 let carrito= [] 
+
+
 //divs
 let divResultado = document.querySelector("#divResultado")
 let divFiltros= document.querySelector("#filtros")
@@ -32,7 +37,8 @@ cargarProductos()
 filtroCat.addEventListener("change", (e)=>{
     divResultado.innerHTML=""
 
-
+    precioMin.value=""
+    precioMax.value=""
     let valor= filtroCat.value
     
     
@@ -173,8 +179,18 @@ function pintarCartas(item) {
   btnAddCarrito.id = "btnAddCarrito"
   btnAddCarrito.className = "btn btn-primary w-50"
   btnAddCarrito.innerText = "Add basket"
+  btnAddCarrito.setAttribute("data-id", item.id); // Asociar el botón con el id del producto
 
   divBtnCarro.append(btnAddCarrito)
+
+  let cantidad = document.createElement("input")
+  cantidad.className="cantidad"
+  cantidad.id ="cantidad"
+  cantidad.type="Number"
+  cantidad.min=0
+  cantidad.max=30
+
+  divBtnCarro.append(cantidad)
 
   //AÑADIR TODO
 
@@ -183,12 +199,21 @@ function pintarCartas(item) {
   column.append(carta)
   divResultado.append(column)
 
-  /* column.append(carta)
-    carta.append(imagen)
-    cardBody.append(cardTitle)
-    cardBody.append(cardText)
-    cardBody.append(ulList)
-    divResultado.append(column) */
+  //todo FUNCIONALIDAD DEL BOTON ADDCARRITO
+  btnAddCarrito.addEventListener("click",(e)=>{
+
+
+    let cantidadElegida= parseInt(cantidad.value)
+
+    if (cantidadElegida>0) {
+      agregarProdCarrito(item,cantidadElegida)
+    }else{
+      alert("SELECCIONA CANTIDAD VALIDA y CREAR UN SWEET")
+    }
+    
+    })
+
+
 }
 
 function cargarProductos(){
@@ -224,4 +249,28 @@ function cargarProductos(){
   }
     
   )
+}
+
+//todo de momento solo agregado al ARRAY
+
+function agregarProdCarrito(producto, cantidad){
+//verificar si el producto existe en carrito
+let productoEnCarro= carrito.find((item)=>item.id ===producto.id)
+
+if (productoEnCarro) {
+  productoEnCarro.cantidad+= cantidad
+}else{
+  //agregamos un objeto con la cantidad precio y demas
+  carrito.push({
+    id:producto.id,
+    nombre:producto.title,
+    precio_unidad:producto.price,
+    cantidad:cantidad,
+    precioTotal:cantidad*producto.price
+
+  })
+}
+console.log(carrito);
+
+
 }

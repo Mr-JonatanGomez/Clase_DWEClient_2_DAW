@@ -11,41 +11,130 @@ header{
     text-align: center;
     padding: 15px;
     background-color: rgb(13, 110, 253);
-}
-#filtros{
-    border: solid 2px;
-    justify-content: center;
-    padding: 20px 5px;
-    text-align: center;
-    
-    
-    
-}
-#filtros h4{
-    text-align: center;
-    text-decoration: underline;
+    color: rgb(255,255,255);
 }
 
-.col{
-    border:dashed 1px;
+#filtros{
+   
+    padding: 3px;
+    padding-bottom: 8px;
+    text-align: center;
     
+    background-color: rgb(125, 177, 255);
+    border-radius: 24px;
+    margin-bottom: 5px;
+    
+   
+    
+}
+#filtros h2{
+    text-align: center;
+    
+    margin-bottom: 15px;
+    
+}
+
+.row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-3{
+    display: flex;
+    padding: 30px;
+    align-items: stretch;
+    border-radius: 16px;
+    background-color: aliceblue;
+    
+    
+}
+
+.col.fil{
+    margin: auto 0;
+    padding: 10px 0 15px 0;
+    
+    
+
 }
 .col input{
     text-align: center;
     
+    
 }
+/*  */
 .row.mt-3{
     justify-content: center;
-    border: 2px solid;
+    padding: 3px;
+    padding-bottom: 24px;
+    
+    background-color: rgb(13, 110, 253);
+    border-radius: 24px;
+    
+}
+
+.row.mt-3 h2{
+    text-align: center;
+    margin-top: 8px;
+    color: rgb(255,255,255);
+    
+}
+
+img{
+    aspect-ratio: 1/1;
+    object-fit: cover; 
+    padding: 2px;
+    border-radius: 4px;
+    
+}
+
+.row.row-cols-2.row-cols-md-3.row-cols-lg-4.g-1{
+    display: flex;
+    padding: 20px;
+    align-items: stretch;
+    border-radius: 16px;
+    background-color: aliceblue;
+    justify-content: space-around;
+    
+}
+
+.divBtnCarro{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+#cantidad{
+    max-width: fit-content;
+    border-radius: 4px;
+    font-size: large;
+}
+
+
+
+
+/* 
+.row.mt-3{
+    justify-content: center;
+    border: solid 7px rgb(13, 110, 253);
+    border-radius: 24px;
+    padding-bottom: 24px;
+    background-color: brown;
 }
 
 .row.mt-3 h2{
     text-align: center;
     color: rgb(255,255,255);
     background-color: rgb(13, 110, 253);
+    border-radius: 14px 14px 0 0;
+    
 }
 
+img{
+    aspect-ratio: 1/1;
+    object-fit: cover; 
+    padding: 15px;
+}
 
+.row.row-cols-2.row-cols-md-3.row-cols-lg-4.g-1{
+    display: flex;
+    align-items: stretch;
+    background-color: azure;
+}
 .divBtnCarro{
     text-align: center;
-}
+} */
