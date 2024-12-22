@@ -28,9 +28,36 @@
 <!--     <base href="file:///C:/Users/gomez/Documents/GitHub/Clase_DWEClient_2_DAW/0_APP-TIENDA-json/index.html">
  -->    </head>
 <body>
-    <header><h1>El Bazar </h1></header>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <h1>El Bazar </h1>
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-text"><h3>menu</h3></span>
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./carrito.html">Basket</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+    </header>
     <div class="row mt-3 carrito">
-        <h2>PRODUCTOS</h2>
+        <h2>YOUR BASKET</h2>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-1" id="divResultado">
             <!-- aqui cada columna NODO producto -->
             
