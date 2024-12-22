@@ -24,16 +24,46 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="./utils/css/styles.css">
-    </head>
+
+<!--     <base href="file:///C:/Users/gomez/Documents/GitHub/Clase_DWEClient_2_DAW/0_APP-TIENDA-json/index.html">
+ -->    </head>
     <body>
-        <header><h1>El Bazar </h1></header>
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <h1>El Bazar </h1>
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-text"><h3>menu</h3></span>
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./carrito.html">Basket</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        
+        </header>
+
         <main class="container">
             <div class="row mt-2" id="filtros">
-                <h2>Selecciones de filtro</h2>
+                <h2>FILTERS</h2>
                 <div class="col filtros">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
                         <div class="col fil">
-                            <label for="filtroCat"><h5>Categoria</h5></label><br>
+                            <label for="filtroCat"><h5>Category</h5></label><br>
                             <select name="filtroCat" id="filtroCat">
                                 <option value="groceries">groceries</option>
                                 <option value="beauty">beauty</option>
@@ -45,14 +75,14 @@
                             </select>
                         </div>
                         <div class="col fil">
-                            <label>Rango de Precio</label>
+                            <label>Price-Range</label>
                             <div class="row g-2">
                                 <div class="col-12 mt-2">
-                                    <label for="rangeMin">mínimo</label>
-                                    <input type="number" name="rangeMin" id="rangeMin" placeholder="0">
+                                    <label for="rangeMin">MIN</label>
+                                    <input type="number" name="rangeMin" id="rangeMin" placeholder="0" min="0">
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <label for="rangeMax">máximo</label>
+                                    <label for="rangeMax">MAX</label>
                                     <input type="number" name="rangeMax" id="rangeMax" placeholder="1000" min="5">
 
                                 </div>
@@ -61,7 +91,7 @@
                         </div>
                         <div class="col fil">
                             
-                            <input class="btn btn-danger" type="reset" name="resetFiltro" id="resetFiltro" value="Resetear filtros">
+                            <input class="btn btn-danger" type="reset" name="resetFiltro" id="resetFiltro" value="FILTER RESTER">
                                 
                             
                         </div>
@@ -69,7 +99,7 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <h2>PRODUCTOS</h2>
+                <h2>PRODUCTS</h2>
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-1" id="divResultado">
                     <!-- aqui cada columna NODO producto -->
                     

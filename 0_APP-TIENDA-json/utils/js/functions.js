@@ -184,6 +184,7 @@ function pintarCartas(item) {
   divBtnCarro.append(btnAddCarrito)
 
   let cantidad = document.createElement("input")
+  cantidad.placeholder="Qty."
   cantidad.className="cantidad"
   cantidad.id ="cantidad"
   cantidad.type="Number"
@@ -199,7 +200,7 @@ function pintarCartas(item) {
   column.append(carta)
   divResultado.append(column)
 
-  //todo FUNCIONALIDAD DEL BOTON ADDCARRITO
+  //todo FUNCIONALIDAD DEL BOTON ADDCARRITO, limpiar cantidad tras agregar
   btnAddCarrito.addEventListener("click",(e)=>{
 
 
@@ -207,12 +208,14 @@ function pintarCartas(item) {
 
     if (cantidadElegida>0) {
       agregarProdCarrito(item,cantidadElegida)
+      //todo alert de agregado correctamente
+      cantidad.value=""
+      cantidad.placeholder="Qty."
     }else{
-      alert("SELECCIONA CANTIDAD VALIDA y CREAR UN SWEET")
+      alertCantidadIlegal(cantidadElegida)
     }
     
     })
-
 
 }
 
