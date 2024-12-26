@@ -7,6 +7,8 @@ body{
     
 }
 
+/* HEADER */
+
 header{
     text-align: center;
     padding: 15px;
@@ -14,6 +16,67 @@ header{
     color: rgb(255,255,255);
 }
 
+
+nav.navbar, header {
+    margin: 0;
+    padding: 0;
+}
+
+nav h1, .container-fluid{
+
+    padding: 15px;
+    background-color: rgb(13, 110, 253);
+}
+
+nav .navbar.navbar-expand-lg.bg-body-tertiary{
+    padding: 15px;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(255, 255, 255) !important; /* Fuerza el color blanco en todas las etapas */
+}
+
+.collapse.navbar-collapse{
+    justify-content: space-around;
+    font-size: larger;
+}
+
+.collapse.navbar-collapse ul{
+    justify-content: space-around;
+    font-size: larger;
+    font-weight: 500;
+}
+.collapse.navbar-collapse ul a{
+    color: rgb(255,255,255);
+}
+.collapse.navbar-collapse ul a:hover{
+    color: rgb(255,255,255);
+    background-color: rgb(125, 177, 255);
+}
+
+.collapse.navbar-collapse ul a.nav-link.active{
+    color: rgb(255,255,255);
+}
+
+span{
+    color: rgb(255,255,255);
+}
+
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+    border: 1px solid rgb(17, 103, 233);
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* FILTROS */
 #filtros{
    
     padding: 3px;
@@ -23,9 +86,8 @@ header{
     background-color: rgb(125, 177, 255);
     border-radius: 24px;
     margin-bottom: 5px;
-    
-   
-    
+
+
 }
 #filtros h2{
     text-align: center;
@@ -36,7 +98,7 @@ header{
 
 .row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-3{
     display: flex;
-    padding: 30px;
+    padding: 25px;
     align-items: stretch;
     border-radius: 16px;
     background-color: aliceblue;
@@ -48,18 +110,21 @@ header{
     margin: auto 0;
     padding: 10px 0 15px 0;
     
-    
 
 }
 .col input{
     text-align: center;
     
     
+    
 }
-/*  */
+
+
+/* PRINCIPAL */
+
 .row.mt-3{
     justify-content: center;
-    padding: 3px;
+    padding: 7px;
     padding-bottom: 24px;
     
     background-color: rgb(13, 110, 253);
@@ -82,7 +147,8 @@ img{
     
 }
 
-.row.row-cols-2.row-cols-md-3.row-cols-lg-4.g-1{
+
+.row.row-cols-2.row-cols-md-3.row-cols-lg-4.g-1{/* clase productos */
     display: flex;
     padding: 20px;
     align-items: stretch;
@@ -103,44 +169,60 @@ img{
     border-radius: 4px;
     font-size: large;
 }
-nav.navbar, header {
-    margin: 0;
-    padding: 0;
+
+/* CARRITO */
+
+
+
+
+
+
+.cabecero{/* clase productos */
+    display: flex;
+    
+    align-items: stretch;
+    justify-content: space-between;
+    border: solid 2px black;
+    border-radius: 16px 16px 0px 0px;
+    background-color: aliceblue;
+    
+    
+}
+.final{/* clase productos */
+    display: flex;
+    
+    align-items: stretch;
+    justify-content: space-between;
+    border: solid 2px black;
+    border-radius: 0px 0px 16px 16px;
+    background-color: aliceblue;
+    
+    
 }
 
-nav h1, .container-fluid{
-
-    padding: 15px;
-    background-color: rgb(13, 110, 253);
+.ap1, .ap2, .ap3, .ap4{
+    
+    text-align: center;
+    
+    min-width: fit-content;
 }
 
-nav .navbar.navbar-expand-lg.bg-body-tertiary{
-    padding: 15px;
+.container-carrito{
+    margin: 0 auto;
+    background-color: aliceblue;
 }
 
-.collapse.navbar-collapse{
-    justify-content: space-around;
-    font-size: larger;
-}
+.row.producto{
+    padding: 0 12px;
+    background-color: aliceblue;
 
-.collapse.navbar-collapse ul{
-    justify-content: space-around;
-    font-size: larger;
-    font-weight: 500;
-}
-.collapse.navbar-collapse ul a{
-    color: rgb(255,255,255);
-}
-.collapse.navbar-collapse ul a.nav-link.active{
-    color: rgb(255,255,255);
-}
-
-span{
-    color: rgb(255,255,255);
-}
-
-.navbar-toggler-icon{
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    display: flex;
+    
+    align-items: stretch;
+    justify-content: space-between;
+    border: solid 2px black;
+    
+    
 }
 
 

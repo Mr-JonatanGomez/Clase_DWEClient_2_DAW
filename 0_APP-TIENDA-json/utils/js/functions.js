@@ -3,6 +3,7 @@ let filtroCat = document.querySelector("#filtroCat")
 let precioMin = document.querySelector("#rangeMin")
 let precioMax = document.querySelector("#rangeMax")
 let btnReset = document.querySelector("#resetFiltro")
+let btnBasket = document.querySelector("#btnBasket")
 
 let productosFiltrados= []// solo restablece con reset
 
@@ -15,6 +16,7 @@ let carrito= []
 //divs
 let divResultado = document.querySelector("#divResultado")
 let divFiltros= document.querySelector("#filtros")
+let divResultadoCarrito= document.querySelector("#cestaContainer")
 
 cargarProductos()
 
@@ -103,7 +105,9 @@ btnReset.addEventListener("click",(e)=>{
   
 })
 
-
+btnBasket.addEventListener("click", (e)=>{
+  pintarProductosCesta(carrito)
+})
 
 
 
@@ -269,7 +273,8 @@ if (productoEnCarro) {
     nombre:producto.title,
     precio_unidad:producto.price,
     cantidad:cantidad,
-    precioTotal:cantidad*producto.price
+    precioTotal:cantidad*producto.price,
+    imagen:producto.images
 
   })
 }
@@ -277,3 +282,82 @@ console.log(carrito);
 
 
 }
+
+function pintarProductosCesta(carrito){
+  //todo aqui hacemos la carta
+
+carrito.forEach(item => {
+  
+  let row = document.createElement("div")
+  row.className="row producto"
+
+  let col1 = document.createElement("div")
+  col1.className="div-img-cesta"
+
+    let imgP = document.createElement("img")
+    imgP.className="col-2 ap1 imgCesta"
+    col1.append(imgP)
+
+    if (item.images.length > 2) {
+      imgP.src = item.images[2]
+      // imagen [0] en CK es muy alñargada y rompe estructura
+      // imagen[1] en CK todavia algo rara
+    } else {
+      imgP.src = item.images[0]
+    }
+
+  let col2 = document.createElement("div")
+  col2.className="col-4 ap2 div-titulo"
+
+    let tituloCesta = document.createElement("h5")
+    tituloCesta=item.title
+    col2.append(tituloCesta)
+
+  let col3 = document.createElement("div")
+  col3.className="col-1 ap3 div-preUnid"
+
+    let precio1 = document.createElement("h6")
+    precio1=item.price
+    col3.append(precio1)
+
+  let col4 = document.createElement("div")
+  col4.className="col-1 ap4 div-preSubt"
+
+    let precio2 = document.createElement("h5")
+    precio2=item.price
+    col4.append(precio2)
+
+
+  row.append(col1)
+  row.append(col2)
+  row.append(col3)
+  row.append(col4)
+
+  divResultadoCarrito(row)
+
+/* 
+      <div class="col-2 ap1">IMG</div>
+      <div class="col-4 ap2">PRODUCTO</div>
+      <div class="col-1 ap3">precio/Ud</div>
+      <div class="col-1 ap4">subtotal</div>
+ */
+
+ /*  carta.append(divImagen)
+  carta.append(cardBody)
+  column.append(carta)
+  divResultado.append(column) */
+
+});
+
+//todo los APPENDS
+//todo pintar linea final, con precio total, nº productos, etc
+
+}
+
+function pintarCarro(){
+  carrito.forEach(element => {
+    pintarProductosCesta(element)
+  });
+
+}
+

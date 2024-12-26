@@ -44,7 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./carrito.html">Basket</a>
+                        <a class="nav-link" href="./carrito.html" id="btnBasket">Basket</a>
                     </li>
                     
                     <li class="nav-item">
@@ -56,13 +56,34 @@
         </nav>
     
     </header>
-    <div class="row mt-3 carrito">
+    <main class="container">
+    <div class="row mt-3">
         <h2>YOUR BASKET</h2>
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-1" id="divResultado">
-            <!-- aqui cada columna NODO producto -->
+            <!-- PINTADA CARTA MANUAL -->
+            <div class="row cabecero">
+                <div class="col-2 ap1">IMG</div>
+                <div class="col-4 ap2">PRODUCTO</div>
+                <div class="col-1 ap3">precio/Ud</div>
+                <div class="col-1 ap4">subtotal</div>
+            </div>
+            <div class="cestaContainer" id="cestaContainer">
+                <!-- <div class="row producto">
+                    <div class="col-2 ap1">IMG</div>
+                    <div class="col-4 ap2">PRODUCTO</div>
+                    <div class="col-1 ap3">precio/Ud</div>
+                    <div class="col-1 ap4">subtotal</div>
+                </div>
+ -->
+            </div>
+            <div class="row final">
+                <div class="col-2 ap1">IMG</div>
+                <div class="col-4 ap2">PRODUCTO</div>
+                <div class="col-1 ap3">precio/Ud</div>
+                <div class="col-1 ap4">subtotal</div>
+            </div>
             
           
-           <!--  <div class="card">
+           <!-- <div class="card">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -80,6 +101,6 @@
             </div> -->
 
         </div>
-    </div>
+    </main>
 </body>
 </html>
