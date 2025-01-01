@@ -123,13 +123,13 @@ btnBasket.addEventListener("click", (e)=>{
 
 function pintarCartas(item) {
   let column = document.createElement("div")
-  column.className = "col card"
+  column.className = "col card border-0"
 
   let carta = document.createElement("div")
-  carta.className = "card"
+  carta.className = "card "
 
   let divImagen = document.createElement("div")
-  divImagen.className = " card"
+  divImagen.className = "card border-0"
 
   let imagen = document.createElement("img")
   imagen.className = "card-img-top"

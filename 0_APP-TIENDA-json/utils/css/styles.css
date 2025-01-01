@@ -22,11 +22,7 @@ nav.navbar, header {
     padding: 0;
 }
 
-nav h1, .container-fluid{
 
-    padding: 15px;
-    background-color: rgb(13, 110, 253);
-}
 
 nav .navbar.navbar-expand-lg.bg-body-tertiary{
     padding: 15px;
@@ -37,12 +33,12 @@ nav .navbar.navbar-expand-lg.bg-body-tertiary{
 }
 
 .collapse.navbar-collapse{
-    justify-content: space-around;
+    
     font-size: larger;
 }
 
 .collapse.navbar-collapse ul{
-    justify-content: space-around;
+    
     font-size: larger;
     font-weight: 500;
 }
