@@ -16,12 +16,18 @@ let divPublicaciones= document.querySelector("#publicaciones")
 let filter = document.querySelector("#filtro")
 
 let arrayPublicacion = []
+let arrayFiltrado=[]
 
 btnPublicar.addEventListener("click", (e)=>{
+   
+
     if (titulo.value != "" && mensaje.value != "") {
-        agregarMensaje(titulo.value, mensaje.value)
+        let tuit = new Tuit(titulo.value, mensaje.value)
+
+        pintarMensaje(tuit)
+        arrayPublicacion.push(tuit)
         clearInputs()
-//todo
+//todo problema undefined al pintar en filter
         
     }else{
         alert("Falta algun campo")
@@ -34,41 +40,50 @@ contador.textContent =125 - mensaje.value.length
 })
 
 filter.addEventListener("change", (e)=>{
-    console.log(arrayPublicacion);
-    
-   // filtrar(filter.value)
-   if (filter.value != "TODO") {
+    //console.log(`L37 arrayTotal al cambio ${arrayPublicacion}`);
+    // filtrar(filter.value)
+    divPublicaciones.innerHTML=""
+    if (filter.value != "TODO") {
         
-    let arrayFiltrado=[]
-    
-    arrayFiltrado=arrayPublicacion.filter(element => {
-        return element.titular==filter.value
-    });
+        arrayFiltrado=arrayPublicacion.filter(element => {
+            return element.titular==filter.value
+        });
+
+        
+        console.log(`L37 arrayFiltrado al cambio ${arrayFiltrado}`);
        //todo console.log(arrayFiltrado);
-}else{
-    arrayFiltrado=arrayPublicacion
-}
+    }else{
+        divPublicaciones.innerHTML=""
+        arrayFiltrado=arrayPublicacion
+    }
+    arrayFiltrado.forEach(element => {
+        
+        pintarMensaje(element.titular, element.mensaje)
+    });
 })
 
-function agregarMensaje(tit, mens){
+
+function pintarMensaje(tuit){
     
-    
+    //todo cambiar el parametro por tuit, y de hay que coja tuit.titular, tuit.mensaje
 
     let publicacion = document.createElement("div")
     publicacion.className="publicacion"
 
     let titular = document.createElement("h5")
-    titular.innerHTML=tit;
+    titular.innerHTML=tuit.titular
 
     let mensaje = document.createElement("p")
-    mensaje.innerHTML= mens
+    mensaje.innerHTML= tuit.mensaje
 
     publicacion.append(titular)
     publicacion.append(mensaje)
     divPublicaciones.append(publicacion)
 
-    let tuit = new Tuit(tit, mens)
-        arrayPublicacion.push(tuit)
+        //todo problema AQUI
+/*         let tuit = new Tuit(tit, mens)
+        arrayPublicacion.push(tuit) */
+console.log(`array tras añadir mensaje l72 ${arrayPublicacion}`);
 
 }
 function clearInputs(){
@@ -86,7 +101,7 @@ function filtrar (opcion){
             
             return element.titular==opcion
         });
-            console.log(arrayFiltrado);
+            console.log(`Array Filtrado L90 ${arrayFiltrado}`);
     }else{
         arrayFiltrado=arrayPublicacion
     }
