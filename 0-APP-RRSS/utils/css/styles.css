@@ -19,7 +19,11 @@ header{
     
     margin-top: 20px;
     
+    
 }
+
+
+
 
 #filtro{
     margin: 15px auto;
@@ -31,10 +35,12 @@ header{
     
 }
 
-.col-4, .col-7{
+.col-md-4, .col-md-7{
     border: 2px solid black;
     border-radius: 8px;
-    margin: 15px;
+    margin: 15px auto;
+    
+    
     
 }
 
@@ -68,3 +74,5 @@ header{
     border-radius: 8px;
 
 }
+
+
