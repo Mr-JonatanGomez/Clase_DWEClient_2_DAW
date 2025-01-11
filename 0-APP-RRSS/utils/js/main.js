@@ -24,8 +24,8 @@ btnPublicar.addEventListener("click", (e)=>{
     if (titulo.value != "" && mensaje.value != "") {
         let tuit = new Tuit(titulo.value, mensaje.value)
 
-        pintarMensaje(tuit)
         arrayPublicacion.push(tuit)
+        pintarMensaje(tuit)
         clearInputs()
 //todo problema undefined al pintar en filter
         
@@ -40,10 +40,10 @@ contador.textContent =125 - mensaje.value.length
 })
 
 filter.addEventListener("change", (e)=>{
-    //console.log(`L37 arrayTotal al cambio ${arrayPublicacion}`);
-    // filtrar(filter.value)
+
     divPublicaciones.innerHTML=""
     if (filter.value != "TODO") {
+        console.log(`array completo ${arrayPublicacion}`);
         
         arrayFiltrado=arrayPublicacion.filter(element => {
             return element.titular==filter.value
@@ -58,7 +58,7 @@ filter.addEventListener("change", (e)=>{
     }
     arrayFiltrado.forEach(element => {
         
-        pintarMensaje(element.titular, element.mensaje)
+        pintarMensaje(element)
     });
 })
 
@@ -93,7 +93,11 @@ function clearInputs(){
 }
 
 function filtrar (opcion){
+    console.log(`Array Filtrado L96 ANTES DEL if ${arrayFiltrado}`);
+
     if (opcion != "TODO") {
+        console.log(`Array Filtrado DENTRO if L99 ${arrayFiltrado}`);
+
         
         let arrayFiltrado=[]
         
@@ -101,7 +105,7 @@ function filtrar (opcion){
             
             return element.titular==opcion
         });
-            console.log(`Array Filtrado L90 ${arrayFiltrado}`);
+            console.log(`Array Filtrado L108 ${arrayFiltrado}`);
     }else{
         arrayFiltrado=arrayPublicacion
     }
