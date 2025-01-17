@@ -221,6 +221,12 @@ img{
     
 }
 
+.prods{
+    border: solid 4px aliceblue;
+    border-radius: 16px;
+    padding: 7px;
+}
+
 
 /* nav h1, .container-fluid{
 
