@@ -62,7 +62,7 @@
                 <div class="col filtros">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-1">
                         <div class="col fil">
-                            <label for="filtroCat"><h5>Category</h5></label><br>
+                            <label for="filtroCat"><p>Category</p></label><br>
                             <select name="filtroCat" id="filtroCat">
                                 <option value="groceries">groceries</option>
                                 <option value="beauty">beauty</option>
@@ -73,10 +73,11 @@
                                 
                             </select>
                         </div>
-                        <div class="col fil">
-                            <label><h5>Price-Range</h5></label>
-                            <div class="row g-2">
-                                <div class="col-12 mt-2">
+                        <div class="col fil range">
+                            <label><p>Price-Range</p></label>
+                            <div class="row g-2 range">
+                                <div class="col-12 mt-2 min">
+                                    
                                     <label for="rangeMin">MIN</label>
                                     <input type="number" name="rangeMin" id="rangeMin" placeholder="0" min="0">
                                 </div>

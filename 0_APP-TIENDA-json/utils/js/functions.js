@@ -5,7 +5,13 @@ let precioMax = document.querySelector("#rangeMax")
 let btnReset = document.querySelector("#resetFiltro")
 
 
+//BOTON PARA DESPLEGAR LA CESTA
 let btnCesta = document.querySelector("#btnCesta") 
+
+
+//BOTON FINALIZAR COMPRA PINTADO DINAMICAMENTE SI EL CARRITO TIENE PRODUCTOS
+let btnFinalizarCompra = document.querySelector("#btnFinalizarCompra")
+
 
 
 let productosFiltrados= []// solo restablece con reset
@@ -21,6 +27,7 @@ let divResultado = document.querySelector("#divResultado")
 let divFiltros= document.querySelector("#filtros")
 let divResultadoCarrito= document.querySelector("#divResultadoCarrito")
 let divPrecioFinal= document.querySelector("#divPrecioFinal")
+let divFinalizarCompra = document.querySelector("#divFinalizarCompra")
 
 
 //todo boton vaciar varrito aun inactivo, hay que crear el boton en el HTML
@@ -36,21 +43,6 @@ btnVaciarCarrito.addEventListener("click", () => {
 
 cargarProductos()
 
-{/* 
-    <label for="filtroCat">Categoria</label><br>
-    <select name="filtroCat" id="filtroCat">
-        <option value="groceries">groceries</option>
-    <option value="beauty">beauty</option>
-    <option value="fragances">fragances</option>
-    <option value="furniture">furniture</option>
-    <option value="0">All</option>
-    </select> 
-                            
-*/}
-
-
-
-//todo terminado filtroCat, seguir con filtro precioMin
 //FILTROS
 filtroCat.addEventListener("change", (e)=>{
     divResultado.innerHTML=""
@@ -270,8 +262,6 @@ function cargarProductos(){
   )
 }
 
-//todo de momento solo agregado al ARRAY
-
 function agregarProdCarrito(producto, cantidad){
 //verificar si el producto existe en carrito
 let productoEnCarro= carrito.find((item)=>item.id ===producto.id)
@@ -297,7 +287,7 @@ if (productoEnCarro) {
 
   })
 }
-console.log(carrito);
+
 
 
 }
@@ -343,7 +333,7 @@ function pintarProductosCesta(carrito){
   col3.className="col-2 ap3 div-preUnid"
 
     let precio1 = document.createElement("h6")
-    precio1.innerText=`${item.precio_unidad}€`
+    precio1.innerText=`${item.precio_unidad}€/ud`
     col3.append(precio1)
 
   let col4 = document.createElement("div")
@@ -364,11 +354,10 @@ function pintarProductosCesta(carrito){
 
   
 });
-/* NO FUNCIONA CORRECTAMENTE AQUI  CONCATENA, NO SUMA*/
-  pintarPrecioFinal()
 
-//todo los APPENDS
-//todo pintar linea final, con precio total, nº productos, etc
+  pintarPrecioFinal()
+//AQUI FINALIZAR COMPRA
+
 
 }
 
@@ -396,5 +385,14 @@ function pintarPrecioFinal() {
 
   // Mostrar el precio final en el div correspondiente
   divPrecioFinal.innerHTML = `<h4>Total Price: ${precioFinal}€</h4>`
+}
+
+function pintarBotonFinalizarCompra(){
+
+//todo añadir en la linea 359 esta funcion, tras pintar el precio final
+
+
+
+divFinalizarCompra.append("lo que sea")
 }
 
