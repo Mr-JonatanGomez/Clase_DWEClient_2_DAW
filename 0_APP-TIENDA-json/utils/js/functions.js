@@ -3,7 +3,10 @@ let filtroCat = document.querySelector("#filtroCat")
 let precioMin = document.querySelector("#rangeMin")
 let precioMax = document.querySelector("#rangeMax")
 let btnReset = document.querySelector("#resetFiltro")
-let btnBasket = document.querySelector("#btnBasket")
+
+
+let btnCesta = document.querySelector("#btnCesta") 
+
 
 let productosFiltrados= []// solo restablece con reset
 
@@ -16,7 +19,7 @@ let carrito= []
 //divs
 let divResultado = document.querySelector("#divResultado")
 let divFiltros= document.querySelector("#filtros")
-let divResultadoCarrito= document.querySelector("#cestaContainer")
+let divResultadoCarrito= document.querySelector("#divResultadoCarrito")
 
 cargarProductos()
 
@@ -105,28 +108,22 @@ btnReset.addEventListener("click",(e)=>{
   
 })
 
-btnBasket.addEventListener("click", (e)=>{
+btnCesta.addEventListener("click", (e)=>{
   pintarProductosCesta(carrito)
 })
 
 
 
-//FILTRADOS como foreach pero filter
-/* .then((response2)=>{
- filtroCat= response2.filter((element) => element.category=="groceries");
- 
- filtroCat.forEach(element =>console.log(`${element.title}   ${element.price}`))
-}) */
-//.then(alertProductosCargados)
+
 
 //FUNCTIONS
 
 function pintarCartas(item) {
   let column = document.createElement("div")
-  column.className = "col card border-0"
+  column.className = "col card border-1"
 
   let carta = document.createElement("div")
-  carta.className = "card "
+  carta.className = "card border-0"
 
   let divImagen = document.createElement("div")
   divImagen.className = "card border-0"
@@ -152,7 +149,7 @@ function pintarCartas(item) {
   cardBody.append(cardTitle)
 
   let cardText = document.createElement("p")
-  cardText.className = "card-title"
+  cardText.className = "card-text"
   cardText.innerText = item.description
   cardBody.append(cardText)
 
@@ -285,11 +282,11 @@ console.log(carrito);
 
 function pintarProductosCesta(carrito){
   //todo aqui hacemos la carta
-
-carrito.forEach(item => {
+  divResultadoCarrito.innerHTML = "";
+  carrito.forEach(item => {
   
   let row = document.createElement("div")
-  row.className="row producto"
+  row.className="row productoEnCarro"
 
   let col1 = document.createElement("div")
   col1.className="div-img-cesta"
@@ -298,33 +295,33 @@ carrito.forEach(item => {
     imgP.className="col-2 ap1 imgCesta"
     col1.append(imgP)
 
-    if (item.images.length > 2) {
-      imgP.src = item.images[2]
+    if (item.imagen.length > 2) {
+      imgP.src = item.imagen[2]
       // imagen [0] en CK es muy alñargada y rompe estructura
       // imagen[1] en CK todavia algo rara
     } else {
-      imgP.src = item.images[0]
+      imgP.src = item.imagen[0]
     }
 
   let col2 = document.createElement("div")
-  col2.className="col-4 ap2 div-titulo"
+  col2.className="col-5 ap2 div-titulo"
 
     let tituloCesta = document.createElement("h5")
-    tituloCesta=item.title
+    tituloCesta.innerText=item.nombre
     col2.append(tituloCesta)
 
   let col3 = document.createElement("div")
-  col3.className="col-1 ap3 div-preUnid"
+  col3.className="col-2 ap3 div-preUnid"
 
     let precio1 = document.createElement("h6")
-    precio1=item.price
+    precio1.innerText=`${item.precio_unidad}€`
     col3.append(precio1)
 
   let col4 = document.createElement("div")
-  col4.className="col-1 ap4 div-preSubt"
+  col4.className="col-3 ap4 div-preSubt"
 
     let precio2 = document.createElement("h5")
-    precio2=item.price
+    precio2.innerText=` ${item.precioTotal}€`
     col4.append(precio2)
 
 
@@ -333,7 +330,7 @@ carrito.forEach(item => {
   row.append(col3)
   row.append(col4)
 
-  divResultadoCarrito(row)
+  divResultadoCarrito.append(row)
 
 /* 
       <div class="col-2 ap1">IMG</div>
@@ -358,6 +355,7 @@ function pintarCarro(){
   carrito.forEach(element => {
     pintarProductosCesta(element)
   });
+  //todo tras pintar carro, pintamos el precio total, cogiendo con foreach el precio subtotal de cada
 
 }
 
