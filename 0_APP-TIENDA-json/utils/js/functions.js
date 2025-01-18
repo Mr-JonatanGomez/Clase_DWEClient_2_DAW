@@ -12,7 +12,7 @@ let productosFiltrados= []// solo restablece con reset
 
 
 
-
+let precioFinal = 0
 let carrito= [] 
 
 
@@ -20,6 +20,19 @@ let carrito= []
 let divResultado = document.querySelector("#divResultado")
 let divFiltros= document.querySelector("#filtros")
 let divResultadoCarrito= document.querySelector("#divResultadoCarrito")
+let divPrecioFinal= document.querySelector("#divPrecioFinal")
+
+
+//todo boton vaciar varrito aun inactivo, hay que crear el boton en el HTML
+//todo, esto servira tras finalizar compra o tras darle voluntariamente
+/* 
+let btnVaciarCarrito = document.querySelector("#vaciarCarrito");
+btnVaciarCarrito.addEventListener("click", () => {
+  carrito = [];
+  divResultadoCarrito.innerHTML = "";
+  pintarCarro();
+});
+ */
 
 cargarProductos()
 
@@ -262,10 +275,16 @@ function cargarProductos(){
 function agregarProdCarrito(producto, cantidad){
 //verificar si el producto existe en carrito
 let productoEnCarro= carrito.find((item)=>item.id ===producto.id)
-
 if (productoEnCarro) {
   productoEnCarro.cantidad+= cantidad
   productoEnCarro.precioTotal = productoEnCarro.cantidad*productoEnCarro.precio_unidad
+ 
+  carrito.forEach(element => {
+    precioFinal+=element.precioTotal
+  });
+  //todo, actualizar precio final tambien cuando este implementado
+  
+  
 }else{
   //agregamos un objeto con la cantidad precio y demas
   carrito.push({
@@ -284,7 +303,7 @@ console.log(carrito);
 }
 
 function pintarProductosCesta(carrito){
-  //todo aqui hacemos la carta
+
   divResultadoCarrito.innerHTML = "";
   carrito.forEach(item => {
   
@@ -343,30 +362,39 @@ function pintarProductosCesta(carrito){
 
   divResultadoCarrito.append(row)
 
-/* 
-      <div class="col-2 ap1">IMG</div>
-      <div class="col-4 ap2">PRODUCTO</div>
-      <div class="col-1 ap3">precio/Ud</div>
-      <div class="col-1 ap4">subtotal</div>
- */
-
- /*  carta.append(divImagen)
-  carta.append(cardBody)
-  column.append(carta)
-  divResultado.append(column) */
-
+  
 });
+/* NO FUNCIONA CORRECTAMENTE AQUI  CONCATENA, NO SUMA*/
+  pintarPrecioFinal()
 
 //todo los APPENDS
 //todo pintar linea final, con precio total, nº productos, etc
 
 }
 
+//todo, de momento PINTARCARRO esta inactivo
 function pintarCarro(){
   carrito.forEach(element => {
     pintarProductosCesta(element)
   });
   //todo tras pintar carro, pintamos el precio total, cogiendo con foreach el precio subtotal de cada
+ pintarPrecioFinal()
+}
 
+
+function pintarPrecioFinal() {
+  // Reiniciar el precio final antes de recalcularlo
+  precioFinal = 0;
+
+  carrito.forEach((item) => {
+    // Sumar el precio total de cada producto al precio final
+    precioFinal += parseFloat(item.precioTotal)
+  });
+
+  // Pasarlo a dos decimales
+  precioFinal = precioFinal.toFixed(2)
+
+  // Mostrar el precio final en el div correspondiente
+  divPrecioFinal.innerHTML = `<h4>Total Price: ${precioFinal}€</h4>`
 }
 
