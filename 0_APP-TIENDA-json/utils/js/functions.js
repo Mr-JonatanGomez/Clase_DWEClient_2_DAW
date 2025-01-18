@@ -212,12 +212,14 @@ function pintarCartas(item) {
       //todo alert de agregado correctamente
       cantidad.value=""
       cantidad.placeholder="Qty."
+      divResultadoCarrito.innerHTML=""
+      pintarProductosCesta(carrito)
     }else{
       alertCantidadIlegal(cantidadElegida)
     }
     
     })
-
+   
 }
 
 function cargarProductos(){
