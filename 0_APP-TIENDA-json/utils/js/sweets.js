@@ -30,3 +30,21 @@ function alertCantidadIlegal(parametro) {
         })
     }
 }
+
+function alertComprarcarrito(carrito, precio){
+    Swal.fire({
+        title: `Do you want to complete your purchase for ${precio}€ ?`,
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "confirm purchase",
+        denyButtonText: `No, I want to continue buying`
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire("Purchase finished, enjoy it", "", "success");
+          carrito=[]
+        } else if (result.isDenied) {
+          Swal.fire("Purchase not complete", "", "info");
+        }
+      });
+}

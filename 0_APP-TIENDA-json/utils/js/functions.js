@@ -9,9 +9,9 @@ let btnReset = document.querySelector("#resetFiltro")
 let btnCesta = document.querySelector("#btnCesta") 
 
 
+
 //BOTON FINALIZAR COMPRA PINTADO DINAMICAMENTE SI EL CARRITO TIENE PRODUCTOS
 let btnFinalizarCompra = document.querySelector("#btnFinalizarCompra")
-
 
 
 let productosFiltrados= []// solo restablece con reset
@@ -116,6 +116,8 @@ btnReset.addEventListener("click",(e)=>{
 btnCesta.addEventListener("click", (e)=>{
   pintarProductosCesta(carrito)
 })
+
+
 
 
 
@@ -356,6 +358,7 @@ function pintarProductosCesta(carrito){
 });
 
   pintarPrecioFinal()
+  pintarBotonFinalizarCompra()
 //AQUI FINALIZAR COMPRA
 
 
@@ -389,10 +392,32 @@ function pintarPrecioFinal() {
 
 function pintarBotonFinalizarCompra(){
 
-//todo añadir en la linea 359 esta funcion, tras pintar el precio final
+divFinalizarCompra.innerHTML=""
+
+if (carrito.length>0) {
+  
+  //todo añadir en la linea 359 esta funcion, tras pintar el precio final
+  let row = document.createElement("div")
+  row.className = "row row-cols-1 finCompra"
+  
+  btnFinalizarCompra = document.createElement("button")
+  btnFinalizarCompra.className = "btn btn-success w-100"
+  btnFinalizarCompra.innerText= "COMPLETE PURCHASE"
+  row.append(btnFinalizarCompra)
+  
+  btnFinalizarCompra.addEventListener("click", (e)=>{
+    alertComprar(carrito, precioFinal)
+    if (carrito.length = 0) {
+      //si el carrito se vació al finalizar compra vaciamos dinamicamente
+      divResultadoCarrito.innerHTML=""
+    }
+  //todo tras esto si el alert fue SI, vaciara carrito carrito=[]
+  
+  
+  })
 
 
-
-divFinalizarCompra.append("lo que sea")
+  divFinalizarCompra.append(row)
+}
 }
 
