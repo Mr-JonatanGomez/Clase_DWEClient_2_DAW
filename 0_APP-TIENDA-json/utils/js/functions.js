@@ -263,6 +263,7 @@ let productoEnCarro= carrito.find((item)=>item.id ===producto.id)
 
 if (productoEnCarro) {
   productoEnCarro.cantidad+= cantidad
+  productoEnCarro.precioTotal = productoEnCarro.cantidad*productoEnCarro.precio_unidad
 }else{
   //agregamos un objeto con la cantidad precio y demas
   carrito.push({
@@ -270,7 +271,7 @@ if (productoEnCarro) {
     nombre:producto.title,
     precio_unidad:producto.price,
     cantidad:cantidad,
-    precioTotal:cantidad*producto.price,
+    precioTotal:parseFloat(cantidad*producto.price).toFixed(2),
     imagen:producto.images
 
   })
@@ -289,10 +290,10 @@ function pintarProductosCesta(carrito){
   row.className="row productoEnCarro"
 
   let col1 = document.createElement("div")
-  col1.className="div-img-cesta"
+  col1.className="col-2 ap1 imgCesta"
 
     let imgP = document.createElement("img")
-    imgP.className="col-2 ap1 imgCesta"
+    imgP.className="div-img-cesta"
     col1.append(imgP)
 
     if (item.imagen.length > 2) {
@@ -302,6 +303,13 @@ function pintarProductosCesta(carrito){
     } else {
       imgP.src = item.imagen[0]
     }
+
+  let col15 = document.createElement("div")
+  col15.className = "col-1 ap15 div-Qty"
+
+    let qtyInBasket = document.createElement("h6")
+    qtyInBasket.innerText=`x ${item.cantidad}`
+    col15.append(qtyInBasket)
 
   let col2 = document.createElement("div")
   col2.className="col-5 ap2 div-titulo"
@@ -318,7 +326,7 @@ function pintarProductosCesta(carrito){
     col3.append(precio1)
 
   let col4 = document.createElement("div")
-  col4.className="col-3 ap4 div-preSubt"
+  col4.className="col-2 ap4 div-preSubt"
 
     let precio2 = document.createElement("h5")
     precio2.innerText=` ${item.precioTotal}€`
@@ -326,6 +334,7 @@ function pintarProductosCesta(carrito){
 
 
   row.append(col1)
+  row.append(col15)
   row.append(col2)
   row.append(col3)
   row.append(col4)

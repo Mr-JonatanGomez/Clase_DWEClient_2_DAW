@@ -24,19 +24,8 @@ header h1{
 
 
 
-/* ZONA DE PINTADO DEL CARRO */
-.navbar-nav .nav-link {
-    color: rgb(0, 0, 0) !important; /* Fuerza el color blanco en todas las etapas */
-    background-color: blue;
-    padding: 3px;
-    padding-bottom: 8px;
-    text-align: center;
-    
-    background-color: rgb(125, 177, 255);
-    border-radius: 24px;
-    margin-bottom: 5px;
+/* BASKET*/
 
-}
 
 .collapse.navbar-collapse{
     
@@ -87,7 +76,7 @@ header h1{
 .row.mt-2.basket{
    
     box-sizing: border-box;
-    padding: 3px;
+    padding: 3px 15px 15px 15px;
     padding-bottom: 8px;
     text-align: center;
     
@@ -96,6 +85,52 @@ header h1{
     border-radius: 24px;
 
 
+}
+
+
+.ap1,.ap15, .ap2, .ap3, .ap4{
+    font-weight: bold;
+    text-align: center;
+    
+    min-width: fit-content;
+}
+
+.container-carrito{
+    margin: 0 auto;
+    background-color: aliceblue;
+}
+
+/*  */
+.row.producto{
+    padding: 0 12px;
+    background-color: aliceblue;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    border: solid 2px black;
+}
+/*  */
+
+#divResultadoCarrito{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.row .productoEnCarro{
+    
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto 15px;
+
+    border: solid 2px rgb(13, 110, 253);
+    border-radius: 16px;
+    align-items: center;
+}
+.row .productoEnCarro img{
+    height: 150px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
 }
 
 /* .navbar-toggler:focus {
@@ -235,43 +270,7 @@ img{
     
 }
 
-.ap1, .ap2, .ap3, .ap4{
-    
-    text-align: center;
-    
-    min-width: fit-content;
-}
 
-.container-carrito{
-    margin: 0 auto;
-    background-color: aliceblue;
-}
-
-.row.producto{
-    padding: 0 12px;
-    background-color: aliceblue;
-
-    display: flex;
-    
-    align-items: stretch;
-    justify-content: space-between;
-    border: solid 2px black;
-    
-    
-}
-#divResultadoCarrito{
-    display: flex;
-    flex-direction: column-reverse;
-}
-.productoEnCarro{
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-}
-
-.col-2 .ap1 .imgCesta{
-    max-width: 50px;
-}
 
 /* .prods{
     border: solid 4px aliceblue;
