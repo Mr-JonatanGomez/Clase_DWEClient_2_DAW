@@ -50,12 +50,21 @@
                     <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2" id="divResultadoCarrito">
                         <!-- AQUI SE DEBEN PINTAR LAS COSAS DEL ARRAY CARRITO-->
                     </div>
-                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2" id="divPrecioFinal">
-                        <h6>AQUI SU PRECIO</h6>
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2 precioFinalClass" id="divPrecioFinal">
+                        
                     </div>
 
                     <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2" id="divFinalizarCompra">
-
+                        <div class="row row-cols-1 finCompra">
+                            <button class="btn btn-success btnFinalizarCompra" id="btnFinalizarCompra">
+                               <img class="iconPurchase" src="https://cdn-icons-png.flaticon.com/512/819/819122.png" alt="">
+                                COMPLETE PURCHASE
+                            </button>
+                            <button class="btn btn-danger btnFinalizarCompra" id="btnVaciarBasket">
+                                <img class="iconPurchase" src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/all-icons/x-919o2m0hea73deh80x64u2.png/x-b8u46hdovcz62tsfbgky7.png?_a=DAJFJtWIZAAC" alt="">
+                                EMPTY YOUR BASKET
+                             </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,10 +111,10 @@
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-3 products">
                 <h2>PRODUCTS</h2>
                 <!--                 PEQ         MED          GRANDE   -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2" id="divResultado">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 products" id="divResultado">
                     <!-- aqui cada columna NODO producto -->
                   
 

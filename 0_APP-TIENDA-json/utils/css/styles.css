@@ -87,6 +87,10 @@ header h1{
 
 }
 
+.row.mt-2.basket h4{
+
+font-weight: bold;
+}
 
 .ap1,.ap15, .ap2, .ap3, .ap4{
     font-weight: bold;
@@ -171,9 +175,7 @@ header h1{
     flex-direction: row;
 }
 
-.input{
-    max-width: ;
-}
+
 
 .col.fil.range{
     display: flex;
@@ -209,11 +211,27 @@ header h1{
 
 
 
-.card-title{
-    min-height: 65px;
+.finCompra{
+    margin: 15px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 100%;
+
 }
-.card-text{
-    min-height: 130px;
+
+/* .row.row-cols-1.row-cols-md-1.row-cols-lg-1.g-2.precioFinalClass{
+    font-size: large;
+    
+} */
+
+.btnFinalizarCompra{
+    border-radius: 50px;
+    max-width: 40%;
+}
+
+.iconPurchase{
+    max-width: 30px;
 }
 
 
@@ -245,7 +263,7 @@ img{
 }
 
 /* row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2*/
-.row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-2{/* clase productos */
+.row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-2.products{/* clase productos */
     display: flex;
     padding: 20px;
     align-items: stretch;
@@ -255,6 +273,16 @@ img{
     
     
 }
+
+
+/* alturas para que todas las cards midan el mismo alto */
+.card-title{
+    min-height: 65px;
+}
+.card-text{
+    min-height: 130px;
+}
+
 
 .divBtnCarro{
     text-align: center;

@@ -5,13 +5,11 @@ let precioMax = document.querySelector("#rangeMax")
 let btnReset = document.querySelector("#resetFiltro")
 
 
-//BOTON PARA DESPLEGAR LA CESTA
+//BOTON PARA DESPLEGAR LA CESTA y FINALIZAR/VACIAR COMPRA
 let btnCesta = document.querySelector("#btnCesta") 
-
-
-
-//BOTON FINALIZAR COMPRA PINTADO DINAMICAMENTE SI EL CARRITO TIENE PRODUCTOS
 let btnFinalizarCompra = document.querySelector("#btnFinalizarCompra")
+let btnVaciarBasket = document.querySelector("#btnVaciarBasket")
+
 
 
 let productosFiltrados= []// solo restablece con reset
@@ -27,19 +25,11 @@ let divResultado = document.querySelector("#divResultado")
 let divFiltros= document.querySelector("#filtros")
 let divResultadoCarrito= document.querySelector("#divResultadoCarrito")
 let divPrecioFinal= document.querySelector("#divPrecioFinal")
-let divFinalizarCompra = document.querySelector("#divFinalizarCompra")
 
 
 //todo boton vaciar varrito aun inactivo, hay que crear el boton en el HTML
 //todo, esto servira tras finalizar compra o tras darle voluntariamente
-/* 
-let btnVaciarCarrito = document.querySelector("#vaciarCarrito");
-btnVaciarCarrito.addEventListener("click", () => {
-  carrito = [];
-  divResultadoCarrito.innerHTML = "";
-  pintarCarro();
-});
- */
+
 
 cargarProductos()
 
@@ -117,9 +107,31 @@ btnCesta.addEventListener("click", (e)=>{
   pintarProductosCesta(carrito)
 })
 
+btnFinalizarCompra.addEventListener("click", (e)=>{
+
+if (carrito.length === 0 || precioFinal ===0) {
+  alertCarritoVacio(carrito)
+  //hasta aqui funciona BIEN al principio o si vacio con VACIAR
+}else{
+
+  alertConfirmarCompra(carrito, precioFinal)
+
+}
 
 
 
+})
+
+btnVaciarBasket.addEventListener("click", (e)=>{
+  if (carrito.length===0 || precioFinal === 0) {
+    alertCarritoVacio(carrito)
+  }else{
+
+    alertVaciarCarro(carrito, precioFinal)
+  }
+
+  
+})
 
 
 
@@ -358,20 +370,20 @@ function pintarProductosCesta(carrito){
 });
 
   pintarPrecioFinal()
-  pintarBotonFinalizarCompra()
+  /* pintarBotonFinalizarCompra() */
 //AQUI FINALIZAR COMPRA
 
 
 }
 
 //todo, de momento PINTARCARRO esta inactivo
-function pintarCarro(){
+/* function pintarCarro(){
   carrito.forEach(element => {
     pintarProductosCesta(element)
   });
   //todo tras pintar carro, pintamos el precio total, cogiendo con foreach el precio subtotal de cada
  pintarPrecioFinal()
-}
+} */
 
 
 function pintarPrecioFinal() {
@@ -390,34 +402,10 @@ function pintarPrecioFinal() {
   divPrecioFinal.innerHTML = `<h4>Total Price: ${precioFinal}€</h4>`
 }
 
-function pintarBotonFinalizarCompra(){
 
-divFinalizarCompra.innerHTML=""
-
-if (carrito.length>0) {
-  
-  //todo añadir en la linea 359 esta funcion, tras pintar el precio final
-  let row = document.createElement("div")
-  row.className = "row row-cols-1 finCompra"
-  
-  btnFinalizarCompra = document.createElement("button")
-  btnFinalizarCompra.className = "btn btn-success w-100"
-  btnFinalizarCompra.innerText= "COMPLETE PURCHASE"
-  row.append(btnFinalizarCompra)
-  
-  btnFinalizarCompra.addEventListener("click", (e)=>{
-    alertComprar(carrito, precioFinal)
-    if (carrito.length = 0) {
-      //si el carrito se vació al finalizar compra vaciamos dinamicamente
-      divResultadoCarrito.innerHTML=""
-    }
-  //todo tras esto si el alert fue SI, vaciara carrito carrito=[]
-  
-  
-  })
-
-
-  divFinalizarCompra.append(row)
-}
+function vaciarCarro(carrito){
+  carrito = []
+  divResultadoCarrito.innerHTML = ""
+  pintarCarro()
 }
 
