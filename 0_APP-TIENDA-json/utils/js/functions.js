@@ -33,8 +33,10 @@ let divPrecioFinal= document.querySelector("#divPrecioFinal")
 
 cargarProductos()
 
-//FILTROS
-filtroCat.addEventListener("change", (e)=>{
+
+//FILTROS 
+{
+/* filtroCat.addEventListener("change", (e)=>{
     divResultado.innerHTML=""
 
     precioMin.value=""
@@ -62,7 +64,7 @@ precioMin.addEventListener("change", (e)=>{
   divResultado.innerHTML=""
   let precioMinimo = precioMin.value
   
-  productosFiltrados=productosFiltrados.filter(element => {
+  productosFiltrados=productos.filter(element => {
     return element.price>=precioMinimo
   })
   productosFiltrados.filter(element => {
@@ -83,24 +85,88 @@ productosFiltrados.forEach(element => {
   pintarCartas(element)
 });
 
+}) */
+}
+
+// Filtrar por categoría
+filtroCat.addEventListener("change", (e) => {
+  divResultado.innerHTML = "";
+
+  let valor = filtroCat.value
+
+  /* LO QUE HACE 0||infinity ES ASIGNAR UN VALOR POR DEFECTO SI NO HAY NADA, ASI FUNCIONA AUNQUE SOLO RELLENES UN FILTRO */
+
+  let precioMinimo = parseFloat(precioMin.value) || 0
+  let precioMaximo = parseFloat(precioMax.value) || Infinity
+
+  productosFiltrados = productos.filter((item) => {
+    const cumpleCategoria = valor == 0 || item.category == valor
+    const cumplePrecioMin = item.price >= precioMinimo
+    const cumplePrecioMax = item.price <= precioMaximo
+
+    return cumpleCategoria && cumplePrecioMin && cumplePrecioMax
+  })
+
+  productosFiltrados.forEach(item => {
+    pintarCartas(item)
+  })
 })
+
+// Filtrar por precio mínimo
+precioMin.addEventListener("change", (e) => {
+  divResultado.innerHTML = ""
+  let precioMinimo = parseFloat(precioMin.value) || 0
+  let valor = filtroCat.value;
+  let precioMaximo = parseFloat(precioMax.value) || Infinity
+
+  productosFiltrados = productos.filter((item) => {
+    let cumpleCategoria = valor == 0 || item.category == valor
+    let cumplePrecioMin = item.price >= precioMinimo
+    let cumplePrecioMax = item.price <= precioMaximo
+
+    return cumpleCategoria && cumplePrecioMin && cumplePrecioMax
+  })
+
+  productosFiltrados.forEach(item => {
+    pintarCartas(item)
+  })
+})
+
+// Filtrar por precio máximo
+precioMax.addEventListener("change", (e) => {
+  divResultado.innerHTML = ""
+
+  let precioMaximo = parseFloat(precioMax.value) || Infinity 
+  let valor = filtroCat.value
+  let precioMinimo = parseFloat(precioMin.value) || 0 
+
+  productosFiltrados = productos.filter((item) => {
+    let cumpleCategoria = valor == 0 || item.category == valor
+    let cumplePrecioMin = item.price >= precioMinimo
+    let cumplePrecioMax = item.price <= precioMaximo
+
+    return cumpleCategoria && cumplePrecioMin && cumplePrecioMax
+  });
+
+  productosFiltrados.forEach(item => {
+    pintarCartas(item)
+  })
+});
+
+
+
 //RESET
-btnReset.addEventListener("click",(e)=>{
-  productosFiltrados= productos
-  
-  divResultado.innerHTML=""
-  filtroCat.value="0"
-  precioMin.value=""
-  precioMax.value=""
-  
+btnReset.addEventListener("click", (e) => {
+  productosFiltrados = [...productos]//copia el array de productos original
+  divResultado.innerHTML = ""
+  filtroCat.value = "0"
+  precioMin.value = ""
+  precioMax.value = ""
 
   
-  
-  productosFiltrados.forEach(element => {
-  pintarCartas(element)
-  });
-  
-  
+  productosFiltrados.forEach(item => {
+    pintarCartas(item)
+  })
 })
 
 btnCesta.addEventListener("click", (e)=>{
@@ -375,15 +441,6 @@ function pintarProductosCesta(carrito){
 
 
 }
-
-//todo, de momento PINTARCARRO esta inactivo
-/* function pintarCarro(){
-  carrito.forEach(element => {
-    pintarProductosCesta(element)
-  });
-  //todo tras pintar carro, pintamos el precio total, cogiendo con foreach el precio subtotal de cada
- pintarPrecioFinal()
-} */
 
 
 function pintarPrecioFinal() {
