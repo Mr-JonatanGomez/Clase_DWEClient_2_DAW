@@ -1,3 +1,5 @@
+const url="https://dummyjson.com/products"
+
 let productos //usaremos este array para los filtrados
 let filtroCat = document.querySelector("#filtroCat")
 let precioMin = document.querySelector("#rangeMin")
@@ -30,63 +32,14 @@ let divPrecioFinal= document.querySelector("#divPrecioFinal")
 //todo boton vaciar varrito aun inactivo, hay que crear el boton en el HTML
 //todo, esto servira tras finalizar compra o tras darle voluntariamente
 
+/* FUNCION CARGAR PRODUCTOS con el then */
+//cargarProductos()
 
-cargarProductos()
+/* FUNCION ASYNCHRONUS PRODUCTS sin el then */
+cargarProductosAsync(url)
 
 
 //FILTROS 
-{
-/* filtroCat.addEventListener("change", (e)=>{
-    divResultado.innerHTML=""
-
-    precioMin.value=""
-    precioMax.value=""
-    let valor= filtroCat.value
-    
-    
-    
-
-    if (valor != 0) {
-        productosFiltrados=productos.filter((item) => {
-            return item.category==valor
-        });    
-    }else{
-        productosFiltrados=productos
-    }
-    //console.log(productosFiltrados)
-    productosFiltrados.forEach(item => {
-        pintarCartas(item)
-    })
-    
-})
-
-precioMin.addEventListener("change", (e)=>{
-  divResultado.innerHTML=""
-  let precioMinimo = precioMin.value
-  
-  productosFiltrados=productos.filter(element => {
-    return element.price>=precioMinimo
-  })
-  productosFiltrados.filter(element => {
-    pintarCartas(element)
-  })
-
-})
-
-precioMax.addEventListener("change", (e)=>{
-  divResultado.innerHTML=""
-let precioMaximo = precioMax.value
-
-productosFiltrados=productosFiltrados.filter(element => {
-  return element.price <= precioMaximo  
-});
-    
-productosFiltrados.forEach(element => {
-  pintarCartas(element)
-});
-
-}) */
-}
 
 // Filtrar por categoría
 filtroCat.addEventListener("change", (e) => {
@@ -155,7 +108,7 @@ precioMax.addEventListener("change", (e) => {
 
 
 
-//RESET
+//RESET Y BOTONES
 btnReset.addEventListener("click", (e) => {
   productosFiltrados = [...productos]//copia el array de productos original
   divResultado.innerHTML = ""
@@ -202,6 +155,67 @@ btnVaciarBasket.addEventListener("click", (e)=>{
 
 
 //FUNCTIONS
+async function cargarProductosAsync(url) {
+//1. async function
+/*2. await -> indica que la funcion donde lo aplicas es una promesa
+              y no necesitamos then para la respuesta*/
+
+  let respuesta= await fetch(url)
+  let json = await(respuesta.json())
+  productos=json.products
+  productosFiltrados=productos
+
+  if (productos.length==0) {
+    throw new Error("No se encontraron los productos")
+  }
+
+  productos.forEach(element => {
+    pintarCartas(element)
+  });
+}
+
+function cargarProductos(){
+//1. lanza peticion fetch al server
+//2. con then analizo respuesta
+//3. dentro de ese then lo convertimos a json
+//4. en otro then analizo la respuesta de la traduccion
+//5. trato la respuesta
+
+
+  fetch("https://dummyjson.com/products") //1
+  // para correcta
+  //para pasarlo encadenando la promess necesitamos un return implicito o explicito
+  .then((response) => response.json()) //2.convierte RESPUESTA A JSON
+
+  .then((response1) => {
+    //response1 lleva el return de la anterior promesa
+    productos = response1.products
+
+    // aqui copiamos el array, para que de inicio tenga todo
+    productosFiltrados=productos
+
+    if (productos.length==0) {
+      //condicion para lanzar el error en el catch
+      throw new Error("No se encontraron los productos")
+    }
+
+
+    //pintamos las cartas
+    productos.forEach((element) => {
+      pintarCartas(element)
+    })
+
+    
+  })
+  //para incorrectaa
+  .catch((error)=>{
+    console.error("No cargados lso productos",error.message)
+    alertProductosNoCargados()
+  }
+    
+  )
+}
+
 
 function pintarCartas(item) {
   let column = document.createElement("div")
@@ -211,7 +225,7 @@ function pintarCartas(item) {
   carta.className = "card border-0"
 
   let divImagen = document.createElement("div")
-  divImagen.className = "card border-0"
+  divImagen.className = "card border-0 divImagen"
 
   let imagen = document.createElement("img")
   imagen.className = "card-img-top"
@@ -307,40 +321,6 @@ function pintarCartas(item) {
    
 }
 
-function cargarProductos(){
-  fetch("https://dummyjson.com/products")
-  // para correcta
-  //para pasarlo encadenando la promess necesitamos un return implicito o explicito
-  .then((response) => response.json()) //convierte RESPUESTA A JSON
-
-  .then((response1) => {
-    //response1 lleva el return de la anterior promesa
-    productos = response1.products
-
-    // aqui copiamos el array, para que de inicio tenga todo
-    productosFiltrados=productos
-
-    if (productos.length==0) {
-      //condicion para lanzar el error en el catch
-      throw new Error("No se encontraron los productos")
-    }
-
-
-    //pintamos las cartas
-    productos.forEach((element) => {
-      pintarCartas(element)
-    })
-
-    
-  })
-  //para incorrectaa
-  .catch((error)=>{
-    console.error("No cargados lso productos",error.message)
-    alertProductosNoCargados()
-  }
-    
-  )
-}
 
 function agregarProdCarrito(producto, cantidad){
 //verificar si el producto existe en carrito

@@ -254,11 +254,22 @@ font-weight: bold;
     
 }
 
-img{
+.col.card.border-1{
+    display: flex;
+    justify-content: center;
+}
+.divImagen{
+    display: flex;
+    margin: auto auto;
+    max-width: 60%;
+}
+.card-img-top{
     aspect-ratio: 1/1;
     object-fit: cover; 
     padding: 2px;
     border-radius: 4px;
+    max-width: 100%;
+    justify-content: center;
     
 }
 
