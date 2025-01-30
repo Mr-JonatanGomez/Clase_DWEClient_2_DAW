@@ -30,41 +30,51 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg bg-body-primary p-2">
+            </nav>
                 <div class="container-fluid">
                     <h1>El Bazar </h1>
-                    <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-text"><h3>menu</h3></span>
-                        <span class="navbar-toggler-icon"></span>
-
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            
-                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./carrito.html" id="btnBasket">Basket</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                        </ul>
-                    </div>
+                    <!-- <a class="navbar-brand" href="#"></a> -->
+                    
                 </div>
-            </nav>
         
         </header>
 
         <main class="container">
-            <div class="row mt-2" id="filtros">
+            <div class="row mt-2 basket">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="btnCesta">
+                    <span class="navbar-toggler-text"><h3>Your Basket</h3></span>
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2" id="divResultadoCarrito">
+                        <!-- AQUI SE DEBEN PINTAR LAS COSAS DEL ARRAY CARRITO-->
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2 precioFinalClass" id="divPrecioFinal">
+                        
+                    </div>
+
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2" id="divFinalizarCompra">
+                        <div class="row row-cols-1 finCompra">
+                            <button class="btn btn-success btnFinalizarCompra" id="btnFinalizarCompra">
+                               <img class="iconPurchase" src="https://cdn-icons-png.flaticon.com/512/819/819122.png" alt="">
+                                COMPLETE PURCHASE
+                            </button>
+                            <button class="btn btn-danger btnFinalizarCompra" id="btnVaciarBasket">
+                                <img class="iconPurchase" src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/all-icons/x-919o2m0hea73deh80x64u2.png/x-b8u46hdovcz62tsfbgky7.png?_a=DAJFJtWIZAAC" alt="">
+                                EMPTY YOUR BASKET
+                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2 filtros" id="filtros">
                 <h2>FILTERS</h2>
                 <div class="col filtros">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 g-1">
                         <div class="col fil">
-                            <label for="filtroCat"><h5>Category</h5></label><br>
+                            <label for="filtroCat"><p>Category</p></label><br>
                             <select name="filtroCat" id="filtroCat">
                                 <option value="groceries">groceries</option>
                                 <option value="beauty">beauty</option>
@@ -75,16 +85,17 @@
                                 
                             </select>
                         </div>
-                        <div class="col fil">
-                            <label><h5>Price-Range</h5></label>
-                            <div class="row g-2">
-                                <div class="col-12 mt-2">
-                                    <label for="rangeMin">MIN</label>
-                                    <input type="number" name="rangeMin" id="rangeMin" placeholder="0" min="0">
+                        <div class="col fil range">
+                            <label><p>Price-Range</p></label>
+                            <div class="row g-2 range">
+                                <div class="col-12 mt-2 min">
+                                    
+                                    <label for="rangeMin"></label>
+                                    <input type="number" name="rangeMin" id="rangeMin" placeholder="MIN PRICE" min="0">
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <label for="rangeMax">MAX</label>
-                                    <input type="number" name="rangeMax" id="rangeMax" placeholder="1000" min="5">
+                                    <label for="rangeMax"></label>
+                                    <input type="number" name="rangeMax" id="rangeMax" placeholder="MAX PRICE" min="5">
 
                                 </div>
                             </div>
@@ -99,33 +110,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3">
+
+            <div class="row mt-3 products">
                 <h2>PRODUCTS</h2>
                 <!--                 PEQ         MED          GRANDE   -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3" id="divResultado">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 products" id="divResultado">
                     <!-- aqui cada columna NODO producto -->
-                    
                   
-                   <!--  <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div> -->
 
                 </div>
             </div>
-        
         </main>
         <script src="./utils/js/sweets.js"></script>
         <script src="./utils/js/functions.js"></script>
