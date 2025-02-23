@@ -23,28 +23,32 @@
 
         <button 
         class="btn btn-primary mb-3 justify-content-center"
-        (mouseenter)="mostrarConocimientos()"
-        (mouseleave)="mostrarConocimientos()"
+        
+        (click)="mostrarConocimientos()"
         >
+        <!-- se puede meter estos eventos para 
+        mostrar segun esta activo el foco 
+            (mouseenter)="mostrarConocimientos()"
+            (mouseleave)="mostrarConocimientos()"
+        -->
             Mostrar Conocimientos
         </button>
-          
+        
             <div  *ngIf="mostrar" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div *ngFor="let item of conocimientos" class="col text-center">
-                  <div class="card h-100">
-                    <img src="assets/angular.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ item.nombre }}</h5>
-                      <p class="card-text">El nivel de conocimiento en {{ item.nombre }} es de {{ item.nivel }}</p>
-                    </div>
+                    <div class="card h-100">
+                        <img src="assets/angular.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ item.nombre }}</h5>
+                        <p class="card-text">El nivel de conocimiento en {{ item.nombre }} es de {{ item.nivel }}</p>
+                        </div>
                     
-                  </div>
+                    </div>
                 </div>
             </div>
             
-     <!--<img [src]="url"/><img> -->
-           
-       
+
+
     </div>
     
     
