@@ -15,6 +15,7 @@ export class ListadoComponent {
   nombre = "Jonatan"
   nombreConocimiento=""
   nivelConocimiento=""
+  
 
   conocimientos:Conocimiento[]= []
 
@@ -36,6 +37,7 @@ export class ListadoComponent {
       let conocimiento:Conocimiento = {
         nombre:this.nombreConocimiento,
         nivel:this.nivelConocimiento
+        
       }
   
       /* Guardamos el conocimiento al ArRRAY PRINCIPAL */

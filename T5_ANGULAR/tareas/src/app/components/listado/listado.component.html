@@ -34,34 +34,36 @@
             Mostrar Conocimientos
         </button>
         
-            <div  *ngIf="mostrar" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <ng-container *ngIf="mostrar; else elseTemplate">
+            
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div class="alert alert-primary text-center" role="alert">
+                Si quieres ver los conocimientos, pulsa el boton
+              </div>
+        </ng-template>
+        <!-- PARTE DEL ELSE -->
+             <div  *ngIf="mostrar" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div *ngFor="let item of conocimientos" class="col text-center">
-                    <div class="card h-100">
-                        <img src="assets/angular.png" class="card-img-top" alt="...">
+                    <div class="card">
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{{ item.nombre }}/{{ item.nombre }}-original.svg" class="card-img-top h-25 p-4" alt="imagen del logo {{ item.nombre }} no disponible">
                         <div class="card-body">
                         <h5 class="card-title">{{ item.nombre }}</h5>
                         <p class="card-text">El nivel de conocimiento en {{ item.nombre }} es de {{ item.nivel }}</p>
                         </div>
+                        
                     
+                        
                     </div>
                 </div>
             </div>
-            
-
-
     </div>
-    
-    
 </div>
-<div class="row mt-5">
-
-    <div class="col text-center">
-        <h2>Experiencia</h2>
-        <ul class="list-group mb-3">
-            <!-- Se pueden meter con la directiva ngFor -->
-            <li *ngFor="let item of conocimientos" class="list-group-item">
-                {{ item.nombre }} - {{ item.nivel }}
-            </li>
-        </ul>
-    </div>
+<div class="row mt-4" *ngIf="conocimientos.length<1">
+    <div class="alert alert-warning text-center fw-bold" role="alert">
+        NO TIENES CONOCIMIENTOS AGREGADOS
+      </div>
+    
 </div>

@@ -3,6 +3,23 @@
   <p>Esta es la primera app realizada con Angular y 
     es una app de {{ title }} realizada por {{ autor }}</p>
 
-<!-- LLAMAMOS AL component LISTADO -->
- <app-listado></app-listado>
+
+<select class="form-select my-4" [(ngModel)]="seleccion">
+  <option class="text-center" value="1">Conocimientos</option>
+  <option class="text-center" value="2">Asignaturas</option>
+  <option class="text-center" value="3">Tecnologias</option>
+</select>
+
+
+
+<div [ngSwitch]="seleccion">
+  <!-- hay que pasarlo a string con otras comillas, porque los input son SIEMPRE string -->
+  <app-listado *ngSwitchCase="'1'"></app-listado>
+  <app-asignaturas *ngSwitchCase="'2'"></app-asignaturas>
+  <app-tecnologias *ngSwitchCase="'3'"></app-tecnologias>
+  <div *ngSwitchDefault class="alert alert-primary text-center" role="alert">
+    Por Defecto no se muestra nada, por favor elige una opcion
+  </div>
+</div>
+
 </div>
