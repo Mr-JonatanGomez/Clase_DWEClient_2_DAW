@@ -10,8 +10,12 @@ const routes: Routes = [
   {path:"",redirectTo:"conocimientos", pathMatch:"full"},
 
   {path:"conocimientos", component:ListadoComponent},
-  {path:"asignaturas", component:AsignaturasComponent},
-  {path:"tecnologias", component:TecnologiasComponent},
+
+/* esta gestionada con parametros */
+  {path:"asignaturas/:id", component:AsignaturasComponent},
+
+  /* esta gestionada navegar desde logica */
+  {path:"tecnologias/:id", component:TecnologiasComponent},
 
   /* EN ultimo lugar la pagina de error, debe estar creada*/
   {path:"**",component:ErrorComponent}
