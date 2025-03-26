@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../model/post';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -278,7 +280,7 @@ export class DataService {
       userId: 177,
     },
   ];
-  constructor() {}
+  constructor(private clienteHTTP: HttpClient) {}
 
   /* GETTER para poder tener todos los datos en otro lugar */
   public getAllPost(): Post[] {
@@ -290,5 +292,9 @@ export class DataService {
     return this.posts.find((item) => {
       return item.id == id;
     });
+  }
+
+  public getAllPostURL():Observable <any>{
+    return this.clienteHTTP.get("https://dummyjson.com/posts")
   }
 }

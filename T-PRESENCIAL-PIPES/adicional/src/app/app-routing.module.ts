@@ -6,11 +6,14 @@ import { DetailComponent } from './components/detail/detail.component';
 import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path: 'home',redirectTo: 'home', pathMatch:'full'},
-  {path:'detail', component:DetailComponent},
+  {path: '',redirectTo: 'home', pathMatch:'full'},
+  {path:'home', component:HomeComponent},
+  /* a detail como usa endpoints le damos parametros */
+  {path:'detail/:id', component:DetailComponent},
   {path:'list', component:ListComponent},
-  {path:'**', component:ErrorComponent}
+  {path:'error', component:ErrorComponent},
+  {path:'**', redirectTo: 'error'},
+  
 
 
 

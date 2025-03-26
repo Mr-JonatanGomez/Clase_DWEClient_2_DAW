@@ -1,1 +1,27 @@
-<p>detail works!</p>
+<h2 class="text-center">DETAIL POST</h2>
+<div class="row  justify-content-center">
+
+    <div class="col-10 col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ post?.title }} </h5>
+                <p class="fw-bold text-center">Tematicas del post</p>
+                <ul class="list-group">
+                    <li *ngFor="let tag of post?.tags" class="list-group-item">
+                        {{ tag }}
+                    </li>
+                    <li class="list-group-item">
+                        
+                        <p>{{ post?.body }}</p>
+                    </li>
+                </ul>
+                <div class="d-flex justify-content-between">
+                    <p class="m-1">views: {{ post?.views }}</p>
+                    <p class="m-1">likes: {{ post?.reactions?.likes }}</p>
+
+                </div>
+            <!-- y para pasarle el endpoint, le damos parametro al routerLink -->
+          </div>
+        </div>
+</div>
+  </div>

@@ -1,15 +1,38 @@
-<ul class="list-group">
+<!-- <ul class="list-group">
   <li
     *ngFor="let item of posts"
     class="list-group-item"
     [ngClass]="{
-      'list-group-item-success': item.reactions.likes > 100,
-      'list-group-item-primary':
-        item.reactions.likes > 50 && item.reactions.likes <= 100,
-      'list-group-item-success': item.reactions.likes <= 50
+      'list-group-item-success': item.reactions.likes > 500,
+      'list-group-item-warning':
+        item.reactions.likes > 200 && item.reactions.likes <= 500,
+      'list-group-item-danger': item.reactions.likes <= 200
     }"
   >
     {{ item.title }}
   </li>
-</ul>
-vi
+</ul> -->
+
+<!-- 
+
+-->
+
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+  <div class="col" *ngFor="let item of posts">
+    <div class="card">
+      <img [src]=" item.tags | imagenes" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.title }} </h5>
+        <p class="fw-bold text-center">Tematicas del post</p>
+        <ul class="list-group">
+          <li *ngFor="let tag of item.tags" class="list-group-item">
+            {{ tag }}
+          </li>
+        </ul>
+        <p class="m-1">views: {{ item.views }}</p>
+        <!-- y para pasarle el endpoint, le damos parametro al routerLink -->
+        <button class="btn btn-primary w-50 mt-1" [routerLink]="['/detail', item.id ]">Ver detalle</button>
+      </div>
+    </div>
+  </div>
+</div>

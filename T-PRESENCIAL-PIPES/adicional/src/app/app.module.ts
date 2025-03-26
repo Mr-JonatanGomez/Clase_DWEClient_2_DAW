@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { ListComponent } from './components/list/list.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ImagenesPipe } from './pipe/imagenes.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ErrorComponent } from './components/error/error.component';
     HomeComponent,
     DetailComponent,
     ListComponent,
-    ErrorComponent
+    ErrorComponent,
+    ImagenesPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
