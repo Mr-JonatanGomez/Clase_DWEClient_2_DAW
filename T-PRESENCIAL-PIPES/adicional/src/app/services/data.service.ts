@@ -279,22 +279,30 @@ export class DataService {
       views: 3558,
       userId: 177,
     },
-  ];
+  ];/* NO NECESARIO EL ARRAY SI TRABAJAMOS POR API */
+  private api= "https://dummyjson.com/posts"
   constructor(private clienteHTTP: HttpClient) {}
 
   /* GETTER para poder tener todos los datos en otro lugar */
-  public getAllPost(): Post[] {
+  /* public getAllPost(): Post[] {
     return this.posts;
-  }
+  } */
 
+  /*  METODO PARA MOSTRAR UN POST SOLO con su id
   public getPostsById(id: number): Post | undefined {
-    /* Post | undefined, devuelve un post o undefined */
+    // Post | undefined, devuelve un post o undefined 
     return this.posts.find((item) => {
       return item.id == id;
     });
-  }
+  } */
 
   public getAllPostURL():Observable <any>{
-    return this.clienteHTTP.get("https://dummyjson.com/posts")
+    return this.clienteHTTP.get(this.api)
   }
+
+  public getPostsByIdURL(id: number): Observable <Post> {
+    
+    return this.clienteHTTP.get<Post>(`${this.api}/${id}`)
+    }
+  
 }

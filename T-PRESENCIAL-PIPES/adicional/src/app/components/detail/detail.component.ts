@@ -16,10 +16,19 @@ export class DetailComponent {
 
   /* Lo necesitamos para coger el endpoint y suscribir por si hay cambios
   ademas, le pasamos el dataService y cogemos el post desde el data */
-constructor(private router:ActivatedRoute, private dataService:DataService) {
+constructor(
+  private router:ActivatedRoute, 
+  private dataService:DataService
+) {
   this.router.params.subscribe(params=>{
-    
-    this.post = this.dataService.getPostsById(params['id'])
+    /* ESTE ES PARA TRABAJAR EN ARRAY
+    this.post = this.dataService.getPostsById(params['id']) */
+
+    this.dataService.getPostsByIdURL(params['id']).subscribe((data)=>{
+      this.post= data
+
+
+    })
   })
 
   
