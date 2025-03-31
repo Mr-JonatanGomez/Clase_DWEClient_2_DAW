@@ -304,5 +304,10 @@ export class DataService {
     
     return this.clienteHTTP.get<Post>(`${this.api}/${id}`)
     }
+
+  public getAllPostTagURL(tipoTag:string): Observable<any>{
+    /* Cogemos la utl de api, añadimos tag, y el tipo de tag para el filtro lo sacamos de param */
+    return this.clienteHTTP.get<Post>(`${this.api}/tag/${tipoTag}`)
+  }
   
 }

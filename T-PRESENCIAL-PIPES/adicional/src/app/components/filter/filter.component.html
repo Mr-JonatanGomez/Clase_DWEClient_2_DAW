@@ -1,0 +1,38 @@
+<select class="form-select" [(ngModel)]="seleccionTag">
+  <option class="select-item">Love</option>
+  <option class="select-item">French</option>
+  <option class="select-item">English</option>
+  <option class="select-item">History</option>
+  <option class="select-item">Fiction</option>
+  <option class="select-item">Life</option>
+</select>
+<button class="btn btn-secondary mt-4" (click)="Filtrado()">Filtrar</button>
+<!-- DE MOMENTO ASI, PERO LO HAREMOS CON INPUT  -->
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+  <div class="col" *ngFor="let item of posts">
+    <div class="card">
+      <img [src]=" item.tags | imagenes" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.title }} </h5>
+        <p class="fw-bold text-center">Tematicas del post</p>
+        <ul class="list-group">
+          <li *ngFor="let tag of item.tags" class="list-group-item">
+            {{ tag }}
+          </li>
+        </ul>
+        <p class="m-1">views: {{ item.views }}</p>
+        <!-- y para pasarle el endpoint, le damos parametro al routerLink -->
+        <button class="btn btn-primary w-50 mt-1" [routerLink]="['/detail', item.id ]">Ver detalle</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 
+<select class="form-select">
+    <option class="select-item">Spanish La Liga</option>
+    <option class="select-item">Spanish La Liga</option>
+</select> -->
+
+<!-- https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=Spanish+La+Liga -->
