@@ -1,38 +1,77 @@
 
 <div class="card" *ngIf="team">
-    <img [src]="team.strBanner" class="card-img-top p-4 mx-auto" alt="...">
+    <img [src]="team.strBanner" class="card-img-top p-3 mx-auto" alt="...">
     <div class="card-body">
-      <h2 class="card-title text-center">{{ team.strTeam }}</h2>
-      <p class="fw-bold text-center mt-3">DATOS</p>
+      <h2 class="card-title text-center">{{ team.strTeam}}</h2>
+      
       <ul class="list-group">
-        <li class="list-group-item"><strong>Fundación:</strong> {{ team.intFormedYear }}</li>
-        <li class="list-group-item"><strong>Ciudad:</strong> {{ team.strLocation }}</li>
-        <li class="list-group-item"><strong>Estadio:</strong> {{ team.strStadium }}, {{ team.intStadiumCapacity }} espectadores de capacidad máxima</li>
+        <li class="list-group-item text-center">
+          <h4 class="">
+            <strong>Fundación:</strong>
+          </h4>
+          <p>
+            {{ team.intFormedYear }}
+          </p>
+        </li>
+        <li class="list-group-item text-center">
+          <h4>
+            <strong>Ciudad:</strong> 
+          </h4>
+          <p>
+            {{ team.strLocation }}
+          </p>
+        </li>
+        <li class="list-group-item text-center">
+          <h4>
+            <strong>Estadio:</strong> 
+          </h4>
+          <h5>
+            {{ team.strStadium }}
+          </h5>
+          
+          {{ team.intStadiumCapacity }} espectadores de capacidad máxima</li>
+        <li class="list-group-item"><strong>Descripción:</strong> <br><br>{{ team.strDescriptionES }}</li>
+        <li class="list-group-item">
+          <strong>Camiseta:</strong><br> 
+          <div class="text-center">
+
+            <img class="img-camiseta" src="{{ team.strEquipment }}" alt="">
+          </div>
+        
+        </li>
+        
+
+        
         <li class="list-group-item"><strong>Enlaces</strong>
-           <ul class="list-group2">
-                <li class="list-group-item2">
+           
+                <p class="list-group-item2 mt-2">
+
+                    <img class="img-logo me-3 d-none d-sm-inline" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg" />
                     <a [href]="team.strWebsite" target="_blank">{{ team.strWebsite }}</a>
-                </li>
+                </p>
                 
-                <li class="list-group-item2">
-                    <i class="devicon-facebook-plain colored" style="font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>
-                    <a [href]="team.strFacebook" target="_blank">{{ team.strFacebook }}</a>
-                </li>
-                <li class="list-group-item2">
+                <p class="list-group-item2">
                     
-                    <i class="devicon-twitter-original colored" style="font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>
-                    <a [href]="team.strTwitter" target="_blank">{{ team.strTwitter }}</a>
-                </li>
-                <li class="list-group-item2">
+
+                      <img class="img-logo me-3 d-none d-sm-inline" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg" />
+                      <a [href]="team.strFacebook" target="_blank">{{ team.strFacebook }}</a>
                     
-                    <i class="devicon-instagram-plain colored" style="font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>
-                    <a [href]="team.strInstagram" target="_blank">{{ team.strInstagram }}</a>
-                </li>
-                </ul>
+                </p>
+                <p class="list-group-item2">
+                    
+                  <img class="img-logo me-3 d-none d-sm-inline" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg" />
+                  <a [href]="team.strTwitter" target="_blank">{{ team.strTwitter }}</a>
+                </p>
+                
+                
           
         </li>
-        <li class="list-group-item"><strong>Apodo:</strong> {{ team.strKeywords }}</li>
+        <li *ngIf="" class="list-group-item"><strong>Apodo:</strong> {{ team.strKeywords }}</li>
       </ul>
+      <div class="d-flex justify-content-center">
+
+        <button class="btn btn-secondary mt-3 w-50" [routerLink]="['/teams']">Volver</button>
+      </div>
     </div>
   </div>
 

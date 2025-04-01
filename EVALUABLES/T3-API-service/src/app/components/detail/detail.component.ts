@@ -15,11 +15,6 @@ import { Router } from '@angular/router';
 export class DetailComponent {
 team?:Team = undefined
 
-iconFb="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg" 
-          
-iconInst=""
-iconTw="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg"
-iconWeb=""
 
 
 constructor(
@@ -27,13 +22,18 @@ constructor(
   
   
 }
+
+
 ngOnInit(): void {
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
   //this.team= this.router.getCurrentNavigation()?.extras.state?.['team']
 
-  this.team = history.state.team
-  console.log('Objeto team en DetailComponent:', this.team);
+  if (typeof history!== 'undefined') {
+    
+    this.team = history.state.team
+    console.log('Objeto team en DetailComponent:', this.team);
+  }
   
 
 }

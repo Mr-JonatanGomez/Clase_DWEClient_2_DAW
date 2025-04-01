@@ -1,9 +1,15 @@
+
 <select class="form-select" [(ngModel)]="seleccionCapacidad">
-    <option class="select-item">Madrid</option>
-    <option class="select-item">Barcelona</option>
-    
-  </select>
-  <button class="btn btn-secondary mt-4" (click)="filtradoCity()">Filtrar</button>
+  <option class="select-item" value="all">Todos</option>
+  <option class="select-item" value="10000">Menos de 10000 asientos</option>
+  <option class="select-item" value="20000">Entre 10001 y 20000 asientos</option>
+  <option class="select-item" value="30000">Entre 20001 y 30000 asientos</option>
+  <option class="select-item" value="40000">Entre 30001 y 40000 asientos</option>
+  <option class="select-item" value="50000">Entre 40001 y 50000 asientos</option>
+  <option class="select-item" value="50000+">Más de 50000 asientos</option>
+</select>
+<button class="btn btn-secondary mt-4" (click)="filtradoCapacidad()">Filtrar</button>
+
   <!-- DE MOMENTO ASI, PERO LO HAREMOS CON INPUT  -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 mt-2 mb-2">
     <div class="col" *ngFor="let item of teams">

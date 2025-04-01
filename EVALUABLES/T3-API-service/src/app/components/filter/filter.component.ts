@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Team } from '../../model/team';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-filter',
@@ -14,7 +15,7 @@ export class FilterComponent {
 
 
 
-  filtradoCity(){
-    //this.dataService
+  filtradoCapacidad(){
+   this.teams
   }
 }
