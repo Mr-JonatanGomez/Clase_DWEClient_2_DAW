@@ -1,0 +1,12 @@
+<select class="form-select" [(ngModel)]="seleccionCapacidad">
+    <option class="select-item">Madrid</option>
+    <option class="select-item">Barcelona</option>
+    
+  </select>
+  <button class="btn btn-secondary mt-4" (click)="filtradoCity()">Filtrar</button>
+  <!-- DE MOMENTO ASI, PERO LO HAREMOS CON INPUT  -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 mt-2 mb-2">
+    <div class="col" *ngFor="let item of teams">
+        <app-team [team]="item"></app-team>
+    </div>
+</div>

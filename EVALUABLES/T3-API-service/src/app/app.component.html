@@ -1,0 +1,38 @@
+<header class="p-4 bg-secondary">
+
+  <nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">Navbar</a>
+      <button 
+        class="navbar-toggler bg-light" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation"
+      >
+      <span class="navbar-toggler-icon ">| | |</span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" [routerLink]="['/home']">
+            <a class="nav-link" aria-current="page" >Home</a>
+          </li>
+          <li class="nav-item" [routerLink]="['/teams']">
+            <a class="nav-link">Teams</a>
+          </li>
+          <li class="nav-item" [routerLink]="['/filter']">
+            <a class="nav-link">Filter</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+  
+</header>
+  <div class="container p-4">
+  <router-outlet/>
+  </div>

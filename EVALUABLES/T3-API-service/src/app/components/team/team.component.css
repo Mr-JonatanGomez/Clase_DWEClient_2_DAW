@@ -1,0 +1,13 @@
+.card-img-top{
+
+    max-width: 250px;
+}
+
+.city{
+    min-height: 65px;
+    align-items: center;
+}
+
+.city p{
+
+}

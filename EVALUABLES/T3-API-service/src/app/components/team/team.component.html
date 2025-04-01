@@ -1,0 +1,20 @@
+<div class="card">
+    <img [src]=" team?.strBadge" class="card-img-top p-4 mx-auto" alt="...">
+    <div class="card-body">
+      <h2 class="card-title text-center">{{ team?.strTeam }} </h2>
+      
+      <p class="fw-bold text-center mt-3">DATOS</p>
+      <ul class="list-group">
+
+        <li class="list-group-item"><strong>Fundación: </strong> {{ team?.intFormedYear }}</li>
+        <li class="list-group-item city"><strong>Ciudad: </strong><br> {{ team?.strLocation }}</li>
+        <li class="list-group-item"><strong>Estadio: </strong> <br> {{ team?.strStadium }}, <br>{{ team?.intStadiumCapacity }} de capacidad</li>
+        <li class="list-group-item"><strong>Website: </strong> <br> <a href="{{ team?.strWebsite }}">{{ team?.strWebsite }}</a></li>
+        <li class="list-group-item"><strong>Apodo: </strong>{{ team?.strKeywords }}</li>
+
+      </ul>
+      <!-- y para pasarle el endpoint, le damos parametro al routerLink -->
+      <!-- <button class="btn btn-primary w-50 mt-3" [routerLink]="['/detail']" >Descripción</button> -->
+      <button class="btn btn-primary w-50 mt-3" (click)="verDetalles()">Descripción</button>
+    </div>
+  </div>
