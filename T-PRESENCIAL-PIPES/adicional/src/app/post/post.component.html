@@ -1,0 +1,21 @@
+<!-- 
+!! aseguro que post!!.tag no es undefined; EXISTE
+? si metemos ?, lo que dice es que si post?.tag es undefined, no lo haga
+la otra solucion es declarar en logico el post:Post | undefined
+en la imagen al usar un pipe, necesita la existenciia o darle al pipe la posibilidad undefined
+-->
+<div class="card">
+    <img [src]=" post?.tags | imagenes" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ post?.title }} </h5>
+      <p class="fw-bold text-center">Tematicas del post</p>
+      <ul class="list-group">
+        <li *ngFor="let tag of post?.tags" class="list-group-item">
+          {{ tag }}
+        </li>
+      </ul>
+      <p class="m-1">views: {{ post?.views }}</p>
+      <!-- y para pasarle el endpoint, le damos parametro al routerLink -->
+      <button class="btn btn-primary w-50 mt-1" [routerLink]="['/detail', post?.id ]">Ver detalle</button>
+    </div>
+  </div>

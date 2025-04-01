@@ -10,7 +10,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { ImagenesPipe } from './pipe/imagenes.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterComponent } from './components/filter/filter.component';
-import { FormsModule} from '@angular/forms'
+import { FormsModule} from '@angular/forms';
+import { PostComponent } from './post/post.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule} from '@angular/forms'
     ListComponent,
     ErrorComponent,
     ImagenesPipe,
-    FilterComponent
+    FilterComponent,
+    PostComponent
   ],
   imports: [
   

@@ -19,20 +19,6 @@
 
 <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
   <div class="col" *ngFor="let item of posts">
-    <div class="card">
-      <img [src]=" item.tags | imagenes" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{ item.title }} </h5>
-        <p class="fw-bold text-center">Tematicas del post</p>
-        <ul class="list-group">
-          <li *ngFor="let tag of item.tags" class="list-group-item">
-            {{ tag }}
-          </li>
-        </ul>
-        <p class="m-1">views: {{ item.views }}</p>
-        <!-- y para pasarle el endpoint, le damos parametro al routerLink -->
-        <button class="btn btn-primary w-50 mt-1" [routerLink]="['/detail', item.id ]">Ver detalle</button>
-      </div>
-    </div>
+    <app-post [post]="item"></app-post>
   </div>
 </div>
