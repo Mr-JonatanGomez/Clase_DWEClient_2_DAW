@@ -15,6 +15,12 @@ import { Router } from '@angular/router';
 export class DetailComponent {
 team?:Team = undefined
 
+iconFb="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg" 
+          
+iconInst=""
+iconTw="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg"
+iconWeb=""
+
 
 constructor(
   private route:ActivatedRoute, private router:Router){

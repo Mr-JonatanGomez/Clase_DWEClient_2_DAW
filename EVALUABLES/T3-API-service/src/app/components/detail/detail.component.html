@@ -1,26 +1,38 @@
-<header>
-    
-</header>
-
 
 <div class="card" *ngIf="team">
-    <img [src]="team.strBadge" class="card-img-top p-4 mx-auto" alt="...">
+    <img [src]="team.strBanner" class="card-img-top p-4 mx-auto" alt="...">
     <div class="card-body">
       <h2 class="card-title text-center">{{ team.strTeam }}</h2>
       <p class="fw-bold text-center mt-3">DATOS</p>
       <ul class="list-group">
         <li class="list-group-item"><strong>Fundación:</strong> {{ team.intFormedYear }}</li>
         <li class="list-group-item"><strong>Ciudad:</strong> {{ team.strLocation }}</li>
-        <li class="list-group-item"><strong>Estadio:</strong> {{ team.strStadium }}, {{ team.intStadiumCapacity }} de capacidad</li>
-        <li class="list-group-item"><strong>Website:</strong>
-          <a [href]="team.strWebsite" target="_blank">{{ team.strWebsite }}</a>
+        <li class="list-group-item"><strong>Estadio:</strong> {{ team.strStadium }}, {{ team.intStadiumCapacity }} espectadores de capacidad máxima</li>
+        <li class="list-group-item"><strong>Enlaces</strong>
+           <ul class="list-group2">
+                <li class="list-group-item2">
+                    <a [href]="team.strWebsite" target="_blank">{{ team.strWebsite }}</a>
+                </li>
+                
+                <li class="list-group-item2">
+                    <i class="devicon-facebook-plain colored" style="font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>
+                    <a [href]="team.strFacebook" target="_blank">{{ team.strFacebook }}</a>
+                </li>
+                <li class="list-group-item2">
+                    
+                    <i class="devicon-twitter-original colored" style="font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>
+                    <a [href]="team.strTwitter" target="_blank">{{ team.strTwitter }}</a>
+                </li>
+                <li class="list-group-item2">
+                    
+                    <i class="devicon-instagram-plain colored" style="font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>
+                    <a [href]="team.strInstagram" target="_blank">{{ team.strInstagram }}</a>
+                </li>
+                </ul>
+          
         </li>
         <li class="list-group-item"><strong>Apodo:</strong> {{ team.strKeywords }}</li>
       </ul>
     </div>
   </div>
 
-  <div class="card">
-    <h2 class="card-title text-center">{{ team?.strTeam }}</h2>
-    <p>Ciudad: {{ team?.strLocation }}</p>
-  </div>
