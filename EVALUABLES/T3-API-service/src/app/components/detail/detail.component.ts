@@ -14,9 +14,6 @@ import { Router } from '@angular/router';
 })
 export class DetailComponent {
 team?:Team = undefined
-
-
-
 constructor(
   private route:ActivatedRoute, private router:Router){
   

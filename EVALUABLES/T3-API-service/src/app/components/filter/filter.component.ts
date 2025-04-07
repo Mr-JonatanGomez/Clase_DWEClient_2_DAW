@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Team } from '../../model/team';
 import { Router } from '@angular/router'
 import { DataService } from '../../services/data.service';
@@ -15,7 +15,8 @@ export class FilterComponent {
   seleccionCapacidad:string = ''
 
   constructor(private dataService: DataService){}
-  
+
+    
 
     filtradoCapacidad() {
      //AQUI quiero el metodo para filtrar por capacidad de estadio intStadiumCapacity

@@ -38,6 +38,7 @@ export class DataService {
     }
     type CapacityRangeKeys =  '10000' | '20000' | '30000' | '40000' | '50000' | '50000+' ;
     const capacityRanges={
+      '': {min:-1, max:-1},
       '0':{min:0, max:Infinity},
       '10000':{min:0, max:10000},
       '20000': { min: 10001, max: 20000 },

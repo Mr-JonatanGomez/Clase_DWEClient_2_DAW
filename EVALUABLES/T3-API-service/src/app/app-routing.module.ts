@@ -7,8 +7,8 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { FilterComponent } from './components/filter/filter.component';
 
 const routes: Routes = [
-{path:'', redirectTo: 'home', pathMatch:'full'},
-{path: 'home', component:HomeComponent},
+{path:'', redirectTo: 'teams', pathMatch:'full'},
+
 {path: 'detail', component:DetailComponent},
 {path: 'teams', component:TeamsComponent},
 {path: 'filter', component:FilterComponent},

@@ -1,15 +1,16 @@
 <h3 class="text-center">FILTRADO POR CAPACIDAD DE ESTADIO</h3>
 <select class="form-select w-50 mx-auto" [(ngModel)]="seleccionCapacidad" (change)="filtradoCapacidad()">
-  <option class="select-item" value="0">Todos</option>
+  <option class="select-item" value="">SELECCIONA RANGO DE CAPACIDAD</option>
   <option class="select-item" value="10000">Menos de 10000 asientos</option>
   <option class="select-item" value="20000">Entre 10001 y 20000 asientos</option>
   <option class="select-item" value="30000">Entre 20001 y 30000 asientos</option>
   <option class="select-item" value="40000">Entre 30001 y 40000 asientos</option>
   <option class="select-item" value="50000">Entre 40001 y 50000 asientos</option>
   <option class="select-item" value="50000+">Más de 50000 asientos</option>
+  <option class="select-item" value="0" selected>Todos</option>
 </select>
 
-  <!-- DE MOMENTO ASI, PERO LO HAREMOS CON INPUT  -->
+
   <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3  row-cols-xxl-4 g-4 mt-2 mb-2 justify-content-around">
     <div class="col d-flex flex-column" *ngFor="let item of equiposFiltrados">
       <div class="card">
